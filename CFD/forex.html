@@ -1,0 +1,1851 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forex Trading | London Investment Markets Limited</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Additional dependencies from lim1.html -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    /* === UPDATED COLOR SCHEME === */
+    :root {
+        --primary-neon: #007BFF;
+        --secondary-neon: #2f1d40;
+        --accent-gold: #c5c4bb;
+        --bg-dark: #ffffff;
+        --primary: #007BFF;
+        --logo-color: #181D18;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--bg-dark);
+      color: #0f1729;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    /* === UPDATED HEADER STYLES FOR 100% WIDTH === */
+    .header-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    .header-top {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+        .header-top {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .header-top {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
+    /* Ensure no gaps at the edges */
+    .full-width-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    /* IMPROVED NAVBAR STYLES WITH SMALLER TEXT */
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 123, 255, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-link {
+        position: relative;
+        padding: 0.4rem 0.8rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        color: #0f1729;
+    }
+
+    .nav-link:hover {
+        color: var(--primary-neon);
+        background: rgba(0, 123, 255, 0.05);
+    }
+
+    .nav-link.active {
+        color: var(--primary-neon);
+        font-weight: 600;
+    }
+
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0.8rem;
+        right: 0.8rem;
+        height: 2px;
+        background: var(--primary-neon);
+        border-radius: 2px;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+      color: #0f1729;
+    } 
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 50%;
+      height: 3px;
+      background: var(--primary-neon);
+    }
+    
+    /* Header alignment fixes */
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .logo-container {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    
+    .nav-container {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+    
+    .desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    
+    @media (max-width: 767px) {
+        .desktop-nav {
+            display: none;
+        }
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+    }
+    
+    @media (max-width: 767px) {
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    /* UPDATED LOGO STYLES WITH #181D18 COLOR */
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--logo-color);
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .logo h1 span {
+        color: var(--logo-color);
+        font-weight: 600;
+    }
+
+    .logo i {
+        color: var(--logo-color) !important;
+        font-size: 1.8rem;
+    }
+
+    @media (max-width: 768px) {
+        .logo h1 {
+            font-size: 1.1rem;
+        }
+        
+        .logo i {
+            font-size: 1.4rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo h1 {
+            font-size: 0.95rem;
+        }
+    }
+    
+    /* Updated mobile menu with smaller text */
+    .mobile-menu-link {
+        font-size: 0.9rem;
+    }
+    
+    /* Neon button styles */
+    .neon-button {
+        transition: all 0.3s ease;
+        box-shadow: 0 0 8px var(--accent-gold);
+        background: linear-gradient(135deg, var(--accent-gold), #FFA500);
+        color: #0f172a !important;
+        font-weight: bold;
+    }
+
+    .neon-button:hover {
+        box-shadow: 0 0 20px var(--accent-gold), 0 0 40px rgba(255, 215, 0, 0.7);
+        transform: translateY(-2px);
+    }
+
+    /* Enhanced Hero Section */
+    .hero-gradient {
+        background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    }
+    
+    .hero-text-glow {
+        text-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+    }
+    
+    .hero-subtitle {
+        color: #e2e8f0;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+    
+    .form-container {
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(0, 123, 255, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    .form-input {
+        background: rgba(30, 41, 59, 0.8);
+        border: 1px solid rgba(100, 116, 139, 0.3);
+        color: #f1f5f9;
+    }
+    
+    .form-input:focus {
+        border-color: #007BFF;
+        box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+    }
+    
+    .form-input::placeholder {
+        color: #94a3b8;
+    }
+
+    /* Improved text visibility */
+    .text-dark {
+        color: #0f1729;
+    }
+    
+    .text-medium {
+        color: #334155;
+    }
+    
+    .text-light {
+        color: #64748b;
+    }
+    
+    .bg-light {
+        background-color: #f8fafc;
+    }
+    
+    .bg-medium {
+        background-color: #e2e8f0;
+    }
+    
+    .border-light {
+        border-color: #cbd5e1;
+    }
+    
+    .text-readable {
+        line-height: 1.6;
+    }
+
+    /* Rest of your existing styles... */
+    .ticker {
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      background-color: #111827;
+      color: #f2f4f3;
+      font-size: 0.9rem;
+      padding: 8px 0;
+    }
+    .ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 45s linear infinite;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .forex-table {
+      background-color: #ffffff;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border: 1px solid #e2e8f0;
+    }
+    th, td {
+      text-align: center;
+      padding: 12px 16px;
+    }
+    th {
+      background-color: #f8fafc;
+      font-weight: 600;
+      color: #0f1729;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    .forex-card {
+      background-color: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .forex-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+      border-color: var(--primary-neon);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    .modal-content {
+      background-color: #ffffff;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 1000px;
+      position: relative;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #94a3b8;
+    }
+    .close-modal:hover {
+      color: #0f1729;
+    }
+    .chart-container {
+      position: relative;
+      height: 300px;
+      width: 100%;
+      margin-top: 20px;
+    }
+    .tab-button {
+      background-color: #f1f5f9;
+      color: #64748b;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 6px;
+    }
+    .tab-button.active {
+      background-color: var(--primary-neon);
+      color: white;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .stat-card {
+      background-color: #f8fafc;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+      border: 1px solid #e2e8f0;
+    }
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 5px;
+    }
+    .positive {
+      color: #10b981;
+    }
+    .negative {
+      color: #ef4444;
+    }
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(0,0,0,.3);
+      border-radius: 50%;
+      border-top-color: #0f1729;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Video Background Styles */
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .video-background {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translateX(-50%) translateY(-50%);
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .video-background {
+        display: none;
+      }
+      .video-fallback {
+        display: block !important;
+      }
+    }
+
+    .video-fallback {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+    }
+
+    /* Mobile menu styles */
+    .bg-light {
+      background-color: #f8fafc;
+    }
+    
+    .bg-medium {
+      background-color: #e2e8f0;
+    }
+    
+    .text-dark {
+      color: #0f1729;
+    }
+    
+    .text-medium {
+      color: #334155;
+    }
+    
+    .border-light {
+      border-color: #cbd5e1;
+    }
+    
+    .border-accent-gold\/30 {
+      border-color: rgba(197, 196, 187, 0.3);
+    }
+    
+    /* Trust Metric Colors */
+    .trust-metric-green {
+        color: var(--primary-neon);
+    }
+
+    .trust-metric-purple {
+        color: var(--secondary-neon);
+    }
+
+    .trust-metric-gold {
+        color: var(--accent-gold);
+    }
+    
+    /* View transitions */
+    .view {
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Improved responsive design */
+    @media (max-width: 768px) {
+        .hero-title {
+            font-size: 2.5rem !important;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.1rem !important;
+        }
+        
+        .header-container {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+    }
+    
+    /* White bold font for view live markets button */
+    .view-live-markets {
+        font-weight: bold;
+        color: white !important;
+    }
+    
+    /* Hero section with video background */
+    .hero-with-video {
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Clickable market preview section */
+    .clickable-section {
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .clickable-section:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* Footer */
+    #footer {
+        border-top-color: var(--accent-gold);
+    }
+
+    .text-accent-gold {
+        color: var(--accent-gold);
+    }
+    
+    /* CHATBOT STYLES */
+    .chatbot-container {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 1000;
+        font-family: 'Inter', sans-serif;
+    }
+    
+    .chatbot-button {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary-neon), #0056b3);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 20px rgba(0, 123, 255, 0.4);
+        transition: all 0.3s ease;
+        border: none;
+        outline: none;
+    }
+    
+    .chatbot-button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 25px rgba(0, 123, 255, 0.6);
+    }
+    
+    .chatbot-button i {
+        font-size: 24px;
+    }
+    
+    .chatbot-window {
+        position: absolute;
+        bottom: 70px;
+        right: 0;
+        width: 350px;
+        height: 500px;
+        background: white;
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        border: 1px solid rgba(0, 123, 255, 0.2);
+    }
+    
+    .chatbot-header {
+        background: linear-gradient(135deg, var(--primary-neon), #0056b3);
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .chatbot-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 600;
+    }
+    
+    .chatbot-close {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 18px;
+    }
+    
+    .chatbot-messages {
+        flex: 1;
+        padding: 15px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .message {
+        max-width: 80%;
+        padding: 12px 16px;
+        border-radius: 18px;
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    
+    .bot-message {
+        background: #f1f5f9;
+        color: #334155;
+        align-self: flex-start;
+        border-bottom-left-radius: 4px;
+    }
+    
+    .user-message {
+        background: var(--primary-neon);
+        color: white;
+        align-self: flex-end;
+        border-bottom-right-radius: 4px;
+    }
+    
+    .chatbot-input {
+        display: flex;
+        padding: 15px;
+        border-top: 1px solid #e2e8f0;
+        background: #f8fafc;
+    }
+    
+    .chatbot-input input {
+        flex: 1;
+        padding: 12px 15px;
+        border: 1px solid #cbd5e1;
+        border-radius: 24px;
+        outline: none;
+        font-size: 14px;
+    }
+    
+    .chatbot-input input:focus {
+        border-color: var(--primary-neon);
+    }
+    
+    .chatbot-send {
+        background: var(--primary-neon);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+    }
+    
+    .chatbot-send:hover {
+        background: #0056b3;
+    }
+    
+    .quick-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 10px 15px;
+        border-top: 1px solid #e2e8f0;
+        background: #f8fafc;
+    }
+    
+    .quick-action {
+        background: white;
+        border: 1px solid #cbd5e1;
+        border-radius: 16px;
+        padding: 6px 12px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    
+    .quick-action:hover {
+        background: #f1f5f9;
+        border-color: var(--primary-neon);
+    }
+    
+    .typing-indicator {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        padding: 12px 16px;
+        background: #f1f5f9;
+        border-radius: 18px;
+        align-self: flex-start;
+        border-bottom-left-radius: 4px;
+        max-width: 80px;
+    }
+    
+    .typing-dot {
+        width: 8px;
+        height: 8px;
+        background: #94a3b8;
+        border-radius: 50%;
+        animation: typing 1.4s infinite ease-in-out;
+    }
+    
+    .typing-dot:nth-child(1) {
+        animation-delay: 0s;
+    }
+    
+    .typing-dot:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+    
+    .typing-dot:nth-child(3) {
+        animation-delay: 0.4s;
+    }
+    
+    @keyframes typing {
+        0%, 60%, 100% {
+            transform: translateY(0);
+        }
+        30% {
+            transform: translateY(-5px);
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .chatbot-window {
+            width: 300px;
+            height: 450px;
+            right: -10px;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- IMPROVED NAVBAR - 100% WIDTH WITH SMALLER TEXT -->
+  <header class="sticky top-0 z-50 navbar full-width-container p-4">
+    <div class="header-top">
+        <div class="logo">
+            <i class="fas fa-landmark" style="color: var(--logo-color);"></i>
+            <h1><span>London Investment Markets</span></h1>
+        </div>
+        <div class="nav-container">
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="forex.html" class="nav-link active">Forex</a>
+                <a href="commodities.html" class="nav-link">Commodities</a>
+                <a href="shares.html" class="nav-link">Shares</a>
+                <a href="market.html" class="nav-link">Market Analysis</a>
+                <a href="register.html" class="nav-link">Open Account</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="register.html" onclick="showMessage('Simulating launch of application...')"
+                    class="ml-4 px-4 py-2 text-xs font-bold rounded-full neon-button">
+                    Open Live Account
+                </a>
+            </nav>
+            <button id="mobile-menu-btn" class="mobile-menu-btn text-accent-gold" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i>
+                <i data-lucide="x" id="close-icon" class="w-5 h-5 hidden"></i>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden w-full px-4 pt-2 pb-3 space-y-1 bg-light border-t border-accent-gold/30" aria-label="Mobile navigation">
+        <a href="index.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Home</a>
+        <a href="forex.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Forex</a>
+        <a href="commodities.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Commodities</a>
+        <a href="shares.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Shares</a>
+        <a href="market.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Market Analysis</a>
+        <a href="register.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Open Account</a>
+        <a href="contact.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Contact</a>
+        <a href="register.html" onclick="showMessage('Simulating launch of application...'); toggleMobileMenu()"
+            class="block text-center w-full mt-3 px-4 py-2 text-xs font-bold rounded-full neon-button">
+            Open Live Account
+        </a>
+    </div>
+  </header>
+
+  <!-- Live Forex Ticker -->
+  <div class="ticker" id="forexTicker">
+    <div class="ticker-content" id="tickerContent">Loading live forex rates...</div>
+  </div>
+
+  <!-- Hero Section with Video Background -->
+<section class="relative h-[600px] md:h-[800px] flex items-center justify-center text-center overflow-hidden hero-with-video">
+
+  <!-- Background Video -->
+  <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+    <source src="./forexbg.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Dark Overlay for Better Text Visibility -->
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm z-10"></div>
+
+  <!-- Content -->
+  <div class="relative z-20 px-6 sm:px-12 max-w-5xl mx-auto text-white">
+    <h1 class="hero-title text-5xl sm:text-7xl font-extrabold mb-6 leading-tight text-white drop-shadow-lg">
+      Forex <span class="text-primary-neon animate-pulse">Trading</span>
+    </h1>
+    <p class="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+      Trade the world's largest financial market with competitive spreads and institutional-grade execution.
+    </p>
+
+    <!-- Trust Indicators -->
+    <div class="flex flex-wrap justify-center gap-6 mt-10 text-sm sm:text-base text-slate-300">
+      <div class="flex items-center">
+        <i data-lucide="shield-check" class="w-5 h-5 mr-2 text-primary-neon"></i>
+        <span>Regulated</span>
+      </div>
+      <div class="flex items-center">
+        <i data-lucide="zap" class="w-5 h-5 mr-2 text-primary-neon"></i>
+        <span>Ultra Low Latency</span>
+      </div>
+      <div class="flex items-center">
+        <i data-lucide="users" class="w-5 h-5 mr-2 text-primary-neon"></i>
+        <span>10,000+ Active Traders</span>
+      </div>
+    </div>
+
+    <!-- CTAs -->
+    <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="register.html"
+        class="neon-button inline-flex items-center px-8 py-4 rounded-xl font-bold text-lg whitespace-nowrap transition-all duration-300 hover:scale-105 bg-primary-neon text-black shadow-[0_0_15px_rgba(0,255,180,0.7)]">
+        <i data-lucide="rocket" class="w-5 h-5 mr-2"></i> Start Trading Now
+      </a>
+      <a href="#live-market-data"
+        class="inline-flex items-center px-8 py-4 border border-primary-neon/60 text-white rounded-xl hover:bg-primary-neon/10 transition duration-300">
+        <i data-lucide="trending-up" class="w-5 h-5 mr-2"></i>
+        <strong>View Live Markets</strong>
+      </a>
+    </div>
+  </div>
+
+</section>
+
+<!-- Lucide Icons Init -->
+<script>
+  lucide.createIcons();
+</script>
+
+    
+    <!-- Background Video -->
+    <div class="video-container">
+      <video autoplay muted loop playsinline class="video-background">
+        <source src="./bg1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <!-- Fallback for mobile and browsers that don't support video -->
+      <div class="video-fallback"></div>
+    </div>
+    
+    <!-- Floating Accent Lights -->
+    <div class="absolute top-10 left-10 w-20 h-20 bg-primary-neon/10 rounded-full blur-xl z-10"></div>
+    <div class="absolute bottom-10 right-10 w-24 h-24 bg-accent-gold/10 rounded-full blur-xl z-10"></div>
+  </section>
+
+  <!-- Live Market Data -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+  <section id="live-market-data">
+    <div class="text-center mb-12">
+      <h2 class="text-4xl font-bold text-dark mb-4">Live Forex Market Data</h2>
+      <p class="text-xl text-medium max-w-2xl mx-auto">
+        Track major currency pairs with real-time pricing and advanced charting tools.
+      </p>
+    </div>
+
+    <div class="forex-table overflow-x-auto rounded-2xl shadow-lg border border-slate-200">
+      <table class="w-full text-sm text-dark">
+        <thead class="bg-slate-900 text-white">
+          <tr>
+            <th class="px-4 py-3 text-left">#</th>
+            <th class="px-4 py-3 text-left">Currency Pair</th>
+            <th class="px-4 py-3 text-left">Symbol</th>
+            <th class="px-4 py-3 text-right">Bid</th>
+            <th class="px-4 py-3 text-right">Ask</th>
+            <th class="px-4 py-3 text-center">Daily Change</th>
+            <th class="px-4 py-3 text-center">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="forexTableBody" class="bg-white divide-y divide-slate-200">
+          <!-- Sample Data Rows -->
+          <tr class="hover:bg-slate-50 transition">
+            <td class="px-4 py-3">1</td>
+            <td class="px-4 py-3 font-semibold flex items-center gap-2">
+              <img src="https://flagcdn.com/w20/us.png" class="w-5 h-5" alt="USD">
+              <img src="https://flagcdn.com/w20/eu.png" class="w-5 h-5" alt="EUR">
+              <span>USD/EUR</span>
+            </td>
+            <td class="px-4 py-3">USDEUR</td>
+            <td class="px-4 py-3 text-right text-green-600">0.9412</td>
+            <td class="px-4 py-3 text-right">0.9418</td>
+            <td class="px-4 py-3 text-center text-green-500">+0.21%</td>
+            <td class="px-4 py-3 text-center">
+              <button onclick="viewDetails('USD/EUR')" 
+                class="bg-primary-neon text-black font-semibold px-3 py-2 rounded-lg text-xs hover:scale-105 hover:shadow-lg transition duration-200">
+                View
+              </button>
+              <button onclick="tradeNow('USD/EUR')" 
+                class="border border-primary-neon text-primary-neon font-semibold px-3 py-2 rounded-lg text-xs hover:bg-primary-neon hover:text-black transition duration-200">
+                Trade
+              </button>
+            </td>
+          </tr>
+
+          <tr class="hover:bg-slate-50 transition">
+            <td class="px-4 py-3">2</td>
+            <td class="px-4 py-3 font-semibold flex items-center gap-2">
+              <img src="https://flagcdn.com/w20/gb.png" class="w-5 h-5" alt="GBP">
+              <img src="https://flagcdn.com/w20/us.png" class="w-5 h-5" alt="USD">
+              <span>GBP/USD</span>
+            </td>
+            <td class="px-4 py-3">GBPUSD</td>
+            <td class="px-4 py-3 text-right text-red-600">1.2110</td>
+            <td class="px-4 py-3 text-right">1.2116</td>
+            <td class="px-4 py-3 text-center text-red-500">-0.15%</td>
+            <td class="px-4 py-3 text-center">
+              <button onclick="viewDetails('GBP/USD')" 
+                class="bg-primary-neon text-black font-semibold px-3 py-2 rounded-lg text-xs hover:scale-105 hover:shadow-lg transition duration-200">
+                View
+              </button>
+              <button onclick="tradeNow('GBP/USD')" 
+                class="border border-primary-neon text-primary-neon font-semibold px-3 py-2 rounded-lg text-xs hover:bg-primary-neon hover:text-black transition duration-200">
+                Trade
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Modal -->
+  <div id="forexModal" class="fixed inset-0 bg-black/70 flex items-center justify-center hidden z-50">
+    <div class="bg-white p-8 rounded-2xl max-w-lg w-full relative shadow-2xl">
+      <button id="closeModal" class="absolute top-4 right-4 text-gray-600 hover:text-black">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+</main>
+
+<!-- JS for Buttons & Modal -->
+<script>
+  lucide.createIcons();
+
+  function viewDetails(pair) {
+    const modal = document.getElementById("forexModal");
+    const content = document.getElementById("modalContent");
+    modal.classList.remove("hidden");
+
+    content.innerHTML = `
+      <h3 class="text-2xl font-bold mb-4 text-dark">Currency Pair: <span class="text-primary-neon">${pair}</span></h3>
+      <p class="text-gray-700 mb-3">Detailed analytics and historical chart for <strong>${pair}</strong> will appear here.</p>
+      <div class="mt-6 text-right">
+        <button onclick="tradeNow('${pair}')" 
+          class="bg-primary-neon text-black font-bold px-6 py-2 rounded-lg hover:scale-105 transition duration-200">
+          Trade Now
+        </button>
+      </div>
+    `;
+  }
+
+  function tradeNow(pair) {
+    alert(`Redirecting to trade interface for ${pair}`);
+  }
+
+  document.getElementById("closeModal").addEventListener("click", () => {
+    document.getElementById("forexModal").classList.add("hidden");
+  });
+</script>
+
+
+    <!-- Major Currency Pairs -->
+    <section class="mt-16">
+      <div class="text-center mb-12">
+          <span class="text-sm font-semibold uppercase tracking-widest text-secondary-neon bg-secondary-neon/10 px-3 py-1 rounded-full mb-4 inline-block">Trading Instruments</span>
+          <h2 class="text-4xl font-bold text-dark mb-4">Major Currency Pairs</h2>
+          <p class="text-xl text-medium max-w-2xl mx-auto">Diversify your portfolio with our wide range of trading instruments</p>
+      </div>
+      
+      <div id="forexGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Forex cards will be populated here -->
+      </div>
+    </section>
+
+    <!-- Forex Trading Features -->
+    <section class="mt-16">
+      <div class="text-center mb-12">
+          <span class="text-sm font-semibold uppercase tracking-widest text-primary-neon bg-primary-neon/10 px-3 py-1 rounded-full mb-4 inline-block">Why Choose LIM</span>
+          <h2 class="text-4xl font-bold text-dark mb-4">Why Trade Forex with Us</h2>
+          <p class="text-xl text-medium max-w-2xl mx-auto">Access the same trading tools and conditions previously available only to large financial institutions.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="p-8 rounded-2xl bg-light border border-light hover:border-primary-neon transition duration-300 shadow-xl text-center">
+            <div class="inline-block p-4 rounded-full icon-bg mb-6 bg-blue-900/40 border border-primary-neon/50">
+                <i data-lucide="chart-line" class="w-10 h-10 text-primary-neon"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-3 text-dark">Competitive Spreads</h3>
+            <p class="text-medium text-readable">Trade with tight spreads starting from 0.0 pips on major currency pairs.</p>
+            <ul class="mt-4 text-medium text-readable space-y-2">
+                <li class="flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i><span>Raw ECN pricing</span></li>
+                <li class="flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i><span>No hidden fees</span></li>
+                <li class="flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i><span>Transparent costs</span></li>
+            </ul>
+        </div>
+        
+        <div class="p-8 rounded-2xl bg-light border border-light hover:border-secondary-neon transition duration-300 shadow-xl text-center">
+            <div class="inline-block p-4 rounded-full icon-bg mb-6 bg-purple-900/40 border border-secondary-neon/50">
+                <i data-lucide="zap" class="w-10 h-10 text-secondary-neon"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-3 text-dark">Fast Execution</h3>
+            <p class="text-medium text-readable">Experience lightning-fast trade execution with minimal slippage.</p>
+            <ul class="mt-4 text-medium text-readable space-y-2">
+                <li class="flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i><span>99.9% uptime</span></li>
+                <li class="flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i><span>Low latency</span></li>
+                <li class="flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i><span>Advanced infrastructure</span></li>
+            </ul>
+        </div>
+        
+        <div class="p-8 rounded-2xl bg-light border border-light hover:border-accent-gold transition duration-300 shadow-xl text-center">
+            <div class="inline-block p-4 rounded-full icon-bg mb-6 bg-yellow-900/40 border border-accent-gold/50">
+                <i data-lucide="shield" class="w-10 h-10 text-accent-gold"></i>
+            </div>
+            <h3 class="text-2xl font-semibold mb-3 text-dark">Regulated Security</h3>
+            <p class="text-medium text-readable">Your funds are secure with our regulated and transparent operations.</p>
+            <ul class="mt-4 text-medium text-readable space-y-2">
+                <li class="flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i><span>Segregated accounts</span></li>
+                <li class="flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i><span>FCA regulated</span></li>
+                <li class="flex items-center justify-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i><span>Negative balance protection</span></li>
+            </ul>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Final CTA Section -->
+    <div class="py-16">
+        <div class="p-10 md:p-16 rounded-3xl bg-light border-4 border-primary-neon/50 text-center shadow-2xl">
+            <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-dark">Ready to Start <span class="text-primary-neon">Trading Forex</span>?</h2>
+            <p class="text-xl text-medium mb-8">Join thousands of traders who trust LIM for their forex trading needs.</p>
+            <a href="register.html"
+                class="neon-button inline-flex items-center px-10 py-4 rounded-xl font-bold text-xl shadow-xl shadow-accent-gold/40 hover:shadow-accent-gold/60 transition duration-300">
+                <i data-lucide="lock" class="w-6 h-6 mr-2"></i> Create Your Free Account
+            </a>
+        </div>
+    </div>
+  </main>
+
+  <!-- Forex Detail Modal -->
+  <div id="forexModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div id="modalContent">
+        <!-- Modal content will be populated here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- CHATBOT CONTAINER -->
+  <div class="chatbot-container">
+      <button class="chatbot-button" onclick="toggleChatbot()">
+          <i class="fas fa-comments"></i>
+      </button>
+      <div class="chatbot-window" id="chatbot-window">
+          <div class="chatbot-header">
+              <div class="chatbot-title">
+                  <i class="fas fa-robot"></i>
+                  <span>LIM Trading Assistant</span>
+              </div>
+              <button class="chatbot-close" onclick="toggleChatbot()">
+                  <i class="fas fa-times"></i>
+              </button>
+          </div>
+          <div class="chatbot-messages" id="chatbot-messages">
+              <div class="message bot-message">
+                  Hello! I'm your LIM trading assistant. How can I help you with forex trading today?
+              </div>
+          </div>
+          <div class="quick-actions">
+              <button class="quick-action" onclick="quickAction('forex-account-types')">Forex Accounts</button>
+              <button class="quick-action" onclick="quickAction('forex-spreads')">Spreads & Fees</button>
+              <button class="quick-action" onclick="quickAction('forex-leverage')">Leverage</button>
+              <button class="quick-action" onclick="quickAction('forex-support')">Forex Support</button>
+          </div>
+          <div class="chatbot-input">
+              <input type="text" id="chatbot-input" placeholder="Type your message here..." onkeypress="handleChatInput(event)">
+              <button class="chatbot-send" onclick="sendMessage()">
+                  <i class="fas fa-paper-plane"></i>
+              </button>
+          </div>
+      </div>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer" class="bg-slate-900 border-t mt-12 full-width-container">
+    <div class="w-full py-8 px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div>
+                <h3 class="text-lg font-semibold text-accent-gold mb-4">Platform</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="index.html"
+                            class="hover:text-accent-gold/80 transition text-slate-300">Home</a></li>
+                    <li><a href="forex.html"
+                            class="hover:text-accent-gold/80 transition text-slate-300">Forex</a></li>
+                    <li><a href="commodities.html"
+                            class="hover:text-accent-gold/80 transition text-slate-300">Commodities</a></li>
+                    <li><a href="shares.html"
+                            class="hover:text-accent-gold/80 transition text-slate-300">Shares</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-accent-gold mb-4">Support</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="contact.html"
+                            class="hover:text-accent-gold/80 transition text-slate-300">Contact Us</a></li>
+                    <li><a href="faq.html" class="hover:text-accent-gold/80 transition text-slate-300">FAQ
+                            Center</a></li>
+                    <li class="text-slate-400">Support Email: support@limarkets.pro</li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-semibold text-accent-gold mb-4">Legal & Docs</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="legal.html"
+                            class="hover:text-accent-gold/80 transition text-slate-300">Terms of Service</a></li>
+                    <li><a href="legal.html"
+                            class="hover:text-accent-gold/80 transition text-slate-300">Privacy Policy</a></li>
+                    <li><a href="docs.html"
+                            class="hover:text-accent-gold/80 transition text-slate-300">Docs & Tutorials</a></li>
+                </ul>
+            </div>
+            <div class="col-span-2 md:col-span-1">
+                <h3 class="text-lg font-semibold text-accent-gold mb-4">Stay Connected</h3>
+                <p class="text-sm mb-4 text-slate-300">Subscribe for platform updates.</p>
+                <form onsubmit="handleFormSubmit(event, 'newsletter')">
+                    <input type="email" placeholder="Your Email" required
+                        class="w-full p-2 rounded-lg bg-slate-800 border border-slate-700 focus:border-primary-neon focus:ring focus:ring-primary-neon/30 text-sm mb-2 text-white">
+                    <button type="submit" class="w-full neon-button py-2 rounded-lg font-bold text-sm">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-8 pt-6 border-t border-slate-700 text-center text-sm text-slate-500">
+            London Investment Markets Limited is a company registered in the Marshall Islands with register number 134064 and whose registered office is at Trust Company Complex, Ajeltake Road, Ajeltake Island, Majuro, Marshall Islands, MH 96960.
+            <br><br>
+            &copy; <span id="current-year" class="text-accent-gold"></span> London Investment Markets (Part of LIM Brokerage Group). Market data is simulated for demonstration purposes.
+        </div>
+    </div>
+  </footer>
+
+  <div id="message-box"
+      class="fixed bottom-5 right-5 z-[100] p-4 rounded-lg shadow-2xl transition-opacity duration-300 opacity-0 bg-slate-700 border-l-4 border-accent-gold text-white">
+      <p id="message-text"></p>
+  </div>
+
+  <!-- JavaScript for Live Data and Charts -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Set current year in footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Mobile menu toggle
+    const toggleMobileMenu = () => {
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+            lucide.createIcons();
+        } else {
+            menu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+    };
+    
+    // Show message function
+    let messageTimeout;
+    const showMessage = (message) => {
+        clearTimeout(messageTimeout);
+        const box = document.getElementById('message-box');
+        const text = document.getElementById('message-text');
+        text.textContent = message;
+        box.classList.remove('opacity-0');
+        box.classList.add('opacity-100');
+        
+        messageTimeout = setTimeout(() => {
+            box.classList.remove('opacity-100');
+            box.classList.add('opacity-0');
+        }, 3000);
+    };
+    
+    // Form submission handler
+    const handleFormSubmit = (event, type) => {
+        event.preventDefault();
+        let message;
+        
+        if (type === 'newsletter') {
+            message = 'Thank you! You are subscribed to our newsletter.';
+        }
+        
+        showMessage(message);
+        event.target.reset();
+    };
+
+    // Global variables
+    let forexData = [];
+    let currentChart = null;
+
+    // Sample forex data (in a real implementation, this would come from an API)
+    const forexPairs = [
+      {
+        id: "eur-usd",
+        name: "EUR/USD",
+        symbol: "EURUSD",
+        bid: 1.08542,
+        ask: 1.08552,
+        change: 0.00235,
+        changePercent: 0.22,
+        category: "Major",
+        image: "https://cdn-icons-png.flaticon.com/512/330/330439.png",
+        description: "The Euro vs US Dollar is the most traded currency pair in the world, representing two of the world's largest economies.",
+        spread: 1.0,
+        high24h: 1.08715,
+        low24h: 1.08280,
+        allTimeHigh: 1.6038,
+        volatility: "Medium"
+      },
+      {
+        id: "gbp-usd",
+        name: "GBP/USD",
+        symbol: "GBPUSD",
+        bid: 1.2718,
+        ask: 1.2720,
+        change: -0.0032,
+        changePercent: -0.25,
+        category: "Major",
+        image: "https://cdn-icons-png.flaticon.com/512/330/330439.png",
+        description: "The British Pound vs US Dollar, also known as Cable, is heavily influenced by economic developments in both the UK and US.",
+        spread: 1.2,
+        high24h: 1.2765,
+        low24h: 1.2695,
+        allTimeHigh: 2.1160,
+        volatility: "Medium"
+      },
+      {
+        id: "usd-jpy",
+        name: "USD/JPY",
+        symbol: "USDJPY",
+        bid: 149.85,
+        ask: 149.88,
+        change: 0.45,
+        changePercent: 0.30,
+        category: "Major",
+        image: "https://cdn-icons-png.flaticon.com/512/330/330439.png",
+        description: "The US Dollar vs Japanese Yen is influenced by interest rate differentials between the US Federal Reserve and Bank of Japan.",
+        spread: 1.5,
+        high24h: 150.20,
+        low24h: 149.35,
+        allTimeHigh: 306.75,
+        volatility: "Medium"
+      },
+      {
+        id: "usd-chf",
+        name: "USD/CHF",
+        symbol: "USDCHF",
+        bid: 0.8835,
+        ask: 0.8838,
+        change: -0.0012,
+        changePercent: -0.14,
+        category: "Major",
+        image: "https://cdn-icons-png.flaticon.com/512/330/330439.png",
+        description: "The US Dollar vs Swiss Franc is often considered a safe-haven pair, with the CHF strengthening during market uncertainty.",
+        spread: 1.8,
+        high24h: 0.8852,
+        low24h: 0.8823,
+        allTimeHigh: 4.3175,
+        volatility: "Low"
+      },
+      {
+        id: "aud-usd",
+        name: "AUD/USD",
+        symbol: "AUDUSD",
+        bid: 0.6585,
+        ask: 0.6588,
+        change: 0.0025,
+        changePercent: 0.38,
+        category: "Major",
+        image: "https://cdn-icons-png.flaticon.com/512/330/330439.png",
+        description: "The Australian Dollar vs US Dollar is a commodity currency pair, heavily influenced by commodity prices and Chinese economic data.",
+        spread: 1.5,
+        high24h: 0.6598,
+        low24h: 0.6559,
+        allTimeHigh: 1.1081,
+        volatility: "High"
+      },
+      {
+        id: "usd-cad",
+        name: "USD/CAD",
+        symbol: "USDCAD",
+        bid: 1.3542,
+        ask: 1.3545,
+        change: -0.0015,
+        changePercent: -0.11,
+        category: "Major",
+        image: "https://cdn-icons-png.flaticon.com/512/330/330439.png",
+        description: "The US Dollar vs Canadian Dollar, also known as Loonie, is heavily influenced by oil prices and economic ties between the US and Canada.",
+        spread: 1.7,
+        high24h: 1.3562,
+        low24h: 1.3528,
+        allTimeHigh: 1.6194,
+        volatility: "Medium"
+      }
+    ];
+
+    // Fetch forex data (simulated API call)
+    function fetchForexData() {
+      // In a real implementation, this would be an API call
+      // For now, we'll use the static data with some randomization to simulate live data
+      forexData = forexPairs.map(pair => {
+        // Add some random fluctuation to simulate live data
+        const randomChange = (Math.random() - 0.5) * 0.1;
+        const newBid = pair.bid * (1 + randomChange / 100);
+        const newAsk = newBid + (pair.ask - pair.bid);
+        const newChange = newBid - pair.bid;
+        const newChangePercent = (newChange / pair.bid) * 100;
+        
+        return {
+          ...pair,
+          bid: newBid,
+          ask: newAsk,
+          change: newChange,
+          changePercent: newChangePercent
+        };
+      });
+
+      // Populate Ticker
+      const ticker = forexData.map(p => `${p.name} ${p.bid.toFixed(p.name.includes('JPY') ? 2 : 4)} (${p.changePercent.toFixed(2)}%)`).join(' • ');
+      document.getElementById('tickerContent').textContent = ticker;
+
+      // Populate Table
+      populateTable();
+      
+      // Populate Grid
+      populateGrid();
+    }
+
+    // Populate table with forex data
+    function populateTable() {
+      const tableBody = document.getElementById('forexTableBody');
+      tableBody.innerHTML = '';
+      
+      forexData.forEach((pair, index) => {
+        const row = `
+          <tr>
+            <td>${index + 1}</td>
+            <td class="flex items-center justify-center space-x-2">
+              <img src="${pair.image}" class="w-5 h-5" alt="${pair.name}">
+              <span>${pair.name}</span>
+            </td>
+            <td>${pair.symbol}</td>
+            <td>${pair.bid.toFixed(pair.name.includes('JPY') ? 2 : 4)}</td>
+            <td>${pair.ask.toFixed(pair.name.includes('JPY') ? 2 : 4)}</td>
+            <td class="${pair.changePercent >= 0 ? 'text-green-500' : 'text-red-500'}">
+              ${pair.changePercent.toFixed(2)}%
+            </td>
+            <td>
+              <button class="view-details bg-primary-neon hover:bg-blue-700 text-white px-3 py-1 rounded text-xs" data-id="${pair.id}">
+                View Details
+              </button>
+            </td>
+          </tr>
+        `;
+        tableBody.insertAdjacentHTML('beforeend', row);
+      });
+      
+      // Add event listeners to view details buttons
+      document.querySelectorAll('.view-details').forEach(button => {
+        button.addEventListener('click', function() {
+          const pairId = this.getAttribute('data-id');
+          showForexDetails(pairId);
+        });
+      });
+    }
+
+    // Populate grid with forex cards
+    function populateGrid() {
+      const forexGrid = document.getElementById('forexGrid');
+      forexGrid.innerHTML = '';
+      
+      // Show top 6 forex pairs in the grid
+      forexData.slice(0, 6).forEach(pair => {
+        const card = `
+          <div class="forex-card" data-id="${pair.id}">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <img src="${pair.image}" class="w-10 h-10" alt="${pair.name}">
+                <div>
+                  <h4 class="font-bold text-lg">${pair.name}</h4>
+                  <p class="text-medium text-sm">${pair.symbol}</p>
+                </div>
+              </div>
+              <span class="${pair.changePercent >= 0 ? 'text-green-500' : 'text-red-500'} font-semibold">
+                ${pair.changePercent.toFixed(2)}%
+              </span>
+            </div>
+            <div class="mt-4">
+              <p class="text-2xl font-bold">${pair.bid.toFixed(pair.name.includes('JPY') ? 2 : 4)}</p>
+              <p class="text-medium text-sm mt-2">Spread: ${pair.spread} pips</p>
+            </div>
+          </div>
+        `;
+        forexGrid.insertAdjacentHTML('beforeend', card);
+      });
+      
+      // Add event listeners to forex cards
+      document.querySelectorAll('.forex-card').forEach(card => {
+        card.addEventListener('click', function() {
+          const pairId = this.getAttribute('data-id');
+          showForexDetails(pairId);
+        });
+      });
+    }
+
+    // Show detailed forex information in modal
+    function showForexDetails(pairId) {
+      // Find the forex pair data
+      const pair = forexData.find(p => p.id === pairId);
+      
+      if (!pair) {
+        document.getElementById('modalContent').innerHTML = `
+          <div class="text-center py-10">
+            <p class="text-red-500">Forex pair data not found.</p>
+          </div>
+        `;
+        document.getElementById('forexModal').style.display = 'block';
+        return;
+      }
+      
+      // Populate modal with forex data
+      populateModal(pair);
+      
+      // Show modal
+      document.getElementById('forexModal').style.display = 'block';
+    }
+
+    // Populate modal with forex details
+    function populateModal(pair) {
+      // Create modal content
+      const modalContent = `
+        <div class="forex-details">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-4">
+              <img src="${pair.image}" class="w-12 h-12" alt="${pair.name}">
+              <div>
+                <h2 class="text-2xl font-bold">${pair.name} (${pair.symbol})</h2>
+                <p class="text-medium">${pair.category} Pair</p>
+              </div>
+            </div>
+            <div class="text-right">
+              <p class="text-3xl font-bold">${pair.bid.toFixed(pair.name.includes('JPY') ? 2 : 4)}</p>
+              <p class="${pair.changePercent >= 0 ? 'text-green-500' : 'text-red-500'} font-semibold">
+                ${pair.change >= 0 ? '+' : ''}${pair.change.toFixed(pair.name.includes('JPY') ? 2 : 4)} (${pair.changePercent.toFixed(2)}%)
+              </p>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <p class="text-medium">${pair.description}</p>
+          </div>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="stat-card">
+              <p class="text-medium text-sm">Bid</p>
+              <p class="stat-value">${pair.bid.toFixed(pair.name.includes('JPY') ? 2 : 4)}</p>
+            </div>
+            <div class="stat-card">
+              <p class="text-medium text-sm">Ask</p>
+              <p class="stat-value">${pair.ask.toFixed(pair.name.includes('JPY') ? 2 : 4)}</p>
+            </div>
+            <div class="stat-card">
+              <p class="text-medium text-sm">Spread</p>
+              <p class="stat-value">${pair.spread} pips</p>
+            </div>
+            <div class="stat-card">
+              <p class="text-medium text-sm">Volatility</p>
+              <p class="stat-value">${pair.volatility}</p>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+            <div class="stat-card">
+              <p class="text-medium text-sm">24h High</p>
+              <p class="stat-value">${pair.high24h.toFixed(pair.name.includes('JPY') ? 2 : 4)}</p>
+            </div>
+            <div class="stat-card">
+              <p class="text-medium text-sm">24h Low</p>
+              <p class="stat-value">${pair.low24h.toFixed(pair.name.includes('JPY') ? 2 : 4)}</p>
+            </div>
+            <div class="stat-card">
+              <p class="text-medium text-sm">All Time High</p>
+              <p class="stat-value">${pair.allTimeHigh.toFixed(pair.name.includes('JPY') ? 2 : 4)}</p>
+            </div>
+            <div class="stat-card">
+              <p class="text-medium text-sm">Daily Range</p>
+              <p class="stat-value">${(pair.high24h - pair.low24h).toFixed(pair.name.includes('JPY') ? 2 : 4)}</p>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <h3 class="text-xl font-bold mb-4">Price Chart</h3>
+            <div class="chart-container">
+              <canvas id="forexChart"></canvas>
+            </div>
+          </div>
+          
+          <div class="flex justify-center space-x-4 mt-8">
+            <button class="neon-button px-6 py-2 rounded font-semibold">
+              Trade Now
+            </button>
+            <button class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded font-semibold">
+              Add to Watchlist
+            </button>
+          </div>
+        </div>
+      `;
+      
+      document.getElementById('modalContent').innerHTML = modalContent;
+      
+      // Create chart
+      createChart(pair);
+    }
+
+    // Create price chart for forex pair
+    function createChart(pair) {
+      const ctx = document.getElementById('forexChart').getContext('2d');
+      
+      // Destroy previous chart if it exists
+      if (currentChart) {
+        currentChart.destroy();
+      }
+      
+      // Generate sample data for the chart
+      const labels = [];
+      const data = [];
+      let currentPrice = pair.bid;
+      
+      // Generate 30 days of historical data
+      for (let i = 30; i >= 0; i--) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        labels.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+        
+        // Add some random fluctuation to create a realistic chart
+        const fluctuation = (Math.random() - 0.5) * (pair.name.includes('JPY') ? 0.5 : 0.005);
+        currentPrice = i === 30 ? pair.bid - pair.change : currentPrice + fluctuation;
+        data.push(currentPrice);
+      }
+      
+      // Create the chart
+      currentChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: `${pair.name} Price`,
+            data: data,
+            borderColor: pair.changePercent >= 0 ? '#10b981' : '#ef4444',
+            backgroundColor: pair.changePercent >= 0 ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                display: false
+              },
+              ticks: {
+                color: '#94a3b8'
+              }
+            },
+            y: {
+              grid: {
+                color: 'rgba(0, 0, 0, 0.1)'
+              },
+              ticks: {
+                color: '#94a3b8',
+                callback: function(value) {
+                  return value.toFixed(pair.name.includes('JPY') ? 2 : 4);
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Close modal when clicking the X
+    document.querySelector('.close-modal').addEventListener('click', function() {
+      document.getElementById('forexModal').style.display = 'none';
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('forexModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // ========== CHATBOT FUNCTIONALITY ==========
+    
+    // Toggle chatbot visibility
+    function toggleChatbot() {
+        const chatbotWindow = document.getElementById('chatbot-window');
+        if (chatbotWindow.style.display === 'flex') {
+            chatbotWindow.style.display = 'none';
+        } else {
+            chatbotWindow.style.display = 'flex';
+            // Focus on input when opening
+            setTimeout(() => {
+                document.getElementById('chatbot-input').focus();
+            }, 100);
+        }
+    }
+    
+    // Handle quick action buttons
+    function quickAction(action) {
+        let message = '';
+        
+        switch(action) {
+            case 'forex-account-types':
+                message = 'What forex account types do you offer?';
+                break;
+            case 'forex-spreads':
+                message = 'What are your forex spreads?';
+                break;
+            case 'forex-leverage':
+                message = 'What leverage is available for forex trading?';
+                break;
+            case 'forex-support':
+                message = 'How can I get support for forex trading?';
+                break;
+            default:
+                message = action;
+        }
+        
+        // Set the input value and send the message
+        const input = document.getElementById('chatbot-input');
+        input.value = message;
+        sendMessage();
+    }
+    
+    // Handle Enter key in chat input
+    function handleChatInput(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    }
+    
+    // Send message function
+    function sendMessage() {
+        const input = document.getElementById('chatbot-input');
+        const message = input.value.trim();
+        
+        if (message === '') return;
+        
+        // Add user message to chat
+        addMessage(message, 'user');
+        
+        // Clear input
+        input.value = '';
+        
+        // Show typing indicator
+        showTypingIndicator();
+        
+        // Simulate bot response after a delay
+        setTimeout(() => {
+            removeTypingIndicator();
+            const response = generateBotResponse(message);
+            addMessage(response, 'bot');
+        }, 1000 + Math.random() * 1000);
+    }
+    
+    // Add message to chat
+    function addMessage(text, sender) {
+        const messagesContainer = document.getElementById('chatbot-messages');
+        const messageElement = document.createElement('div');
+        messageElement.className = `message ${sender}-message`;
+        messageElement.textContent = text;
+        messagesContainer.appendChild(messageElement);
+        
+        // Scroll to bottom
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+    
+    // Show typing indicator
+    function showTypingIndicator() {
+        const messagesContainer = document.getElementById('chatbot-messages');
+        const typingElement = document.createElement('div');
+        typingElement.className = 'typing-indicator';
+        typingElement.id = 'typing-indicator';
+        typingElement.innerHTML = `
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        `;
+        messagesContainer.appendChild(typingElement);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    }
+    
+    // Remove typing indicator
+    function removeTypingIndicator() {
+        const typingElement = document.getElementById('typing-indicator');
+        if (typingElement) {
+            typingElement.remove();
+        }
+    }
+    
+    // Generate bot response based on user message
+    function generateBotResponse(message) {
+        const lowerMessage = message.toLowerCase();
+        
+        // Forex account types
+        if (lowerMessage.includes('account') || lowerMessage.includes('forex account')) {
+            return "We offer three main forex account types: Micro Account (minimum deposit $250, spreads from 1.2 pips), Standard Account (minimum deposit $250, spreads from 0.8 pips), and ECN Account (minimum deposit $50,000, commission-based). Each account offers different features tailored to various trading styles.";
+        }
+        
+        // Forex spreads
+        if (lowerMessage.includes('spread') || lowerMessage.includes('fee') || lowerMessage.includes('cost')) {
+            return "Our forex spreads start from 0.0 pips on major pairs for ECN accounts, and from 0.8 pips for standard accounts. We offer competitive pricing with no hidden fees and transparent cost structures. Would you like specific spread information for a particular currency pair?";
+        }
+        
+        // Forex leverage
+        if (lowerMessage.includes('leverage') || lowerMessage.includes('margin')) {
+            return "We offer leverage up to 1:2000 on forex pairs, depending on your account type and the specific currency pair. Higher leverage allows for greater position sizes but also increases risk. Our margin requirements are clearly displayed in your trading platform.";
+        }
+        
+        // Forex support
+        if (lowerMessage.includes('support') || lowerMessage.includes('help') || lowerMessage.includes('contact')) {
+            return "Our forex trading support is available 24/5 via email at support@limarkets.pro, live chat on our platform, or phone during business hours. We also provide educational resources, market analysis, and one-on-one training sessions for our clients.";
+        }
+        
+        // Default response for unrecognized queries
+        const defaultResponses = [
+            "I'm here to help with any questions about forex trading, account types, or platform features. What would you like to know?",
+            "I'm not sure I understand. Could you rephrase your question? I can help with forex account information, trading platforms, spreads, or general support.",
+            "That's an interesting question about forex trading. For detailed information, I'd recommend checking our FAQ section or contacting our support team directly at support@limarkets.pro."
+        ];
+        
+        return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
+    }
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      fetchForexData();
+      
+      // Update data every 30 seconds
+      setInterval(fetchForexData, 30000);
+    });
+  </script>
+</body>
+</html>

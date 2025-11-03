@@ -1,0 +1,1185 @@
+<!-- commodities.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Commodities Trading | London Investment Markets Limited</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Additional dependencies from lim1.html -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    /* === UPDATED COLOR SCHEME === */
+    :root {
+        --primary-neon: #007BFF;
+        --secondary-neon: #2f1d40;
+        --accent-gold: #c5c4bb;
+        --bg-dark: #ffffff;
+        --primary: #007BFF;
+        --logo-color: #181D18;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f172a;
+      color: #f3f4f6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    /* === UPDATED HEADER STYLES FOR 100% WIDTH === */
+    .header-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    .header-top {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+        .header-top {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .header-top {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
+    /* Ensure no gaps at the edges */
+    .full-width-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    /* IMPROVED NAVBAR STYLES WITH SMALLER TEXT */
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 123, 255, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-link {
+        position: relative;
+        padding: 0.4rem 0.8rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        color: #0f1729;
+    }
+
+    .nav-link:hover {
+        color: var(--primary-neon);
+        background: rgba(0, 123, 255, 0.05);
+    }
+
+    .nav-link.active {
+        color: var(--primary-neon);
+        font-weight: 600;
+    }
+
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0.8rem;
+        right: 0.8rem;
+        height: 2px;
+        background: var(--primary-neon);
+        border-radius: 2px;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+      color: #ffffff;
+    } 
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 50%;
+      height: 3px;
+      background: #0070f3;
+    }
+    
+    /* Header alignment fixes */
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .logo-container {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    
+    .nav-container {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+    
+    .desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    
+    @media (max-width: 767px) {
+        .desktop-nav {
+            display: none;
+        }
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+    }
+    
+    @media (max-width: 767px) {
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    /* UPDATED LOGO STYLES WITH #181D18 COLOR */
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--logo-color);
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .logo h1 span {
+        color: var(--logo-color);
+        font-weight: 600;
+    }
+
+    .logo i {
+        color: var(--logo-color) !important;
+        font-size: 1.8rem;
+    }
+
+    @media (max-width: 768px) {
+        .logo h1 {
+            font-size: 1.1rem;
+        }
+        
+        .logo i {
+            font-size: 1.4rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo h1 {
+            font-size: 0.95rem;
+        }
+    }
+    
+    /* Updated mobile menu with smaller text */
+    .mobile-menu-link {
+        font-size: 0.9rem;
+    }
+    
+    /* Neon button styles */
+    .neon-button {
+        transition: all 0.3s ease;
+        box-shadow: 0 0 8px var(--accent-gold);
+        background: linear-gradient(135deg, var(--accent-gold), #FFA500);
+        color: #0f172a !important;
+        font-weight: bold;
+    }
+
+    .neon-button:hover {
+        box-shadow: 0 0 20px var(--accent-gold), 0 0 40px rgba(255, 215, 0, 0.7);
+        transform: translateY(-2px);
+    }
+
+    /* Rest of your existing styles... */
+    .ticker {
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      background-color: #111827;
+      color: #f2f4f3;
+      font-size: 0.9rem;
+      padding: 8px 0;
+    }
+    .ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 45s linear infinite;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .commodity-table {
+      background-color: #1e293b;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    th, td {
+      text-align: center;
+      padding: 12px 16px;
+    }
+    th {
+      background-color: #0f172a;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background-color: #111827;
+    }
+    .commodity-card {
+      background-color: #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .commodity-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    .modal-content {
+      background-color: #1e293b;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 1000px;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #94a3b8;
+    }
+    .close-modal:hover {
+      color: #f8fafc;
+    }
+    .chart-container {
+      position: relative;
+      height: 300px;
+      width: 100%;
+      margin-top: 20px;
+    }
+    .tab-button {
+      background-color: #334155;
+      color: #cbd5e1;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .tab-button.active {
+      background-color: #0070f3;
+      color: white;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .stat-card {
+      background-color: #0f172a;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 5px;
+    }
+    .positive {
+      color: #10b981;
+    }
+    .negative {
+      color: #ef4444;
+    }
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Video Background Styles */
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .video-background {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translateX(-50%) translateY(-50%);
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .video-background {
+        display: none;
+      }
+      .video-fallback {
+        display: block !important;
+      }
+    }
+
+    .video-fallback {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(146, 64, 14, 0.8), rgba(180, 83, 9, 0.8)), 
+                  url('https://images.unsplash.com/photo-1621351183012-e2f9972dd9bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    }
+
+    /* Mobile menu styles */
+    .bg-light {
+      background-color: #f8fafc;
+    }
+    
+    .bg-medium {
+      background-color: #e2e8f0;
+    }
+    
+    .text-dark {
+      color: #0f1729;
+    }
+    
+    .text-medium {
+      color: #334155;
+    }
+    
+    .border-light {
+      border-color: #cbd5e1;
+    }
+    
+    .border-accent-gold\/30 {
+      border-color: rgba(197, 196, 187, 0.3);
+    }
+    
+    /* RESPONSIVE IMPROVEMENTS */
+    @media (max-width: 768px) {
+      .commodity-table {
+        font-size: 0.8rem;
+      }
+      
+      .commodity-table th, 
+      .commodity-table td {
+        padding: 8px 6px;
+      }
+      
+      .commodity-card {
+        padding: 15px;
+      }
+      
+      .modal-content {
+        margin: 10% auto;
+        padding: 20px;
+        width: 95%;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+      }
+      
+      .stat-card {
+        padding: 10px;
+      }
+      
+      .stat-value {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .commodity-table {
+        font-size: 0.7rem;
+      }
+      
+      .commodity-table th, 
+      .commodity-table td {
+        padding: 6px 4px;
+      }
+      
+      .commodity-card {
+        padding: 10px;
+      }
+      
+      .modal-content {
+        margin: 5% auto;
+        padding: 15px;
+        width: 98%;
+      }
+      
+      .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      
+      .chart-container {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- IMPROVED NAVBAR - 100% WIDTH WITH SMALLER TEXT -->
+  <header class="sticky top-0 z-50 navbar full-width-container p-4">
+    <div class="header-top">
+        <div class="logo">
+            <i class="fas fa-landmark" style="color: var(--logo-color);"></i>
+            <h1><span>London Investment Markets</span></h1>
+        </div>
+        <div class="nav-container">
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                
+                
+                <a href="forex.html" class="nav-link">Forex</a>
+                <a href="commodities.html" class="nav-link active">Commodities</a>
+                <a href="shares.html" class="nav-link">Shares</a>
+                <a href="market.html" class="nav-link">Market Analysis</a>
+                <a href="register.html" class="nav-link">Open Account</a>
+                
+                <a href="register.html" onclick="showMessage('Simulating launch of application...')"
+                    class="ml-4 px-4 py-2 text-xs font-bold rounded-full neon-button">
+                    Register
+                </a>
+            </nav>
+            <button id="mobile-menu-btn" class="mobile-menu-btn text-gray-800 hover:text-blue-600" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i data-lucide="menu" id="menu-icon" class="w-6 h-6"></i>
+                <i data-lucide="x" id="close-icon" class="w-6 h-6 hidden"></i>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden w-full px-4 pt-2 pb-3 space-y-1 bg-light border-t border-accent-gold/30" aria-label="Mobile navigation">
+        <a href="index.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Home</a>
+        <a href="forex.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Forex</a>
+        <a href="commodities.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Commodities</a>
+        <a href="shares.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Shares</a>
+        <a href="market.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Market Analysis</a>
+        <a href="register.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Open Account</a>
+        <a href="register.html" onclick="showMessage('Simulating launch of application...'); toggleMobileMenu()"
+            class="block text-center w-full mt-3 px-4 py-2 text-xs font-bold rounded-full neon-button">
+            Register
+        </a>
+    </div>
+  </header>
+
+  <!-- Live Commodities Ticker -->
+  <div class="ticker" id="commodityTicker">
+    <div class="ticker-content" id="tickerContent">Loading live commodities prices...</div>
+  </div>
+
+  <!-- Hero Section with Video Background -->
+  <section class="relative h-[500px] md:h-[700px] flex items-center justify-center text-center overflow-hidden">
+     <!-- Content -->
+    <div class="relative z-20 px-4">
+      <h2 class="text-4xl md:text-5xl font-bold text-white">Commodities Trading</h2>
+      <p class="text-gray-200 mt-3 text-lg md:text-xl max-w-2xl mx-auto">
+        Trade Gold, Oil, and other major commodities with competitive spreads and institutional-grade execution.
+      </p>
+      <button class="mt-6 bg-amber-600 hover:bg-amber-700 text-white px-6 py-3 rounded-full font-semibold transition transform hover:scale-105">
+        Start Trading Now
+      </button>
+    </div>
+    <!-- Video Background -->
+    <div class="video-container">
+      <video autoplay muted loop playsinline class="video-background">
+        <source src="./bg1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <!-- Fallback for mobile and browsers that don't support video -->
+      <div class="video-fallback"></div>
+    </div>
+
+  </section>
+
+  <!-- Live Market Data -->
+  <main class="container mx-auto px-4 md:px-6 py-12 md:py-16">
+    <section>
+      <h3 class="section-title text-2xl mb-8">Live Commodities Market Data</h3>
+      <div class="commodity-table overflow-x-auto">
+        <table class="w-full text-sm text-gray-200">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Commodity</th>
+              <th>Symbol</th>
+              <th>Price (USD)</th>
+              <th>Daily Change</th>
+              <th>Category</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="commodityTableBody">
+            <tr><td colspan="7" class="py-6 text-gray-400">Fetching live commodities data...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Top Commodities Grid -->
+    <section class="mt-12 md:mt-16">
+      <h3 class="section-title text-2xl mb-8">Major Commodities</h3>
+      <div id="commodityGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <!-- Commodity cards will be populated here -->
+      </div>
+    </section>
+
+    <!-- Commodity Categories -->
+    <section class="mt-12 md:mt-16">
+      <h3 class="section-title text-2xl mb-8">Commodity Categories</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+        <div class="commodity-card">
+          <div class="flex items-center space-x-3 mb-4">
+            <i class="fas fa-oil-well text-3xl text-amber-500"></i>
+            <h4 class="text-xl font-bold">Energy</h4>
+          </div>
+          <p class="text-gray-300">Trade crude oil, natural gas, and other energy commodities with tight spreads.</p>
+          <ul class="mt-4 text-gray-400">
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Crude Oil (WTI & Brent)</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Natural Gas</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Heating Oil</span></li>
+          </ul>
+        </div>
+        
+        <div class="commodity-card">
+          <div class="flex items-center space-x-3 mb-4">
+            <i class="fas fa-gem text-3xl text-yellow-500"></i>
+            <h4 class="text-xl font-bold">Metals</h4>
+          </div>
+          <p class="text-gray-300">Access precious and industrial metals with competitive pricing.</p>
+          <ul class="mt-4 text-gray-400">
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Gold & Silver</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Platinum & Palladium</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Copper & Aluminum</span></li>
+          </ul>
+        </div>
+        
+        <div class="commodity-card">
+          <div class="flex items-center space-x-3 mb-4">
+            <i class="fas fa-wheat-alt text-3xl text-green-500"></i>
+            <h4 class="text-xl font-bold">Agriculture</h4>
+          </div>
+          <p class="text-gray-300">Trade agricultural commodities with direct market access.</p>
+          <ul class="mt-4 text-gray-400">
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Corn & Wheat</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Soybeans & Coffee</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Cocoa & Sugar</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Commodity Detail Modal -->
+  <div id="commodityModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div id="modalContent">
+        <!-- Modal content will be populated here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black border-t border-gray-800 py-6 text-center text-gray-400 text-sm">
+    <p>© 2025 London Investment Markets Limited. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Live Data and Charts -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Mobile menu toggle
+    const toggleMobileMenu = () => {
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+            lucide.createIcons();
+        } else {
+            menu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+    };
+    
+    // Show message function
+    let messageTimeout;
+    const showMessage = (message) => {
+        clearTimeout(messageTimeout);
+        const box = document.getElementById('message-box');
+        const text = document.getElementById('message-text');
+        text.textContent = message;
+        box.classList.remove('opacity-0');
+        box.classList.add('opacity-100');
+        
+        messageTimeout = setTimeout(() => {
+            box.classList.remove('opacity-100');
+            box.classList.add('opacity-0');
+        }, 3000);
+    };
+
+    // Global variables
+    let commodityData = [];
+    let currentChart = null;
+
+    // Sample commodities data (in a real implementation, this would come from an API)
+    const commodities = [
+      {
+        id: "gold",
+        name: "Gold",
+        symbol: "XAU",
+        price: 1985.42,
+        change: 12.35,
+        changePercent: 0.63,
+        category: "Metals",
+        image: "https://cdn-icons-png.flaticon.com/512/3138/3138876.png",
+        description: "Gold is a precious metal that has been used as a form of currency and store of value for centuries. It's considered a safe-haven asset during times of economic uncertainty.",
+        marketCap: 11800000000000,
+        volume: 185000000000,
+        high24h: 1992.15,
+        low24h: 1972.80,
+        allTimeHigh: 2074.88,
+        supply: "Limited"
+      },
+      {
+        id: "silver",
+        name: "Silver",
+        symbol: "XAG",
+        price: 24.18,
+        change: -0.32,
+        changePercent: -1.31,
+        category: "Metals",
+        image: "https://cdn-icons-png.flaticon.com/512/3138/3138876.png",
+        description: "Silver is both a precious metal and an industrial commodity. It has extensive industrial applications in electronics, solar panels, and medical equipment.",
+        marketCap: 1450000000000,
+        volume: 28500000000,
+        high24h: 24.65,
+        low24h: 23.95,
+        allTimeHigh: 49.45,
+        supply: "Limited"
+      },
+      {
+        id: "crude-oil",
+        name: "Crude Oil",
+        symbol: "CL",
+        price: 82.45,
+        change: 1.25,
+        changePercent: 1.54,
+        category: "Energy",
+        image: "https://cdn-icons-png.flaticon.com/512/3138/3138876.png",
+        description: "Crude oil is the world's most actively traded commodity. It's refined into various petroleum products including gasoline, diesel, and jet fuel.",
+        marketCap: null,
+        volume: 98500000000,
+        high24h: 83.20,
+        low24h: 80.85,
+        allTimeHigh: 147.27,
+        supply: "Variable"
+      },
+      {
+        id: "natural-gas",
+        name: "Natural Gas",
+        symbol: "NG",
+        price: 2.85,
+        change: 0.12,
+        changePercent: 4.40,
+        category: "Energy",
+        image: "https://cdn-icons-png.flaticon.com/512/3138/3138876.png",
+        description: "Natural gas is a fossil fuel used for heating, electricity generation, and as a chemical feedstock. Prices are highly seasonal.",
+        marketCap: null,
+        volume: 28500000000,
+        high24h: 2.92,
+        low24h: 2.73,
+        allTimeHigh: 15.78,
+        supply: "Variable"
+      },
+      {
+        id: "copper",
+        name: "Copper",
+        symbol: "HG",
+        price: 3.85,
+        change: 0.05,
+        changePercent: 1.32,
+        category: "Metals",
+        image: "https://cdn-icons-png.flaticon.com/512/3138/3138876.png",
+        description: "Copper is an industrial metal with extensive use in construction, electrical wiring, and electronics. It's often seen as an economic indicator.",
+        marketCap: null,
+        volume: 18500000000,
+        high24h: 3.88,
+        low24h: 3.79,
+        allTimeHigh: 4.58,
+        supply: "Limited"
+      },
+      {
+        id: "wheat",
+        name: "Wheat",
+        symbol: "ZW",
+        price: 6.42,
+        change: -0.15,
+        changePercent: -2.28,
+        category: "Agriculture",
+        image: "https://cdn-icons-png.flaticon.com/512/3138/3138876.png",
+        description: "Wheat is a staple food grain grown worldwide. Prices are influenced by weather conditions, global demand, and geopolitical factors.",
+        marketCap: null,
+        volume: 8500000000,
+        high24h: 6.62,
+        low24h: 6.38,
+        allTimeHigh: 13.34,
+        supply: "Seasonal"
+      }
+    ];
+
+    // Fetch commodity data (simulated API call)
+    function fetchCommodityData() {
+      // In a real implementation, this would be an API call
+      // For now, we'll use the static data with some randomization to simulate live data
+      commodityData = commodities.map(commodity => {
+        // Add some random fluctuation to simulate live data
+        const randomChange = (Math.random() - 0.5) * 2;
+        const newPrice = commodity.price * (1 + randomChange / 100);
+        const newChange = newPrice - commodity.price;
+        const newChangePercent = (newChange / commodity.price) * 100;
+        
+        return {
+          ...commodity,
+          current_price: newPrice,
+          price_change_24h: newChange,
+          price_change_percentage_24h: newChangePercent
+        };
+      });
+
+      // Populate Ticker
+      const ticker = commodityData.map(c => `${c.name} (${c.symbol}) $${c.current_price.toFixed(2)} (${c.price_change_percentage_24h.toFixed(2)}%)`).join(' • ');
+      document.getElementById('tickerContent').textContent = ticker;
+
+      // Populate Table
+      populateTable();
+      
+      // Populate Grid
+      populateGrid();
+    }
+
+    // Populate table with commodity data
+    function populateTable() {
+      const tableBody = document.getElementById('commodityTableBody');
+      tableBody.innerHTML = '';
+      
+      commodityData.forEach((commodity, index) => {
+        const row = `
+          <tr>
+            <td>${index + 1}</td>
+            <td class="flex items-center justify-center space-x-2">
+              <img src="${commodity.image}" class="w-5 h-5" alt="${commodity.name}">
+              <span>${commodity.name}</span>
+            </td>
+            <td>${commodity.symbol}</td>
+            <td>$${commodity.current_price.toFixed(2)}</td>
+            <td class="${commodity.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'}">
+              ${commodity.price_change_percentage_24h.toFixed(2)}%
+            </td>
+            <td>${commodity.category}</td>
+            <td>
+              <button class="view-details bg-amber-600 hover:bg-amber-700 text-white px-3 py-1 rounded text-xs" data-id="${commodity.id}">
+                View Details
+              </button>
+            </td>
+          </tr>
+        `;
+        tableBody.insertAdjacentHTML('beforeend', row);
+      });
+      
+      // Add event listeners to view details buttons
+      document.querySelectorAll('.view-details').forEach(button => {
+        button.addEventListener('click', function() {
+          const commodityId = this.getAttribute('data-id');
+          showCommodityDetails(commodityId);
+        });
+      });
+    }
+
+    // Populate grid with commodity cards
+    function populateGrid() {
+      const commodityGrid = document.getElementById('commodityGrid');
+      commodityGrid.innerHTML = '';
+      
+      // Show top 6 commodities in the grid
+      commodityData.slice(0, 6).forEach(commodity => {
+        const card = `
+          <div class="commodity-card" data-id="${commodity.id}">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <img src="${commodity.image}" class="w-10 h-10" alt="${commodity.name}">
+                <div>
+                  <h4 class="font-bold text-lg">${commodity.name}</h4>
+                  <p class="text-gray-400 text-sm">${commodity.symbol}</p>
+                </div>
+              </div>
+              <span class="${commodity.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'} font-semibold">
+                ${commodity.price_change_percentage_24h.toFixed(2)}%
+              </span>
+            </div>
+            <div class="mt-4">
+              <p class="text-2xl font-bold">$${commodity.current_price.toFixed(2)}</p>
+              <p class="text-gray-400 text-sm mt-2">Category: ${commodity.category}</p>
+            </div>
+          </div>
+        `;
+        commodityGrid.insertAdjacentHTML('beforeend', card);
+      });
+      
+      // Add event listeners to commodity cards
+      document.querySelectorAll('.commodity-card').forEach(card => {
+        card.addEventListener('click', function() {
+          const commodityId = this.getAttribute('data-id');
+          showCommodityDetails(commodityId);
+        });
+      });
+    }
+
+    // Show detailed commodity information in modal
+    function showCommodityDetails(commodityId) {
+      // Find the commodity data
+      const commodity = commodityData.find(c => c.id === commodityId);
+      
+      if (!commodity) {
+        document.getElementById('modalContent').innerHTML = `
+          <div class="text-center py-10">
+            <p class="text-red-400">Commodity data not found.</p>
+          </div>
+        `;
+        document.getElementById('commodityModal').style.display = 'block';
+        return;
+      }
+      
+      // Populate modal with commodity data
+      populateModal(commodity);
+      
+      // Show modal
+      document.getElementById('commodityModal').style.display = 'block';
+    }
+
+    // Populate modal with commodity details
+    function populateModal(commodity) {
+      // Format numbers
+      const formatNumber = (num) => {
+        if (num >= 1000000000000) {
+          return '$' + (num / 1000000000000).toFixed(2) + 'T';
+        } else if (num >= 1000000000) {
+          return '$' + (num / 1000000000).toFixed(2) + 'B';
+        } else if (num >= 1000000) {
+          return '$' + (num / 1000000).toFixed(2) + 'M';
+        } else {
+          return '$' + num.toFixed(2);
+        }
+      };
+      
+      const modalContent = document.getElementById('modalContent');
+      modalContent.innerHTML = `
+        <div class="commodity-header">
+          <div class="flex items-center space-x-4">
+            <img src="${commodity.image}" class="w-16 h-16" alt="${commodity.name}">
+            <div>
+              <h2 class="text-2xl font-bold">${commodity.name} (${commodity.symbol})</h2>
+              <p class="text-gray-400">${commodity.category}</p>
+            </div>
+          </div>
+          <div class="mt-4">
+            <p class="text-3xl font-bold">$${commodity.current_price.toFixed(2)}</p>
+            <p class="${commodity.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'} font-semibold">
+              ${commodity.price_change_24h >= 0 ? '+' : ''}${commodity.price_change_24h.toFixed(2)} (${commodity.price_change_percentage_24h.toFixed(2)}%)
+            </p>
+          </div>
+        </div>
+        
+        <div class="mt-6">
+          <p class="text-gray-300">${commodity.description}</p>
+        </div>
+        
+        <div class="mt-6">
+          <div class="flex space-x-2 mb-4">
+            <button class="tab-button active" data-tab="chart">Price Chart</button>
+            <button class="tab-button" data-tab="stats">Statistics</button>
+            <button class="tab-button" data-tab="news">Market News</button>
+          </div>
+          
+          <div class="tab-content active" id="chart-tab">
+            <div class="chart-container">
+              <canvas id="priceChart"></canvas>
+            </div>
+          </div>
+          
+          <div class="tab-content" id="stats-tab">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <p class="text-gray-400">24h High</p>
+                <p class="stat-value">$${commodity.high24h.toFixed(2)}</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-gray-400">24h Low</p>
+                <p class="stat-value">$${commodity.low24h.toFixed(2)}</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-gray-400">All-Time High</p>
+                <p class="stat-value">$${commodity.allTimeHigh.toFixed(2)}</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-gray-400">Market Volume</p>
+                <p class="stat-value">${formatNumber(commodity.volume)}</p>
+              </div>
+              ${commodity.marketCap ? `
+              <div class="stat-card">
+                <p class="text-gray-400">Market Cap</p>
+                <p class="stat-value">${formatNumber(commodity.marketCap)}</p>
+              </div>
+              ` : ''}
+              <div class="stat-card">
+                <p class="text-gray-400">Supply</p>
+                <p class="stat-value">${commodity.supply}</p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="tab-content" id="news-tab">
+            <div class="space-y-4">
+              <div class="p-4 bg-gray-800 rounded-lg">
+                <h4 class="font-bold">${commodity.name} Prices Rise on Supply Concerns</h4>
+                <p class="text-gray-400 text-sm mt-2">Recent geopolitical tensions and supply chain disruptions are impacting ${commodity.name} prices globally.</p>
+                <p class="text-gray-500 text-xs mt-2">2 hours ago</p>
+              </div>
+              <div class="p-4 bg-gray-800 rounded-lg">
+                <h4 class="font-bold">Analysts Predict ${commodity.price_change_percentage_24h >= 0 ? 'Further Gains' : 'Market Correction'}</h4>
+                <p class="text-gray-400 text-sm mt-2">Market analysts are ${commodity.price_change_percentage_24h >= 0 ? 'bullish' : 'cautious'} on ${commodity.name} in the short term.</p>
+                <p class="text-gray-500 text-xs mt-2">5 hours ago</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Add event listeners to tab buttons
+      document.querySelectorAll('.tab-button').forEach(button => {
+        button.addEventListener('click', function() {
+          const tab = this.getAttribute('data-tab');
+          
+          // Remove active class from all buttons and content
+          document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+          
+          // Add active class to clicked button and corresponding content
+          this.classList.add('active');
+          document.getElementById(`${tab}-tab`).classList.add('active');
+          
+          // If chart tab is activated, render the chart
+          if (tab === 'chart') {
+            renderPriceChart(commodity);
+          }
+        });
+      });
+      
+      // Render initial chart
+      renderPriceChart(commodity);
+    }
+
+    // Render price chart for a commodity
+    function renderPriceChart(commodity) {
+      // Destroy existing chart if it exists
+      if (currentChart) {
+        currentChart.destroy();
+      }
+      
+      const ctx = document.getElementById('priceChart').getContext('2d');
+      
+      // Generate sample price data for the last 30 days
+      const dates = [];
+      const prices = [];
+      let currentPrice = commodity.current_price;
+      
+      for (let i = 30; i >= 0; i--) {
+        const date = new Date();
+        date.setDate(date.getDate() - i);
+        dates.push(date.toLocaleDateString());
+        
+        // Generate realistic price movement
+        const randomChange = (Math.random() - 0.5) * 2;
+        currentPrice = currentPrice * (1 + randomChange / 100);
+        prices.push(currentPrice);
+      }
+      
+      // Create the chart
+      currentChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: dates,
+          datasets: [{
+            label: `${commodity.name} Price (USD)`,
+            data: prices,
+            borderColor: commodity.price_change_percentage_24h >= 0 ? '#10b981' : '#ef4444',
+            backgroundColor: commodity.price_change_percentage_24h >= 0 ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.4
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: '#94a3b8'
+              }
+            },
+            y: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: '#94a3b8',
+                callback: function(value) {
+                  return '$' + value.toFixed(2);
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Close modal when clicking the close button
+    document.querySelector('.close-modal').addEventListener('click', function() {
+      document.getElementById('commodityModal').style.display = 'none';
+    });
+
+    // Close modal when clicking outside the modal content
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('commodityModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Fetch initial data
+      fetchCommodityData();
+      
+      // Update data every 30 seconds
+      setInterval(fetchCommodityData, 30000);
+    });
+  </script>
+</body>
+</html>

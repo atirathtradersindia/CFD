@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shares Trading | London Investment Markets Limited</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Additional dependencies from lim1.html -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    /* === UPDATED COLOR SCHEME === */
+    :root {
+        --primary-neon: #007BFF;
+        --secondary-neon: #2f1d40;
+        --accent-gold: #c5c4bb;
+        --bg-dark: #ffffff;
+        --primary: #007BFF;
+        --logo-color: #181D18;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f172a;
+      color: #f3f4f6;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    /* === UPDATED HEADER STYLES FOR 100% WIDTH === */
+    .header-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    .header-top {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+        .header-top {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .header-top {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
+    /* Ensure no gaps at the edges */
+    .full-width-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    /* IMPROVED NAVBAR STYLES WITH SMALLER TEXT */
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 123, 255, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-link {
+        position: relative;
+        padding: 0.4rem 0.8rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        font-size: 0.875rem;
+        color: #0f1729;
+    }
+
+    .nav-link:hover {
+        color: var(--primary-neon);
+        background: rgba(0, 123, 255, 0.05);
+    }
+
+    .nav-link.active {
+        color: var(--primary-neon);
+        font-weight: 600;
+    }
+
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0.8rem;
+        right: 0.8rem;
+        height: 2px;
+        background: var(--primary-neon);
+        border-radius: 2px;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+      color: #ffffff;
+    } 
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 50%;
+      height: 3px;
+      background: #0070f3;
+    }
+    
+    /* Header alignment fixes */
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .logo-container {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    
+    .nav-container {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+    
+    .desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+    }
+    
+    @media (max-width: 767px) {
+        .desktop-nav {
+            display: none;
+        }
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+    }
+    
+    @media (max-width: 767px) {
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    /* UPDATED LOGO STYLES WITH #181D18 COLOR */
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo h1 {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--logo-color);
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .logo h1 span {
+        color: var(--logo-color);
+        font-weight: 600;
+    }
+
+    .logo i {
+        color: var(--logo-color) !important;
+        font-size: 1.8rem;
+    }
+
+    @media (max-width: 768px) {
+        .logo h1 {
+            font-size: 1.1rem;
+        }
+        
+        .logo i {
+            font-size: 1.4rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo h1 {
+            font-size: 0.95rem;
+        }
+    }
+    
+    /* Updated mobile menu with smaller text */
+    .mobile-menu-link {
+        font-size: 0.9rem;
+    }
+    
+    /* Neon button styles */
+    .neon-button {
+        transition: all 0.3s ease;
+        box-shadow: 0 0 8px var(--accent-gold);
+        background: linear-gradient(135deg, var(--accent-gold), #FFA500);
+        color: #0f172a !important;
+        font-weight: bold;
+    }
+
+    .neon-button:hover {
+        box-shadow: 0 0 20px var(--accent-gold), 0 0 40px rgba(255, 215, 0, 0.7);
+        transform: translateY(-2px);
+    }
+
+    /* Rest of your existing styles... */
+    .ticker {
+      overflow: hidden;
+      white-space: nowrap;
+      box-sizing: border-box;
+      background-color: #111827;
+      color: #f2f4f3;
+      font-size: 0.9rem;
+      padding: 8px 0;
+    }
+    .ticker-content {
+      display: inline-block;
+      padding-left: 100%;
+      animation: ticker 45s linear infinite;
+    }
+    @keyframes ticker {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+    .stock-table {
+      background-color: #1e293b;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    th, td {
+      text-align: center;
+      padding: 12px 16px;
+    }
+    th {
+      background-color: #0f172a;
+      font-weight: 600;
+    }
+    tr:nth-child(even) {
+      background-color: #111827;
+    }
+    .stock-card {
+      background-color: #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .stock-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      z-index: 1000;
+      overflow-y: auto;
+    }
+    .modal-content {
+      background-color: #1e293b;
+      margin: 5% auto;
+      padding: 30px;
+      border-radius: 15px;
+      width: 90%;
+      max-width: 1000px;
+      position: relative;
+    }
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #94a3b8;
+    }
+    .close-modal:hover {
+      color: #f8fafc;
+    }
+    .chart-container {
+      position: relative;
+      height: 300px;
+      width: 100%;
+      margin-top: 20px;
+    }
+    .tab-button {
+      background-color: #334155;
+      color: #cbd5e1;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .tab-button.active {
+      background-color: #0070f3;
+      color: white;
+    }
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .stat-card {
+      background-color: #0f172a;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 5px;
+    }
+    .positive {
+      color: #10b981;
+    }
+    .negative {
+      color: #ef4444;
+    }
+    .loading {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 3px solid rgba(255,255,255,.3);
+      border-radius: 50%;
+      border-top-color: #fff;
+      animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Video Background Styles */
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .video-background {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translateX(-50%) translateY(-50%);
+      object-fit: cover;
+    }
+
+    @media (max-width: 768px) {
+      .video-background {
+        display: none;
+      }
+      .video-fallback {
+        display: block !important;
+      }
+    }
+
+    .video-fallback {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(30, 64, 175, 0.8), rgba(37, 99, 235, 0.8)), 
+                  url('https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+    }
+
+    /* Stock specific styles */
+    .market-indicators {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .indicator {
+      background-color: #1e293b;
+      padding: 15px;
+      border-radius: 8px;
+      flex: 1;
+      min-width: 150px;
+      text-align: center;
+    }
+    
+    .indicator-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-top: 5px;
+    }
+    
+    .watchlist-btn {
+      background-color: transparent;
+      border: 1px solid #3b82f6;
+      color: #3b82f6;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .watchlist-btn:hover {
+      background-color: #3b82f6;
+      color: white;
+    }
+    
+    .watchlist-btn.active {
+      background-color: #3b82f6;
+      color: white;
+    }
+    
+    .sector-filter {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    
+    .sector-btn {
+      background-color: #334155;
+      color: #cbd5e1;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .sector-btn.active {
+      background-color: #3b82f6;
+      color: white;
+    }
+
+    /* Mobile menu styles */
+    .bg-light {
+      background-color: #f8fafc;
+    }
+    
+    .bg-medium {
+      background-color: #e2e8f0;
+    }
+    
+    .text-dark {
+      color: #0f1729;
+    }
+    
+    .text-medium {
+      color: #334155;
+    }
+    
+    .border-light {
+      border-color: #cbd5e1;
+    }
+    
+    .border-accent-gold\/30 {
+      border-color: rgba(197, 196, 187, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- IMPROVED NAVBAR - 100% WIDTH WITH SMALLER TEXT -->
+  <header class="sticky top-0 z-50 navbar full-width-container p-4">
+    <div class="header-top">
+        <div class="logo">
+            <i class="fas fa-landmark" style="color: var(--logo-color);"></i>
+            <h1><span>London Investment Markets</span></h1>
+        </div>
+        <div class="nav-container">
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                
+                <a href="forex.html" class="nav-link">Forex</a>
+                <a href="commodities.html" class="nav-link">Commodities</a>
+                <a href="shares.html" class="nav-link active">Shares</a>
+                <a href="market.html" class="nav-link ">Crypto</a>
+                <a href="register.html" class="nav-link">Open Account</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="register.html" onclick="showMessage('Simulating launch of application...')"
+                    class="ml-4 px-4 py-2 text-xs font-bold rounded-full neon-button">
+                    Register
+                </a>
+            </nav>
+            <button id="mobile-menu-btn" class="mobile-menu-btn text-accent-gold" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i>
+                <i data-lucide="x" id="close-icon" class="w-5 h-5 hidden"></i>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden w-full px-4 pt-2 pb-3 space-y-1 bg-light border-t border-accent-gold/30" aria-label="Mobile navigation">
+        <a href="index.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Home</a>
+        
+        <a href="forex.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Forex</a>
+        <a href="commodities.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Commodities</a>
+        <a href="shares.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Shares</a>
+        <a href="market.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Crypto</a>
+        <a href="register.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Open Account</a>
+        <a href="contact.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Contact</a>
+        <a href="register.html" onclick="showMessage('Simulating launch of application...'); toggleMobileMenu()"
+            class="block text-center w-full mt-3 px-4 py-2 text-xs font-bold rounded-full neon-button">
+            Register
+        </a>
+    </div>
+  </header>
+
+  <!-- Live Stock Ticker -->
+  <div class="ticker" id="stockTicker">
+    <div class="ticker-content" id="tickerContent">Loading live stock prices...</div>
+  </div>
+
+  <!-- Hero Section with Video Background -->
+  <section class="relative h-[500px] md:h-[700px] flex items-center justify-center text-center overflow-hidden">
+    <!-- Content -->
+    <div class="relative z-20 px-4">
+      <h2 class="text-4xl md:text-5xl font-bold text-white">Shares Trading</h2>
+      <p class="text-gray-200 mt-3 text-lg md:text-xl max-w-2xl mx-auto">
+        Trade global stocks with competitive pricing, real-time data, and institutional-grade execution.
+      </p>
+      <button class="mt-6 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-semibold transition transform hover:scale-105">
+        Start Trading Now
+      </button>
+    </div>
+
+    <!-- Video Background -->
+    <div class="video-container">
+      <video autoplay muted loop playsinline class="video-background">
+        <source src="./sharesbg.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <!-- Fallback for mobile and browsers that don't support video -->
+      <div class="video-fallback"></div>
+    </div>
+  </section>
+
+  <!-- Live Market Data -->
+  <main class="container mx-auto px-6 py-16">
+    <!-- Market Indicators -->
+    <section class="mb-12">
+      <h3 class="section-title text-2xl mb-6">Market Overview</h3>
+      <div class="market-indicators">
+        <div class="indicator">
+          <p class="text-gray-400">S&P 500</p>
+          <p class="indicator-value positive">4,567.89 <span class="text-sm">+1.23%</span></p>
+        </div>
+        <div class="indicator">
+          <p class="text-gray-400">NASDAQ</p>
+          <p class="indicator-value positive">14,235.67 <span class="text-sm">+0.87%</span></p>
+        </div>
+        <div class="indicator">
+          <p class="text-gray-400">FTSE 100</p>
+          <p class="indicator-value negative">7,654.32 <span class="text-sm">-0.45%</span></p>
+        </div>
+        <div class="indicator">
+          <p class="text-gray-400">DAX</p>
+          <p class="indicator-value positive">15,789.01 <span class="text-sm">+0.92%</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sector Filters -->
+    <section class="mb-8">
+      <h3 class="section-title text-2xl mb-6">Filter by Sector</h3>
+      <div class="sector-filter">
+        <button class="sector-btn active" data-sector="all">All Sectors</button>
+        <button class="sector-btn" data-sector="technology">Technology</button>
+        <button class="sector-btn" data-sector="healthcare">Healthcare</button>
+        <button class="sector-btn" data-sector="financial">Financial</button>
+        <button class="sector-btn" data-sector="energy">Energy</button>
+        <button class="sector-btn" data-sector="consumer">Consumer</button>
+      </div>
+    </section>
+
+    <!-- Live Stock Data -->
+    <section>
+      <h3 class="section-title text-2xl mb-8">Live Stock Market Data</h3>
+      <div class="stock-table overflow-x-auto">
+        <table class="w-full text-sm text-gray-200">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Company</th>
+              <th>Symbol</th>
+              <th>Price (USD)</th>
+              <th>Change</th>
+              <th>Change %</th>
+              <th>Volume</th>
+              <th>Market Cap</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="stockTableBody">
+            <tr><td colspan="9" class="py-6 text-gray-400">Fetching live stock data...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Top Stocks Grid -->
+    <section class="mt-16">
+      <h3 class="section-title text-2xl mb-8">Popular Stocks</h3>
+      <div id="stockGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Stock cards will be populated here -->
+      </div>
+    </section>
+
+    <!-- Stock Categories -->
+    <section class="mt-16">
+      <h3 class="section-title text-2xl mb-8">Stock Categories</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="stock-card">
+          <div class="flex items-center space-x-3 mb-4">
+            <i class="fas fa-microchip text-3xl text-blue-500"></i>
+            <h4 class="text-xl font-bold">Technology</h4>
+          </div>
+          <p class="text-gray-300">Trade leading tech companies from Silicon Valley and global tech hubs.</p>
+          <ul class="mt-4 text-gray-400">
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Apple (AAPL)</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Microsoft (MSFT)</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Amazon (AMZN)</span></li>
+          </ul>
+        </div>
+        
+        <div class="stock-card">
+          <div class="flex items-center space-x-3 mb-4">
+            <i class="fas fa-heartbeat text-3xl text-red-500"></i>
+            <h4 class="text-xl font-bold">Healthcare</h4>
+          </div>
+          <p class="text-gray-300">Access pharmaceutical, biotech, and healthcare service companies.</p>
+          <ul class="mt-4 text-gray-400">
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Johnson & Johnson (JNJ)</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Pfizer (PFE)</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Moderna (MRNA)</span></li>
+          </ul>
+        </div>
+        
+        <div class="stock-card">
+          <div class="flex items-center space-x-3 mb-4">
+            <i class="fas fa-university text-3xl text-green-500"></i>
+            <h4 class="text-xl font-bold">Financial</h4>
+          </div>
+          <p class="text-gray-300">Trade banks, insurance companies, and financial services firms.</p>
+          <ul class="mt-4 text-gray-400">
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>JPMorgan Chase (JPM)</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Goldman Sachs (GS)</span></li>
+            <li class="flex items-center space-x-2"><i class="fas fa-check text-green-500"></i><span>Visa (V)</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Stock Detail Modal -->
+  <div id="stockModal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div id="modalContent">
+        <!-- Modal content will be populated here -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-black border-t border-gray-800 py-6 text-center text-gray-400 text-sm">
+    <p>© 2025 London Investment Markets Limited. All Rights Reserved.</p>
+  </footer>
+
+  <!-- JavaScript for Live Data and Charts -->
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+    
+    // Mobile menu toggle
+    const toggleMobileMenu = () => {
+        const menu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+        
+        if (menu.classList.contains('hidden')) {
+            menu.classList.remove('hidden');
+            menuIcon.classList.add('hidden');
+            closeIcon.classList.remove('hidden');
+            lucide.createIcons();
+        } else {
+            menu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
+        }
+    };
+    
+    // Show message function
+    let messageTimeout;
+    const showMessage = (message) => {
+        clearTimeout(messageTimeout);
+        const box = document.getElementById('message-box');
+        const text = document.getElementById('message-text');
+        text.textContent = message;
+        box.classList.remove('opacity-0');
+        box.classList.add('opacity-100');
+        
+        messageTimeout = setTimeout(() => {
+            box.classList.remove('opacity-100');
+            box.classList.add('opacity-0');
+        }, 3000);
+    };
+
+    // Global variables
+    let stockData = [];
+    let currentChart = null;
+    let currentSector = 'all';
+
+    // Sample stock data (in a real implementation, this would come from an API)
+    const stocks = [
+      {
+        id: "aapl",
+        name: "Apple Inc.",
+        symbol: "AAPL",
+        price: 178.72,
+        change: 2.34,
+        changePercent: 1.33,
+        sector: "technology",
+        volume: 45678900,
+        marketCap: 2800000000000,
+        image: "https://logo.clearbit.com/apple.com",
+        description: "Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide.",
+        high52: 182.94,
+        low52: 124.17,
+        peRatio: 29.34,
+        dividendYield: 0.55,
+        eps: 6.13
+      },
+      {
+        id: "msft",
+        name: "Microsoft Corporation",
+        symbol: "MSFT",
+        price: 337.69,
+        change: 4.21,
+        changePercent: 1.26,
+        sector: "technology",
+        volume: 23456700,
+        marketCap: 2510000000000,
+        image: "https://logo.clearbit.com/microsoft.com",
+        description: "Microsoft Corporation develops, licenses, and supports software, services, devices, and solutions worldwide.",
+        high52: 349.67,
+        low52: 213.43,
+        peRatio: 32.15,
+        dividendYield: 0.76,
+        eps: 10.51
+      },
+      {
+        id: "amzn",
+        name: "Amazon.com Inc.",
+        symbol: "AMZN",
+        price: 145.86,
+        change: -1.23,
+        changePercent: -0.84,
+        sector: "technology",
+        volume: 34567800,
+        marketCap: 1500000000000,
+        image: "https://logo.clearbit.com/amazon.com",
+        description: "Amazon.com Inc. engages in the retail sale of consumer products and subscriptions through online and physical stores.",
+        high52: 149.26,
+        low52: 81.43,
+        peRatio: 58.72,
+        dividendYield: 0.00,
+        eps: 2.48
+      },
+      {
+        id: "jpm",
+        name: "JPMorgan Chase & Co.",
+        symbol: "JPM",
+        price: 159.24,
+        change: 0.87,
+        changePercent: 0.55,
+        sector: "financial",
+        volume: 12345600,
+        marketCap: 465000000000,
+        image: "https://logo.clearbit.com/jpmorganchase.com",
+        description: "JPMorgan Chase & Co. operates as a financial services company worldwide.",
+        high52: 160.92,
+        low52: 113.05,
+        peRatio: 10.23,
+        dividendYield: 2.45,
+        eps: 15.57
+      },
+      {
+        id: "jnj",
+        name: "Johnson & Johnson",
+        symbol: "JNJ",
+        price: 157.33,
+        change: -0.45,
+        changePercent: -0.29,
+        sector: "healthcare",
+        volume: 8765400,
+        marketCap: 405000000000,
+        image: "https://logo.clearbit.com/jnj.com",
+        description: "Johnson & Johnson researches, develops, manufactures, and sells various products in the healthcare field worldwide.",
+        high52: 181.94,
+        low52: 151.43,
+        peRatio: 15.67,
+        dividendYield: 2.89,
+        eps: 10.04
+      },
+      {
+        id: "xom",
+        name: "Exxon Mobil Corporation",
+        symbol: "XOM",
+        price: 105.67,
+        change: 1.23,
+        changePercent: 1.18,
+        sector: "energy",
+        volume: 15432100,
+        marketCap: 442000000000,
+        image: "https://logo.clearbit.com/exxonmobil.com",
+        description: "Exxon Mobil Corporation explores for and produces crude oil and natural gas in the United States and internationally.",
+        high52: 119.83,
+        low52: 95.77,
+        peRatio: 9.45,
+        dividendYield: 3.12,
+        eps: 11.18
+      },
+      {
+        id: "tsla",
+        name: "Tesla Inc.",
+        symbol: "TSLA",
+        price: 248.42,
+        change: 8.76,
+        changePercent: 3.66,
+        sector: "technology",
+        volume: 98765400,
+        marketCap: 788000000000,
+        image: "https://logo.clearbit.com/tesla.com",
+        description: "Tesla, Inc. designs, develops, manufactures, leases, and sells electric vehicles, energy generation and storage systems.",
+        high52: 313.80,
+        low52: 101.81,
+        peRatio: 68.92,
+        dividendYield: 0.00,
+        eps: 3.61
+      },
+      {
+        id: "googl",
+        name: "Alphabet Inc.",
+        symbol: "GOOGL",
+        price: 138.21,
+        change: 1.54,
+        changePercent: 1.13,
+        sector: "technology",
+        volume: 23456700,
+        marketCap: 1750000000000,
+        image: "https://logo.clearbit.com/google.com",
+        description: "Alphabet Inc. provides online advertising services, cloud services, software and hardware products, and other services.",
+        high52: 153.78,
+        low52: 83.34,
+        peRatio: 26.45,
+        dividendYield: 0.00,
+        eps: 5.22
+      },
+      {
+        id: "wmt",
+        name: "Walmart Inc.",
+        symbol: "WMT",
+        price: 164.35,
+        change: 0.32,
+        changePercent: 0.20,
+        sector: "consumer",
+        volume: 6543210,
+        marketCap: 442000000000,
+        image: "https://logo.clearbit.com/walmart.com",
+        description: "Walmart Inc. engages in the operation of retail, wholesale, and other units worldwide.",
+        high52: 169.94,
+        low52: 136.09,
+        peRatio: 31.45,
+        dividendYield: 1.42,
+        eps: 5.22
+      }
+    ];
+
+    // Fetch stock data (simulated API call)
+    function fetchStockData() {
+      // In a real implementation, this would be an API call
+      // For now, we'll use the static data with some randomization to simulate live data
+      stockData = stocks.map(stock => {
+        // Add some random fluctuation to simulate live data
+        const randomChange = (Math.random() - 0.5) * 4;
+        const newPrice = stock.price * (1 + randomChange / 100);
+        const newChange = newPrice - stock.price;
+        const newChangePercent = (newChange / stock.price) * 100;
+        
+        return {
+          ...stock,
+          current_price: newPrice,
+          price_change_24h: newChange,
+          price_change_percentage_24h: newChangePercent
+        };
+      });
+
+      // Populate Ticker
+      const ticker = stockData.map(s => `${s.symbol} $${s.current_price.toFixed(2)} (${s.price_change_percentage_24h.toFixed(2)}%)`).join(' • ');
+      document.getElementById('tickerContent').textContent = ticker;
+
+      // Populate Table
+      populateTable();
+      
+      // Populate Grid
+      populateGrid();
+    }
+
+    // Populate table with stock data
+    function populateTable() {
+      const tableBody = document.getElementById('stockTableBody');
+      tableBody.innerHTML = '';
+      
+      const filteredStocks = currentSector === 'all' 
+        ? stockData 
+        : stockData.filter(stock => stock.sector === currentSector);
+      
+      filteredStocks.forEach((stock, index) => {
+        const row = `
+          <tr>
+            <td>${index + 1}</td>
+            <td class="flex items-center justify-center space-x-2">
+              <img src="${stock.image}" class="w-5 h-5" alt="${stock.name}" onerror="this.src='https://via.placeholder.com/20'">
+              <span>${stock.name}</span>
+            </td>
+            <td>${stock.symbol}</td>
+            <td>$${stock.current_price.toFixed(2)}</td>
+            <td class="${stock.price_change_24h >= 0 ? 'text-green-400' : 'text-red-400'}">
+              ${stock.price_change_24h >= 0 ? '+' : ''}${stock.price_change_24h.toFixed(2)}
+            </td>
+            <td class="${stock.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'}">
+              ${stock.price_change_percentage_24h >= 0 ? '+' : ''}${stock.price_change_percentage_24h.toFixed(2)}%
+            </td>
+            <td>${(stock.volume / 1000000).toFixed(2)}M</td>
+            <td>$${(stock.marketCap / 1000000000).toFixed(2)}B</td>
+            <td>
+              <button class="view-details bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded text-xs mr-2" data-id="${stock.id}">
+                Details
+              </button>
+              <button class="watchlist-btn" data-id="${stock.id}">
+                <i class="far fa-star"></i>
+              </button>
+            </td>
+          </tr>
+        `;
+        tableBody.insertAdjacentHTML('beforeend', row);
+      });
+      
+      // Add event listeners to view details buttons
+      document.querySelectorAll('.view-details').forEach(button => {
+        button.addEventListener('click', function() {
+          const stockId = this.getAttribute('data-id');
+          showStockDetails(stockId);
+        });
+      });
+      
+      // Add event listeners to watchlist buttons
+      document.querySelectorAll('.watchlist-btn').forEach(button => {
+        button.addEventListener('click', function() {
+          const stockId = this.getAttribute('data-id');
+          toggleWatchlist(stockId, this);
+        });
+      });
+    }
+
+    // Populate grid with stock cards
+    function populateGrid() {
+      const stockGrid = document.getElementById('stockGrid');
+      stockGrid.innerHTML = '';
+      
+      // Show top 6 stocks in the grid
+      stockData.slice(0, 6).forEach(stock => {
+        const card = `
+          <div class="stock-card" data-id="${stock.id}">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center space-x-3">
+                <img src="${stock.image}" class="w-10 h-10 rounded" alt="${stock.name}" onerror="this.src='https://via.placeholder.com/40'">
+                <div>
+                  <h4 class="font-bold text-lg">${stock.symbol}</h4>
+                  <p class="text-gray-400 text-sm">${stock.name}</p>
+                </div>
+              </div>
+              <span class="${stock.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'} font-semibold">
+                ${stock.price_change_percentage_24h >= 0 ? '+' : ''}${stock.price_change_percentage_24h.toFixed(2)}%
+              </span>
+            </div>
+            <div class="mt-4">
+              <p class="text-2xl font-bold">$${stock.current_price.toFixed(2)}</p>
+              <p class="text-gray-400 text-sm mt-2">Sector: ${stock.sector.charAt(0).toUpperCase() + stock.sector.slice(1)}</p>
+            </div>
+          </div>
+        `;
+        stockGrid.insertAdjacentHTML('beforeend', card);
+      });
+      
+      // Add event listeners to stock cards
+      document.querySelectorAll('.stock-card').forEach(card => {
+        card.addEventListener('click', function() {
+          const stockId = this.getAttribute('data-id');
+          showStockDetails(stockId);
+        });
+      });
+    }
+
+    // Show detailed stock information in modal
+    function showStockDetails(stockId) {
+      // Find the stock data
+      const stock = stockData.find(s => s.id === stockId);
+      
+      if (!stock) {
+        document.getElementById('modalContent').innerHTML = `
+          <div class="text-center py-10">
+            <p class="text-red-400">Stock data not found.</p>
+          </div>
+        `;
+        document.getElementById('stockModal').style.display = 'block';
+        return;
+      }
+      
+      // Populate modal with stock data
+      populateModal(stock);
+      
+      // Show modal
+      document.getElementById('stockModal').style.display = 'block';
+    }
+
+    // Populate modal with stock details
+    function populateModal(stock) {
+      // Format numbers
+      const formatNumber = (num) => {
+        if (num >= 1000000000000) {
+          return '$' + (num / 1000000000000).toFixed(2) + 'T';
+        } else if (num >= 1000000000) {
+          return '$' + (num / 1000000000).toFixed(2) + 'B';
+        } else if (num >= 1000000) {
+          return '$' + (num / 1000000).toFixed(2) + 'M';
+        } else if (num >= 1000) {
+          return '$' + (num / 1000).toFixed(2) + 'K';
+        }
+        return '$' + num.toFixed(2);
+      };
+
+      // Create modal content
+      const modalContent = `
+        <div class="mb-6">
+          <div class="flex items-center space-x-4 mb-4">
+            <img src="${stock.image}" class="w-12 h-12 rounded" alt="${stock.name}" onerror="this.src='https://via.placeholder.com/48'">
+            <div>
+              <h2 class="text-2xl font-bold">${stock.name} (${stock.symbol})</h2>
+              <p class="text-gray-400">Sector: ${stock.sector.charAt(0).toUpperCase() + stock.sector.slice(1)}</p>
+            </div>
+            <div class="ml-auto text-right">
+              <p class="text-2xl font-bold">$${stock.current_price.toFixed(2)}</p>
+              <p class="${stock.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'} font-semibold">
+                ${stock.price_change_percentage_24h >= 0 ? '+' : ''}${stock.price_change_percentage_24h.toFixed(2)}%
+              </p>
+            </div>
+          </div>
+          
+          <!-- Tabs -->
+          <div class="flex border-b border-gray-700 mb-4">
+            <button class="tab-button active" data-tab="overview">Overview</button>
+            <button class="tab-button" data-tab="charts">Charts</button>
+            <button class="tab-button" data-tab="stats">Statistics</button>
+          </div>
+          
+          <!-- Tab Contents -->
+          <div id="overview" class="tab-content active">
+            <p class="text-gray-300 mb-4">${stock.description}</p>
+            
+            <div class="stats-grid">
+              <div class="stat-card">
+                <p class="text-gray-400">Market Cap</p>
+                <p class="stat-value">${formatNumber(stock.marketCap)}</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-gray-400">Volume</p>
+                <p class="stat-value">${(stock.volume / 1000000).toFixed(2)}M</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-gray-400">P/E Ratio</p>
+                <p class="stat-value">${stock.peRatio}</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-gray-400">Dividend Yield</p>
+                <p class="stat-value">${stock.dividendYield}%</p>
+              </div>
+            </div>
+          </div>
+          
+          <div id="charts" class="tab-content">
+            <div class="flex space-x-2 mb-4">
+              <button class="timeframe-btn bg-blue-600 text-white px-3 py-1 rounded text-sm" data-days="1">1D</button>
+              <button class="timeframe-btn bg-gray-700 text-white px-3 py-1 rounded text-sm" data-days="7">1W</button>
+              <button class="timeframe-btn bg-gray-700 text-white px-3 py-1 rounded text-sm" data-days="30">1M</button>
+              <button class="timeframe-btn bg-gray-700 text-white px-3 py-1 rounded text-sm" data-days="365">1Y</button>
+            </div>
+            <div class="chart-container">
+              <canvas id="priceChart"></canvas>
+            </div>
+          </div>
+          
+          <div id="stats" class="tab-content">
+            <div class="stats-grid">
+              <div class="stat-card">
+                <p class="text-gray-400">52-Week High</p>
+                <p class="stat-value">$${stock.high52.toFixed(2)}</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-gray-400">52-Week Low</p>
+                <p class="stat-value">$${stock.low52.toFixed(2)}</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-gray-400">EPS</p>
+                <p class="stat-value">$${stock.eps.toFixed(2)}</p>
+              </div>
+              <div class="stat-card">
+                <p class="text-gray-400">Daily Change</p>
+                <p class="stat-value ${stock.price_change_24h >= 0 ? 'positive' : 'negative'}">
+                  $${stock.price_change_24h.toFixed(2)}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex justify-between mt-8">
+          <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold transition">
+            Trade ${stock.symbol}
+          </button>
+          <button class="watchlist-btn bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded font-semibold transition" data-id="${stock.id}">
+            <i class="far fa-star mr-2"></i> Add to Watchlist
+          </button>
+        </div>
+      `;
+      
+      document.getElementById('modalContent').innerHTML = modalContent;
+      
+      // Initialize tabs
+      initializeTabs();
+      
+      // Initialize chart with 1-day data by default
+      initializeChart(stock.id, 1);
+      
+      // Add event listener to watchlist button in modal
+      document.querySelector('.watchlist-btn').addEventListener('click', function() {
+        const stockId = this.getAttribute('data-id');
+        toggleWatchlist(stockId, this);
+      });
+    }
+
+    // Initialize tab functionality
+    function initializeTabs() {
+      const tabButtons = document.querySelectorAll('.tab-button');
+      const tabContents = document.querySelectorAll('.tab-content');
+      
+      tabButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const tabId = this.getAttribute('data-tab');
+          
+          // Update active tab button
+          tabButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          
+          // Show active tab content
+          tabContents.forEach(content => {
+            content.classList.remove('active');
+            if (content.id === tabId) {
+              content.classList.add('active');
+            }
+          });
+        });
+      });
+      
+      // Initialize timeframe buttons for charts
+      const timeframeButtons = document.querySelectorAll('.timeframe-btn');
+      timeframeButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          const days = parseInt(this.getAttribute('data-days'));
+          
+          // Update active timeframe button
+          timeframeButtons.forEach(btn => btn.classList.remove('bg-blue-600'));
+          timeframeButtons.forEach(btn => btn.classList.add('bg-gray-700'));
+          this.classList.remove('bg-gray-700');
+          this.classList.add('bg-blue-600');
+          
+          // Get stock ID from modal
+          const stockName = document.querySelector('.modal-content h2').textContent.split(' (')[1].replace(')', '').toLowerCase();
+          initializeChart(stockName, days);
+        });
+      });
+    }
+
+    // Initialize price chart
+    function initializeChart(stockId, days) {
+      // Generate sample data based on stock and timeframe
+      const basePrice = stockData.find(s => s.id === stockId)?.current_price || 100;
+      
+      // Create sample data points
+      const labels = [];
+      const values = [];
+      const dataPoints = days <= 7 ? 24 : (days <= 30 ? 30 : 100); // More points for longer timeframes
+      
+      let currentValue = basePrice;
+      for (let i = dataPoints; i >= 0; i--) {
+        // Add date labels
+        const date = new Date();
+        
+        if (days <= 1) {
+          date.setHours(date.getHours() - i);
+          labels.push(date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}));
+        } else if (days <= 7) {
+          date.setDate(date.getDate() - i);
+          labels.push(date.toLocaleDateString([], {weekday: 'short'}));
+        } else if (days <= 30) {
+          date.setDate(date.getDate() - i);
+          labels.push(date.toLocaleDateString([], {month: 'short', day: 'numeric'}));
+        } else {
+          date.setDate(date.getDate() - i);
+          if (i % 10 === 0) {
+            labels.push(date.toLocaleDateString([], {month: 'short', year: 'numeric'}));
+          } else {
+            labels.push('');
+          }
+        }
+        
+        // Add some random fluctuation to create a realistic chart
+        const volatility = days <= 1 ? 0.02 : (days <= 7 ? 0.05 : 0.1);
+        const change = (Math.random() - 0.5) * (basePrice * volatility);
+        currentValue += change;
+        // Ensure price doesn't go negative
+        currentValue = Math.max(currentValue, basePrice * 0.5);
+        values.push(currentValue);
+      }
+      
+      // Get canvas context
+      const ctx = document.getElementById('priceChart').getContext('2d');
+      
+      // Destroy previous chart if exists
+      if (currentChart) {
+        currentChart.destroy();
+      }
+      
+      // Create new chart
+      currentChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: 'Price (USD)',
+            data: values,
+            borderColor: '#3b82f6',
+            backgroundColor: 'rgba(59, 130, 246, 0.1)',
+            borderWidth: 2,
+            fill: true,
+            tension: 0.1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: false
+            },
+            tooltip: {
+              mode: 'index',
+              intersect: false,
+              callbacks: {
+                label: function(context) {
+                  return `$${context.parsed.y.toFixed(2)}`;
+                }
+              }
+            }
+          },
+          scales: {
+            x: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: '#94a3b8'
+              }
+            },
+            y: {
+              grid: {
+                color: 'rgba(255, 255, 255, 0.1)'
+              },
+              ticks: {
+                color: '#94a3b8',
+                callback: function(value) {
+                  return '$' + value.toFixed(2);
+                }
+              }
+            }
+          }
+        }
+      });
+    }
+
+    // Toggle watchlist status
+    function toggleWatchlist(stockId, button) {
+      const icon = button.querySelector('i');
+      if (icon.classList.contains('far')) {
+        icon.classList.remove('far');
+        icon.classList.add('fas');
+        button.classList.add('active');
+      } else {
+        icon.classList.remove('fas');
+        icon.classList.add('far');
+        button.classList.remove('active');
+      }
+    }
+
+    // Close modal when clicking the X
+    document.querySelector('.close-modal').addEventListener('click', function() {
+      document.getElementById('stockModal').style.display = 'none';
+      if (currentChart) {
+        currentChart.destroy();
+        currentChart = null;
+      }
+    });
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      const modal = document.getElementById('stockModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+        if (currentChart) {
+          currentChart.destroy();
+          currentChart = null;
+        }
+      }
+    });
+
+    // Sector filter functionality
+    document.querySelectorAll('.sector-btn').forEach(button => {
+      button.addEventListener('click', function() {
+        // Update active sector button
+        document.querySelectorAll('.sector-btn').forEach(btn => btn.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Update current sector
+        currentSector = this.getAttribute('data-sector');
+        
+        // Refresh table with filtered data
+        populateTable();
+      });
+    });
+
+    // Initial data fetch
+    fetchStockData();
+    
+    // Refresh data every 30 seconds
+    setInterval(fetchStockData, 30000);
+  </script>
+
+  <!-- Message Box -->
+  <div id="message-box"
+      class="fixed bottom-5 right-5 z-[100] p-4 rounded-lg shadow-2xl transition-opacity duration-300 opacity-0 bg-slate-700 border-l-4 border-accent-gold text-white">
+      <p id="message-text"></p>
+  </div>
+
+</body>
+</html>

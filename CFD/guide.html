@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Start Guide | LIM Brokerage</title>
+    <meta name="description" content="Get started with LIM Brokerage trading platform - step-by-step guide for new traders">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* === UPDATED COLOR SCHEME === */
+        :root {
+            --primary-neon: #007BFF; /* Changed to blue */
+            --secondary-neon: #2f1d40;
+            --accent-gold: #c5c4bb;
+            --bg-dark: #ffffff;
+            --primary: #007BFF; /* Changed to blue for Font Awesome icon */
+            --logo-color: #181D18; /* New logo color */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: #0f1729;
+            scroll-behavior: smooth;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
+
+        /* === UPDATED HEADER STYLES FOR 100% WIDTH === */
+        .header-container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            max-width: none;
+        }
+
+        .header-top {
+            width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 640px) {
+            .header-top {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-top {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+
+        /* Ensure no gaps at the edges */
+        .full-width-container {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            max-width: none;
+        }
+
+        /* IMPROVED NAVBAR STYLES WITH SMALLER TEXT */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 123, 255, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-link {
+            position: relative;
+            padding: 0.4rem 0.8rem; /* Smaller padding */
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            font-size: 0.875rem; /* Smaller font size (14px) */
+        }
+
+        .nav-link:hover {
+            color: var(--primary-neon);
+            background: rgba(0, 123, 255, 0.05);
+        }
+
+        .nav-link.active {
+            color: var(--primary-neon);
+            font-weight: 600;
+        }
+
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0.8rem;
+            right: 0.8rem;
+            height: 2px;
+            background: var(--primary-neon);
+            border-radius: 2px;
+        }
+
+        .neon-glow {
+            box-shadow: 0 0 15px var(--primary-neon);
+            text-shadow: 0 0 5px var(--primary-neon);
+        }
+
+        .highlight-text1 {
+            background: none;
+            box-shadow: none;
+            color: #0f1729;
+            font-size: 20px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .highlight-text {
+            background: none;
+            box-shadow: none;
+            color: #0f1729;
+            font-size: 64px;
+            font-weight: 800;
+            text-align: center;
+        }
+
+        .title-box {
+            background: none;
+            box-shadow: none;
+        }
+
+        .neon-button {
+            transition: all 0.3s ease;
+            box-shadow: 0 0 8px var(--accent-gold);
+            background: linear-gradient(135deg, var(--accent-gold), #FFA500);
+            color: #0f172a !important;
+            font-weight: bold;
+        }
+
+        .neon-button:hover {
+            box-shadow: 0 0 20px var(--accent-gold), 0 0 40px rgba(255, 215, 0, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* Trust Metric Colors */
+        .trust-metric-green {
+            color: var(--primary-neon);
+        }
+
+        .trust-metric-purple {
+            color: var(--secondary-neon);
+        }
+
+        .trust-metric-gold {
+            color: var(--accent-gold);
+        }
+
+        /* Footer */
+        #footer {
+            border-top-color: var(--accent-gold);
+        }
+
+        .text-accent-gold {
+            color: var(--accent-gold);
+        }
+        
+        /* FAQ Accordion */
+        .faq-item input[type="checkbox"] {
+            display: none;
+        }
+        
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .faq-item input[type="checkbox"]:checked ~ .faq-content {
+            max-height: 500px;
+        }
+        
+        .faq-item input[type="checkbox"]:checked ~ label i {
+            transform: rotate(180deg);
+        }
+        
+        /* View transitions */
+        .view {
+            transition: opacity 0.3s ease;
+        }
+        
+        /* Mobile menu animation */
+        #mobile-menu {
+            transition: all 0.3s ease;
+        }
+        
+        /* Improved text visibility */
+        .text-dark {
+            color: #0f1729;
+        }
+        
+        .text-medium {
+            color: #334155;
+        }
+        
+        .text-light {
+            color: #64748b;
+        }
+        
+        .bg-light {
+            background-color: #f8fafc;
+        }
+        
+        .bg-medium {
+            background-color: #e2e8f0;
+        }
+        
+        .border-light {
+            border-color: #cbd5e1;
+        }
+        
+        .text-readable {
+            line-height: 1.6;
+        }
+        
+        /* Enhanced Hero Section */
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+        }
+        
+        .hero-text-glow {
+            text-shadow: 0 0 10px rgba(0, 123, 255, 0.3); /* Updated to blue */
+        }
+        
+        .hero-subtitle {
+            color: #e2e8f0;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+        }
+        
+        .form-container {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 123, 255, 0.2); /* Updated to blue */
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        .form-input {
+            background: rgba(30, 41, 59, 0.8);
+            border: 1px solid rgba(100, 116, 139, 0.3);
+            color: #f1f5f9;
+        }
+        
+        .form-input:focus {
+            border-color: #007BFF; /* Updated to blue */
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Updated to blue */
+        }
+        
+        .form-input::placeholder {
+            color: #94a3b8;
+        }
+
+        /* Improved responsive design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem !important;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem !important;
+            }
+            
+            .highlight-text1 {
+                font-size: 16px;
+            }
+            
+            .header-container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        /* White bold font for view live markets button */
+        .view-live-markets {
+            font-weight: bold;
+            color: white !important;
+        }
+        
+        /* Header alignment fixes */
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+        
+        .nav-container {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: flex-end;
+        }
+        
+        .desktop-nav {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem; /* Slightly reduced gap */
+        }
+        
+        @media (max-width: 767px) {
+            .desktop-nav {
+                display: none;
+            }
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+        }
+        
+        @media (max-width: 767px) {
+            .mobile-menu-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        /* UPDATED LOGO STYLES WITH #181D18 COLOR */
+        .header-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0; /* Slightly reduced padding */
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px; /* Slightly reduced gap */
+        }
+
+        .logo h1 {
+            font-size: 1.4rem; /* Slightly reduced font size */
+            font-weight: 700;
+            color: var(--logo-color); /* Updated to #181D18 */
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .logo h1 span {
+            color: var(--logo-color); /* Updated to #181D18 */
+            font-weight: 600;
+        }
+
+        .logo i {
+            color: var(--logo-color) !important; /* Updated to #181D18 */
+            font-size: 1.8rem; /* Slightly reduced icon size */
+        }
+
+        @media (max-width: 768px) {
+            .logo h1 {
+                font-size: 1.1rem;
+            }
+            
+            .logo i {
+                font-size: 1.4rem !important;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 0.95rem;
+            }
+        }
+
+        /* Hero section with video background */
+        .hero-with-video {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Clickable market preview section */
+        .clickable-section {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clickable-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Updated mobile menu with smaller text */
+        .mobile-menu-link {
+            font-size: 0.9rem; /* Smaller font for mobile menu */
+        }
+
+        /* Market Tabs Styles */
+        .market-tab {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .market-tab.active {
+            background: var(--primary-neon) !important;
+            color: white !important;
+        }
+
+        .market-content {
+            transition: all 0.3s ease;
+        }
+
+        .market-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .market-content:hover .market-icon {
+            transform: scale(1.05);
+        }
+        
+        /* === QUICK START GUIDE SPECIFIC STYLES === */
+        .guide-container {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .progress-tracker {
+            position: sticky;
+            top: 2rem;
+            align-self: start;
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 123, 255, 0.2);
+        }
+        
+        .progress-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--primary-neon);
+        }
+        
+        .progress-steps {
+            list-style: none;
+        }
+        
+        .progress-step {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .progress-step:hover {
+            color: var(--primary-neon);
+        }
+        
+        .progress-step.active {
+            color: var(--primary-neon);
+            font-weight: 600;
+        }
+        
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+            background-color: #e2e8f0;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .progress-step.active .step-number {
+            background-color: var(--primary-neon);
+            color: white;
+        }
+        
+        .progress-step.completed .step-number {
+            background-color: var(--primary-neon);
+            color: white;
+        }
+        
+        .guide-content {
+            background: white;
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 123, 255, 0.1);
+        }
+        
+        .step {
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem;
+        }
+        
+        .step:last-child {
+            margin-bottom: 0;
+        }
+        
+        .step-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .step-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-neon);
+            color: white;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+        
+        .step-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .step-content {
+            margin-bottom: 2rem;
+        }
+        
+        .step-content p {
+            margin-bottom: 1rem;
+            color: var(--readable);
+        }
+        
+        .image-placeholder {
+            background: #f1f5f9;
+            border-radius: 8px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 1.5rem 0;
+            color: var(--medium);
+            border: 2px dashed #cbd5e1;
+        }
+        
+        .note {
+            background: #f0f9ff;
+            border-left: 4px solid var(--primary-neon);
+            padding: 1.5rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        
+        .note-title {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary-neon);
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e2e8f0;
+        }
+        
+        /* Responsive Design for Quick Start Guide */
+        @media (max-width: 968px) {
+            .guide-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-tracker {
+                position: static;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .action-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="min-h-screen flex flex-col">
+        <!-- IMPROVED NAVBAR - 100% WIDTH WITH SMALLER TEXT -->
+        <header class="sticky top-0 z-50 navbar full-width-container p-4">
+            <div class="header-top">
+                <div class="logo">
+                    <i class="fas fa-landmark" style="color: var(--logo-color);"></i>
+                    <h1><span>London Investment Markets</span></h1>
+                </div>
+                <div class="nav-container">
+                    <nav class="desktop-nav" aria-label="Main navigation">
+                        <a href="index.html" class="nav-link">Home</a>
+                        <a href="index.html#about-view" class="nav-link">About</a>
+                        <a href="index.html#pricing-view" class="nav-link">Accounts</a>
+                        <a href="index.html#market-view" class="nav-link">Market Data</a>
+                        <a href="index.html#contact-view" class="nav-link">Contact</a>
+                        <a href="index.html#legal-view" class="nav-link">Terms & Privacy</a>
+                        <a href="index.html#faq-view" class="nav-link">FAQ</a>
+                        <a href="#" class="nav-link active">Quick Start Guide</a>
+                        <a href="login.html" class="ml-4 px-4 py-2 text-xs font-bold rounded-full neon-button">
+                            Login
+                        </a>
+                        <a href="register.html" class="ml-4 px-4 py-2 text-xs font-bold rounded-full neon-button">
+                            Open Live Account
+                        </a>
+                    </nav>
+                    <button id="mobile-menu-btn" class="mobile-menu-btn text-accent-gold" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                        <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i>
+                        <i data-lucide="x" id="close-icon" class="w-5 h-5 hidden"></i>
+                    </button>
+                </div>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden w-full px-4 pt-2 pb-3 space-y-1 bg-light border-t border-accent-gold/30" aria-label="Mobile navigation">
+                <a href="index.html" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Home</a>
+                <a href="index.html#about-view" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">About</a>
+                <a href="index.html#pricing-view" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Accounts</a>
+                <a href="index.html#market-view" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Market Data</a>
+                <a href="index.html#contact-view" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Contact</a>
+                <a href="index.html#legal-view" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Terms & Privacy</a>
+                <a href="index.html#faq-view" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">FAQ</a>
+                <a href="#" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200 active">Quick Start Guide</a>
+                <a href="login.html" class="block text-center w-full mt-3 px-4 py-2 text-xs font-bold rounded-full neon-button">
+                    Login
+                </a>
+                <a href="register.html" class="block text-center w-full mt-3 px-4 py-2 text-xs font-bold rounded-full neon-button">
+                    Open Live Account
+                </a>
+            </div>
+        </header>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container mx-auto px-4 py-16">
+                <h1 class="text-5xl font-extrabold text-dark mb-4 text-center">Quick Start Guide</h1>
+                <p class="text-xl text-medium text-center max-w-3xl mx-auto">
+                    Get up and running with your LIM Brokerage trading account in just 15 minutes. Follow this step-by-step guide to set up your account, explore the platform, and place your first trade.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <div class="container mx-auto px-4 py-8">
+            <div class="guide-container">
+                <!-- Progress Tracker -->
+                <aside class="progress-tracker">
+                    <h3 class="progress-title">
+                        <i class="fas fa-tasks"></i>
+                        Guide Progress
+                    </h3>
+                    <ul class="progress-steps">
+                        <li class="progress-step active" data-step="1">
+                            <span class="step-number">1</span>
+                            <span>Account Setup</span>
+                        </li>
+                        <li class="progress-step" data-step="2">
+                            <span class="step-number">2</span>
+                            <span>Platform Overview</span>
+                        </li>
+                        <li class="progress-step" data-step="3">
+                            <span class="step-number">3</span>
+                            <span>Deposit Funds</span>
+                        </li>
+                        <li class="progress-step" data-step="4">
+                            <span class="step-number">4</span>
+                            <span>Market Analysis</span>
+                        </li>
+                        <li class="progress-step" data-step="5">
+                            <span class="step-number">5</span>
+                            <span>Place Your First Trade</span>
+                        </li>
+                        <li class="progress-step" data-step="6">
+                            <span class="step-number">6</span>
+                            <span>Risk Management</span>
+                        </li>
+                    </ul>
+                </aside>
+
+                <!-- Guide Content -->
+                <main class="guide-content">
+                    <!-- Step 1 -->
+                    <section id="step-1" class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <h2 class="step-title">Account Setup</h2>
+                        </div>
+                        <div class="step-content">
+                            <p>Welcome to LIM Brokerage! Let's get your trading account set up so you can start trading Forex, Commodities, and CFDs.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">1. Create Your Account</h3>
+                            <p>Visit our registration page and enter your email address, create a secure password, and verify your email.</p>
+                            
+                            <div class="image-placeholder">
+                                <i class="fas fa-user-plus fa-2x"></i>
+                                <span style="margin-left: 10px;">Registration Form Illustration</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">2. Complete Your Profile</h3>
+                            <p>After verification, complete your profile with your personal details, trading experience, and financial information for compliance purposes.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">3. Choose Your Account Type</h3>
+                            <p>Select the account type that fits your trading style: Micro Account for beginners, Standard Account for active traders, or ECN Account for professionals.</p>
+                            
+                            <div class="note">
+                                <div class="note-title">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Pro Tip</span>
+                                </div>
+                                <p>Enable two-factor authentication during setup for enhanced security. This adds an extra layer of protection to your trading account and funds.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Step 2 -->
+                    <section id="step-2" class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h2 class="step-title">Platform Overview</h2>
+                        </div>
+                        <div class="step-content">
+                            <p>Your trading platform is the command center for all your trading activities. Let's explore the key components.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">Main Navigation</h3>
+                            <p>The top navigation provides quick access to all sections: Dashboard, Trading, Market Analysis, Account, and Support.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">Trading Interface</h3>
+                            <p>The main trading area displays charts, order entry panels, and your open positions. Familiarize yourself with the layout.</p>
+                            
+                            <div class="image-placeholder">
+                                <i class="fas fa-chart-bar fa-2x"></i>
+                                <span style="margin-left: 10px;">Trading Platform Layout</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">Quick Actions</h3>
+                            <p>Use the toolbar for common tasks: placing new orders, adjusting positions, or accessing market analysis tools.</p>
+                            
+                            <div class="note">
+                                <div class="note-title">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Pro Tip</span>
+                                </div>
+                                <p>Customize your trading layout by dragging and dropping widgets. Save different layouts for various trading strategies or market conditions.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Step 3 -->
+                    <section id="step-3" class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <h2 class="step-title">Deposit Funds</h2>
+                        </div>
+                        <div class="step-content">
+                            <p>Fund your trading account to start placing real trades. We offer multiple secure deposit methods.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">1. Access Deposit Section</h3>
+                            <p>Navigate to the "Account" section and select "Deposit Funds" from the menu.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">2. Choose Deposit Method</h3>
+                            <p>Select your preferred deposit method: Bank Transfer, Credit/Debit Card, or E-Wallet (Skrill, Neteller).</p>
+                            
+                            <div class="image-placeholder">
+                                <i class="fas fa-credit-card fa-2x"></i>
+                                <span style="margin-left: 10px;">Deposit Methods Selection</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">3. Enter Deposit Amount</h3>
+                            <p>Enter the amount you wish to deposit, keeping in mind the minimum deposit requirements for your account type.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">4. Confirm Deposit</h3>
+                            <p>Follow the prompts to complete your deposit. Most methods are processed instantly.</p>
+                            
+                            <div class="note">
+                                <div class="note-title">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Pro Tip</span>
+                                </div>
+                                <p>Start with a smaller amount to familiarize yourself with the platform before committing larger sums. Consider using our demo account to practice first.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Step 4 -->
+                    <section id="step-4" class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h2 class="step-title">Market Analysis</h2>
+                        </div>
+                        <div class="step-content">
+                            <p>Our advanced charting tools and market analysis features help you identify trading opportunities.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">1. Access Market Watch</h3>
+                            <p>View real-time prices for all available instruments in the Market Watch window.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">2. Use Charting Tools</h3>
+                            <p>Open charts for specific instruments and customize timeframes from 1 minute to monthly.</p>
+                            
+                            <div class="image-placeholder">
+                                <i class="fas fa-chart-area fa-2x"></i>
+                                <span style="margin-left: 10px;">Interactive Chart Example</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">3. Apply Technical Indicators</h3>
+                            <p>Add moving averages, RSI, MACD, and other indicators from the technical analysis panel.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">4. Access Market News</h3>
+                            <p>Stay informed with real-time economic news and analysis that may impact your trading decisions.</p>
+                            
+                            <div class="note">
+                                <div class="note-title">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Pro Tip</span>
+                                </div>
+                                <p>Save your chart layouts with preferred indicators and timeframes. You can quickly apply these templates to other instruments.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Step 5 -->
+                    <section id="step-5" class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h2 class="step-title">Place Your First Trade</h2>
+                        </div>
+                        <div class="step-content">
+                            <p>Now that you're familiar with the platform, let's place your first trade.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">1. Select an Instrument</h3>
+                            <p>Choose from Forex pairs, Commodities, Indices, or Cryptocurrencies based on your analysis.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">2. Set Order Parameters</h3>
+                            <p>Determine your trade size (lot size), set stop-loss and take-profit levels to manage risk.</p>
+                            
+                            <div class="image-placeholder">
+                                <i class="fas fa-exchange-alt fa-2x"></i>
+                                <span style="margin-left: 10px;">Order Entry Panel</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">3. Choose Order Type</h3>
+                            <p>Select between Market Execution (instant) or Pending Orders (set conditions for entry).</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">4. Execute the Trade</h3>
+                            <p>Review your order details and click "Buy" or "Sell" to execute the trade.</p>
+                            
+                            <div class="note">
+                                <div class="note-title">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Pro Tip</span>
+                                </div>
+                                <p>Always use stop-loss orders to limit potential losses. Never risk more than 1-2% of your account balance on a single trade.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Step 6 -->
+                    <section id="step-6" class="step">
+                        <div class="step-header">
+                            <div class="step-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h2 class="step-title">Risk Management</h2>
+                        </div>
+                        <div class="step-content">
+                            <p>Proper risk management is crucial for long-term trading success. Implement these strategies to protect your capital.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">Position Sizing</h3>
+                            <p>Calculate appropriate position sizes based on your account balance and risk tolerance.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">Stop-Loss Orders</h3>
+                            <p>Always use stop-loss orders to limit potential losses on every trade.</p>
+                            
+                            <div class="image-placeholder">
+                                <i class="fas fa-shield-alt fa-2x"></i>
+                                <span style="margin-left: 10px;">Risk Management Tools</span>
+                            </div>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">Diversification</h3>
+                            <p>Spread your risk across different instruments and market sectors.</p>
+                            
+                            <h3 class="text-xl font-semibold text-dark mt-6 mb-3">Risk-Reward Ratio</h3>
+                            <p>Aim for a minimum 1:2 risk-reward ratio on your trades to ensure profitability over time.</p>
+                            
+                            <div class="note">
+                                <div class="note-title">
+                                    <i class="fas fa-lightbulb"></i>
+                                    <span>Pro Tip</span>
+                                </div>
+                                <p>Use our built-in risk calculator to determine appropriate position sizes based on your account balance and risk parameters.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons">
+                        <a href="#" class="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold bg-gray-200 text-dark hover:bg-gray-300 transition duration-300">
+                            <i class="fas fa-download mr-2"></i> Download PDF Guide
+                        </a>
+                        <a href="register.html" class="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold neon-button">
+                            Open Trading Account <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer" class="bg-slate-900 border-t mt-12 full-width-container">
+            <div class="w-full py-8 px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold text-accent-gold mb-4">Platform</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="index.html" class="hover:text-accent-gold/80 transition text-slate-300">Home</a></li>
+                            <li><a href="index.html#about-view" class="hover:text-accent-gold/80 transition text-slate-300">About Us</a></li>
+                            <li><a href="index.html#pricing-view" class="hover:text-accent-gold/80 transition text-slate-300">Accounts</a></li>
+                            <li><a href="index.html#market-view" class="hover:text-accent-gold/80 transition text-slate-300">Market Data</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-accent-gold mb-4">Support</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="index.html#contact-view" class="hover:text-accent-gold/80 transition text-slate-300">Contact Us</a></li>
+                            <li><a href="index.html#faq-view" class="hover:text-accent-gold/80 transition text-slate-300">FAQ Center</a></li>
+                            <li class="text-slate-400">Support Email: support@limarkets.pro</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-accent-gold mb-4">Legal & Docs</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><a href="index.html#legal-view" class="hover:text-accent-gold/80 transition text-slate-300">Terms of Service</a></li>
+                            <li><a href="index.html#legal-view" class="hover:text-accent-gold/80 transition text-slate-300">Privacy Policy</a></li>
+                            <li><a href="#" class="hover:text-accent-gold/80 transition text-slate-300">Quick Start Guide</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-span-2 md:col-span-1">
+                        <h3 class="text-lg font-semibold text-accent-gold mb-4">Stay Connected</h3>
+                        <p class="text-sm mb-4 text-slate-300">Subscribe for platform updates.</p>
+                        <form onsubmit="handleFormSubmit(event, 'newsletter')">
+                            <input type="email" placeholder="Your Email" required
+                                class="w-full p-2 rounded-lg bg-slate-800 border border-slate-700 focus:border-primary-neon focus:ring focus:ring-primary-neon/30 text-sm mb-2 text-white">
+                            <button type="submit" class="w-full neon-button py-2 rounded-lg font-bold text-sm">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="mt-8 pt-6 border-t border-slate-700 text-center text-sm text-slate-500">
+                    London Investment Markets Limited is a company registered in the Marshall Islands with register number 134064 and whose registered office is at Trust Company Complex, Ajeltake Road, Ajeltake Island, Majuro, Marshall Islands, MH 96960.
+                    <br><br>
+                    &copy; <span id="current-year" class="text-accent-gold"></span> London Investment Markets (Part of LIM Brokerage Group). Market data is simulated for demonstration purposes.
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize the website
+        window.onload = () => {
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            lucide.createIcons();
+            
+            // Initialize progress tracker functionality
+            initProgressTracker();
+        };
+
+        // Progress tracker functionality
+        function initProgressTracker() {
+            const progressSteps = document.querySelectorAll('.progress-step');
+            const steps = document.querySelectorAll('.step');
+            
+            // Update progress tracker on scroll
+            function updateProgressTracker() {
+                let currentStep = 1;
+                
+                steps.forEach((step, index) => {
+                    const rect = step.getBoundingClientRect();
+                    if (rect.top <= 150) {
+                        currentStep = index + 1;
+                    }
+                });
+                
+                progressSteps.forEach((step, index) => {
+                    if (index + 1 <= currentStep) {
+                        step.classList.add('completed');
+                    } else {
+                        step.classList.remove('completed');
+                    }
+                    
+                    if (index + 1 === currentStep) {
+                        step.classList.add('active');
+                    } else {
+                        step.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Scroll to step when progress step is clicked
+            progressSteps.forEach(step => {
+                step.addEventListener('click', function() {
+                    const stepNumber = this.getAttribute('data-step');
+                    const targetStep = document.getElementById(`step-${stepNumber}`);
+                    
+                    if (targetStep) {
+                        window.scrollTo({
+                            top: targetStep.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Update progress on scroll
+            window.addEventListener('scroll', updateProgressTracker);
+            updateProgressTracker(); // Initial call
+        }
+
+        // Mobile menu toggle
+        const toggleMobileMenu = () => {
+            const menu = document.getElementById('mobile-menu');
+            const menuIcon = document.getElementById('menu-icon');
+            const closeIcon = document.getElementById('close-icon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menuIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+                lucide.createIcons();
+            } else {
+                menu.classList.add('hidden');
+                menuIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        };
+
+        // Form submission handler
+        const handleFormSubmit = (event, type) => {
+            event.preventDefault();
+            let message;
+            
+            if (type === 'newsletter') {
+                message = 'Thank you! You are subscribed to our newsletter.';
+            }
+            
+            alert(message);
+            event.target.reset();
+        };
+    </script>
+</body>
+</html>

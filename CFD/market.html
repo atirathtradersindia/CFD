@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market Analysis | London Investment Markets</title>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  
+  <!-- Additional dependencies from lim1.html -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* === UPDATED COLOR SCHEME === */
+    :root {
+        --primary-neon: #007BFF; /* Changed to blue */
+        --secondary-neon: #2f1d40;
+        --accent-gold: #c5c4bb;
+        --bg-dark: #ffffff;
+        --primary: #007BFF; /* Changed to blue for Font Awesome icon */
+        --logo-color: #181D18; /* New logo color */
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #1f2937; /* dark-gray text */
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+    
+    /* === UPDATED HEADER STYLES FOR 100% WIDTH === */
+    .header-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    .header-top {
+        width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 0 auto;
+    }
+
+    @media (min-width: 640px) {
+        .header-top {
+            padding-left: 1.5rem;
+            padding-right: 1.5rem;
+        }
+    }
+
+    @media (min-width: 1024px) {
+        .header-top {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+    }
+
+    /* Ensure no gaps at the edges */
+    .full-width-container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        max-width: none;
+    }
+
+    /* IMPROVED NAVBAR STYLES WITH SMALLER TEXT */
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(0, 123, 255, 0.2);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-link {
+        position: relative;
+        padding: 0.4rem 0.8rem; /* Smaller padding */
+        font-weight: 500;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        font-size: 0.875rem; /* Smaller font size (14px) */
+    }
+
+    .nav-link:hover {
+        color: var(--primary-neon);
+        background: rgba(0, 123, 255, 0.05);
+    }
+
+    .nav-link.active {
+        color: var(--primary-neon);
+        font-weight: 600;
+    }
+
+    .nav-link.active::after {
+        content: '';
+        position: absolute;
+        bottom: -1px;
+        left: 0.8rem;
+        right: 0.8rem;
+        height: 2px;
+        background: var(--primary-neon);
+        border-radius: 2px;
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      font-weight: 600;
+      color: #111827;
+    }
+    .section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 50%;
+      height: 3px;
+      background: #0070f3;
+    }
+    .news-card {
+      background: #f9fafb;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      transition: box-shadow 0.3s;
+    }
+    .news-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+    .sentiment-box, .signal-box {
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      padding: 1rem;
+    }
+    
+    /* Header alignment fixes */
+    .header-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .logo-container {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+    
+    .nav-container {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+    
+    .desktop-nav {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem; /* Slightly reduced gap */
+    }
+    
+    @media (max-width: 767px) {
+        .desktop-nav {
+            display: none;
+        }
+    }
+    
+    .mobile-menu-btn {
+        display: none;
+    }
+    
+    @media (max-width: 767px) {
+        .mobile-menu-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    /* UPDATED LOGO STYLES WITH #181D18 COLOR */
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0; /* Slightly reduced padding */
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px; /* Slightly reduced gap */
+    }
+
+    .logo h1 {
+        font-size: 1.4rem; /* Slightly reduced font size */
+        font-weight: 700;
+        color: var(--logo-color); /* Updated to #181D18 */
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .logo h1 span {
+        color: var(--logo-color); /* Updated to #181D18 */
+        font-weight: 600;
+    }
+
+    .logo i {
+        color: var(--logo-color) !important; /* Updated to #181D18 */
+        font-size: 1.8rem; /* Slightly reduced icon size */
+    }
+
+    @media (max-width: 768px) {
+        .logo h1 {
+            font-size: 1.1rem;
+        }
+        
+        .logo i {
+            font-size: 1.4rem !important;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .logo h1 {
+            font-size: 0.95rem;
+        }
+    }
+    
+    /* Updated mobile menu with smaller text */
+    .mobile-menu-link {
+        font-size: 0.9rem; /* Smaller font for mobile menu */
+    }
+    
+    /* Neon button styles */
+    .neon-button {
+        transition: all 0.3s ease;
+        box-shadow: 0 0 8px var(--accent-gold);
+        background: linear-gradient(135deg, var(--accent-gold), #FFA500);
+        color: #0f172a !important;
+        font-weight: bold;
+    }
+
+    .neon-button:hover {
+        box-shadow: 0 0 20px var(--accent-gold), 0 0 40px rgba(255, 215, 0, 0.7);
+        transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- IMPROVED NAVBAR - 100% WIDTH WITH SMALLER TEXT -->
+  <header class="sticky top-0 z-50 navbar full-width-container">
+    <div class="header-top">
+        <div class="logo">
+            <i class="fas fa-landmark" style="color: var(--logo-color);"></i>
+            <h1><span>London Investment Markets</span></h1>
+        </div>
+        <div class="nav-container">
+            <nav class="desktop-nav" aria-label="Main navigation">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="commodities.html" class="nav-link">Commodities</a>
+                <a href="shares.html" class="nav-link">Shares</a>
+                <a href="market-analysis.html" class="nav-link active">Market Analysis</a>
+                <a href="forex.html" class="nav-link">Forex</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="register.html" onclick="showMessage('Simulating launch of application...')"
+                    class="ml-4 px-4 py-2 text-xs font-bold rounded-full neon-button">
+                    Register
+                </a>
+            </nav>
+            <button id="mobile-menu-btn" class="mobile-menu-btn text-accent-gold" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i>
+                <i data-lucide="x" id="close-icon" class="w-5 h-5 hidden"></i>
+            </button>
+        </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden w-full px-4 pt-2 pb-3 space-y-1 bg-light border-t border-accent-gold/30" aria-label="Mobile navigation">
+        <a href="index.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Home</a>
+        <a href="market-analysis.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Market Analysis</a>
+        <a href="commodities.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Commodities</a>
+        <a href="shares.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Shares</a>
+        <a href="forex.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Forex</a>
+        <a href="contact.html" onclick="toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Contact</a>
+        <a href="register.html" onclick="showMessage('Simulating launch of application...'); toggleMobileMenu()"
+            class="block text-center w-full mt-3 px-4 py-2 text-xs font-bold rounded-full neon-button">
+            Register
+        </a>
+    </div>
+  </header>
+
+  <!-- Hero / Banner Section -->
+  <section class="relative h-60 md:h-80 flex items-center justify-center text-center overflow-hidden">
+    <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+      <source src="./marketpagebg.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="absolute inset-0 bg-black/60 z-10"></div>
+    <div class="relative z-20 px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-white">Market Analysis & Insights</h2>
+      <p class="text-gray-300 mt-2 text-sm md:text-base">
+        Stay ahead with real-time analysis, news, economic calendar, signals & sentiment.
+      </p>
+    </div>
+  </section>
+
+  <main class="container mx-auto px-6 py-16 space-y-20">
+
+    <!-- News & Analysis Section -->
+    <section>
+      <h3 class="section-title text-2xl mb-6">Latest Market News & Analysis</h3>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Repeat this card for each article -->
+        <div class="news-card overflow-hidden">
+          <img src="https://images.moneycontrol.com/static-mcnews/2025-04/20250413055039_gold.png?impolicy=website&width=1280&height=720" alt="News 1" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h4 class="text-lg font-semibold mb-2">Gold Rallies as Dollar Weakens</h4>
+            <p class="text-gray-600 text-sm mb-3">
+              The US Dollar weakness drove gold to multi-week highs. Analysts expect further upside as inflation cues emerge.
+            </p>
+            <a href="https://in.investing.com/news/commodities-news/gold-hits-fresh-record-as-uschina-trade-tensions-flare-silver-scales-new-peak-5041864" class="text-blue-500 hover:underline text-sm">Read More →</a>
+          </div>
+        </div>
+        <div class="news-card overflow-hidden">
+          <img src="https://images.financialexpressdigital.com/2025/10/gold-rally.jpg?w=1024" alt="News 1" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h4 class="text-lg font-semibold mb-2">Gold's great rush to Rs 1,23000: Is the rally nearing its end?</h4>
+            <p class="text-gray-600 text-sm mb-3">
+              The early weakness in the dollar helped gold start its big rally. Late 1970s: Each dip in the dollar sparked another surge in gold.
+            </p>
+            <a href="https://www.financialexpress.com/market/stock-insights/golds-great-rush-to-rs-123000-is-the-rally-nearing-its-endnbsp/4008049/" class="text-blue-500 hover:underline text-sm">Read More →</a>
+          </div>
+        </div>
+        <div class="news-card overflow-hidden">
+          <img src="https://www.sandmark.com/sites/default/files/styles/article_home_hero_large_1040/public/2025-07/Market_down_02.jpg.webp?itok=en13pEIy" alt="News 1" class="w-full h-40 object-cover">
+          <div class="p-4">
+            <h4 class="text-lg font-semibold mb-2">Crypto News & Price Movements</h4>
+            <p class="text-gray-600 text-sm mb-3">
+             Get up-to-date Bitcoin headlines, market insights, and expert analysis daily. Stay informed with reliable Bitcoin news, price updates & analysis. Read News. Explore By Topic.
+            </p>
+            <a href="https://www.sandmark.com/?gad_source=1&gad_campaignid=22999886121&gbraid=0AAAAA_51fQPmF0ZKhoJhZ9b_iEVXJ8Bfp&gclid=Cj0KCQjw6bfHBhDNARIsAIGsqLip7LhadlOQbpg6SMr_XSzl6dSyvDgQwJiT6z6cyfWZX5Vfs2CdxdMaAhueEALw_wcB" class="text-blue-500 hover:underline text-sm">Read More →</a>
+          </div>
+        </div>
+        <!-- More news cards... -->
+      </div>
+      <div class="text-center mt-8">
+        <a href="#" class="text-blue-500 font-semibold hover:underline">View All Analyses</a>
+      </div>
+    </section>
+
+    <!-- Economic Calendar -->
+    <section>
+      <h3 class="section-title text-2xl mb-6">Economic Calendar</h3>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm text-gray-700 bg-white border border-gray-200 rounded-lg">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="px-4 py-2">Date</th>
+              <th class="px-4 py-2">Time</th>
+              <th class="px-4 py-2">Event</th>
+              <th class="px-4 py-2">Forecast</th>
+              <th class="px-4 py-2">Previous</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="px-4 py-2">Oct 18, 2025</td>
+              <td class="px-4 py-2">14:30 GMT</td>
+              <td class="px-4 py-2">US CPI m/m</td>
+              <td class="px-4 py-2">0.3%</td>
+              <td class="px-4 py-2">0.4%</td>
+            </tr>
+            <tr class="bg-gray-50">
+              <td class="px-4 py-2">Oct 19, 2025</td>
+              <td class="px-4 py-2">07:00 GMT</td>
+              <td class="px-4 py-2">RBA Rate Decision</td>
+              <td class="px-4 py-2">5.35%</td>
+              <td class="px-4 py-2">5.50%</td>
+            </tr>
+            <!-- More rows here -->
+          </tbody>
+        </table>
+      </div>
+      <div
