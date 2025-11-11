@@ -5,22 +5,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LIM Brokerage - Trading Intelligence</title>
-    <meta name="description" content="London Investment Markets provides institutional-grade trading services for CFD, Forex, and Commodities traders.">
+    <meta name="description"
+        content="London Investment Markets provides institutional-grade trading services for CFD, Forex, and Commodities traders.">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+
     <style>
         /* === UPDATED COLOR SCHEME === */
         :root {
-            --primary-neon: #007BFF; /* Changed to blue */
+            --primary-neon: #007BFF;
+            /* Changed to blue */
             --secondary-neon: #2f1d40;
             --accent-gold: #c5c4bb;
             --bg-dark: #ffffff;
-            --primary: #007BFF; /* Changed to blue for Font Awesome icon */
-            --logo-color: #181D18; /* New logo color */
+            --primary: #007BFF;
+            /* Changed to blue for Font Awesome icon */
+            --logo-color: #181D18;
+            /* New logo color */
         }
 
         body {
@@ -28,7 +32,8 @@
             background-color: var(--bg-dark);
             color: #0f1729;
             scroll-behavior: smooth;
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
         }
 
         /* === UPDATED HEADER STYLES FOR 100% WIDTH === */
@@ -78,11 +83,13 @@
 
         .nav-link {
             position: relative;
-            padding: 0.4rem 0.8rem; /* Smaller padding */
+            padding: 0.4rem 0.8rem;
+            /* Smaller padding */
             font-weight: 500;
             transition: all 0.3s ease;
             border-radius: 6px;
-            font-size: 0.875rem; /* Smaller font size (14px) */
+            font-size: 0.875rem;
+            /* Smaller font size (14px) */
         }
 
         .nav-link:hover {
@@ -168,97 +175,101 @@
         .text-accent-gold {
             color: var(--accent-gold);
         }
-        
+
         /* FAQ Accordion */
         .faq-item input[type="checkbox"] {
             display: none;
         }
-        
+
         .faq-content {
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease-out;
         }
-        
-        .faq-item input[type="checkbox"]:checked ~ .faq-content {
+
+        .faq-item input[type="checkbox"]:checked~.faq-content {
             max-height: 500px;
         }
-        
-        .faq-item input[type="checkbox"]:checked ~ label i {
+
+        .faq-item input[type="checkbox"]:checked~label i {
             transform: rotate(180deg);
         }
-        
+
         /* View transitions */
         .view {
             transition: opacity 0.3s ease;
         }
-        
+
         /* Mobile menu animation */
         #mobile-menu {
             transition: all 0.3s ease;
         }
-        
+
         /* Improved text visibility */
         .text-dark {
             color: #0f1729;
         }
-        
+
         .text-medium {
             color: #334155;
         }
-        
+
         .text-light {
             color: #64748b;
         }
-        
+
         .bg-light {
             background-color: #f8fafc;
         }
-        
+
         .bg-medium {
             background-color: #e2e8f0;
         }
-        
+
         .border-light {
             border-color: #cbd5e1;
         }
-        
+
         .text-readable {
             line-height: 1.6;
         }
-        
+
         /* Enhanced Hero Section */
         .hero-gradient {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
         }
-        
+
         .hero-text-glow {
-            text-shadow: 0 0 10px rgba(0, 123, 255, 0.3); /* Updated to blue */
+            text-shadow: 0 0 10px rgba(0, 123, 255, 0.3);
+            /* Updated to blue */
         }
-        
+
         .hero-subtitle {
             color: #e2e8f0;
             text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
         }
-        
+
         .form-container {
             background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 123, 255, 0.2); /* Updated to blue */
+            border: 1px solid rgba(0, 123, 255, 0.2);
+            /* Updated to blue */
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
-        
+
         .form-input {
             background: rgba(30, 41, 59, 0.8);
             border: 1px solid rgba(100, 116, 139, 0.3);
             color: #f1f5f9;
         }
-        
+
         .form-input:focus {
-            border-color: #007BFF; /* Updated to blue */
-            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2); /* Updated to blue */
+            border-color: #007BFF;
+            /* Updated to blue */
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+            /* Updated to blue */
         }
-        
+
         .form-input::placeholder {
             color: #94a3b8;
         }
@@ -268,15 +279,15 @@
             .hero-title {
                 font-size: 2.5rem !important;
             }
-            
+
             .hero-subtitle {
                 font-size: 1.1rem !important;
             }
-            
+
             .highlight-text1 {
                 font-size: 16px;
             }
-            
+
             .header-container {
                 padding-left: 1rem;
                 padding-right: 1rem;
@@ -288,7 +299,7 @@
             font-weight: bold;
             color: white !important;
         }
-        
+
         /* Header alignment fixes */
         .header-container {
             display: flex;
@@ -296,36 +307,37 @@
             justify-content: space-between;
             width: 100%;
         }
-        
+
         .logo-container {
             display: flex;
             align-items: center;
             flex-shrink: 0;
         }
-        
+
         .nav-container {
             display: flex;
             align-items: center;
             flex-grow: 1;
             justify-content: flex-end;
         }
-        
+
         .desktop-nav {
             display: flex;
             align-items: center;
-            gap: 1.2rem; /* Slightly reduced gap */
+            gap: 1.2rem;
+            /* Slightly reduced gap */
         }
-        
+
         @media (max-width: 767px) {
             .desktop-nav {
                 display: none;
             }
         }
-        
+
         .mobile-menu-btn {
             display: none;
         }
-        
+
         @media (max-width: 767px) {
             .mobile-menu-btn {
                 display: flex;
@@ -339,38 +351,45 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 12px 0; /* Slightly reduced padding */
+            padding: 12px 0;
+            /* Slightly reduced padding */
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px; /* Slightly reduced gap */
+            gap: 10px;
+            /* Slightly reduced gap */
         }
 
         .logo h1 {
-            font-size: 1.4rem; /* Slightly reduced font size */
+            font-size: 1.4rem;
+            /* Slightly reduced font size */
             font-weight: 700;
-            color: var(--logo-color); /* Updated to #181D18 */
+            color: var(--logo-color);
+            /* Updated to #181D18 */
             margin: 0;
             line-height: 1.2;
         }
 
         .logo h1 span {
-            color: var(--logo-color); /* Updated to #181D18 */
+            color: var(--logo-color);
+            /* Updated to #181D18 */
             font-weight: 600;
         }
 
         .logo i {
-            color: var(--logo-color) !important; /* Updated to #181D18 */
-            font-size: 1.8rem; /* Slightly reduced icon size */
+            color: var(--logo-color) !important;
+            /* Updated to #181D18 */
+            font-size: 1.8rem;
+            /* Slightly reduced icon size */
         }
 
         @media (max-width: 768px) {
             .logo h1 {
                 font-size: 1.1rem;
             }
-            
+
             .logo i {
                 font-size: 1.4rem !important;
             }
@@ -401,7 +420,8 @@
 
         /* Updated mobile menu with smaller text */
         .mobile-menu-link {
-            font-size: 0.9rem; /* Smaller font for mobile menu */
+            font-size: 0.9rem;
+            /* Smaller font for mobile menu */
         }
 
         /* Market Tabs Styles */
@@ -426,7 +446,7 @@
         .market-content:hover .market-icon {
             transform: scale(1.05);
         }
-        
+
         /* === CHATBOT STYLES === */
         .chatbot-container {
             position: fixed;
@@ -435,7 +455,7 @@
             z-index: 1000;
             font-family: 'Inter', sans-serif;
         }
-        
+
         .chatbot-button {
             width: 60px;
             height: 60px;
@@ -451,16 +471,16 @@
             border: none;
             outline: none;
         }
-        
+
         .chatbot-button:hover {
             transform: scale(1.1);
             box-shadow: 0 6px 25px rgba(0, 123, 255, 0.6);
         }
-        
+
         .chatbot-button i {
             font-size: 24px;
         }
-        
+
         .chatbot-window {
             position: absolute;
             bottom: 70px;
@@ -475,7 +495,7 @@
             overflow: hidden;
             border: 1px solid rgba(0, 123, 255, 0.2);
         }
-        
+
         .chatbot-header {
             background: linear-gradient(135deg, var(--primary-neon), #0056b3);
             color: white;
@@ -484,14 +504,14 @@
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .chatbot-title {
             display: flex;
             align-items: center;
             gap: 10px;
             font-weight: 600;
         }
-        
+
         .chatbot-close {
             background: none;
             border: none;
@@ -499,7 +519,7 @@
             cursor: pointer;
             font-size: 18px;
         }
-        
+
         .chatbot-messages {
             flex: 1;
             padding: 15px;
@@ -508,7 +528,7 @@
             flex-direction: column;
             gap: 15px;
         }
-        
+
         .message {
             max-width: 80%;
             padding: 12px 16px;
@@ -516,28 +536,28 @@
             font-size: 14px;
             line-height: 1.4;
         }
-        
+
         .bot-message {
             background: #f1f5f9;
             color: #334155;
             align-self: flex-start;
             border-bottom-left-radius: 4px;
         }
-        
+
         .user-message {
             background: var(--primary-neon);
             color: white;
             align-self: flex-end;
             border-bottom-right-radius: 4px;
         }
-        
+
         .chatbot-input {
             display: flex;
             padding: 15px;
             border-top: 1px solid #e2e8f0;
             background: #f8fafc;
         }
-        
+
         .chatbot-input input {
             flex: 1;
             padding: 12px 15px;
@@ -546,11 +566,11 @@
             outline: none;
             font-size: 14px;
         }
-        
+
         .chatbot-input input:focus {
             border-color: var(--primary-neon);
         }
-        
+
         .chatbot-send {
             background: var(--primary-neon);
             color: white;
@@ -565,11 +585,11 @@
             justify-content: center;
             transition: all 0.2s ease;
         }
-        
+
         .chatbot-send:hover {
             background: #0056b3;
         }
-        
+
         .quick-actions {
             display: flex;
             flex-wrap: wrap;
@@ -578,7 +598,7 @@
             border-top: 1px solid #e2e8f0;
             background: #f8fafc;
         }
-        
+
         .quick-action {
             background: white;
             border: 1px solid #cbd5e1;
@@ -588,12 +608,12 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        
+
         .quick-action:hover {
             background: #f1f5f9;
             border-color: var(--primary-neon);
         }
-        
+
         .typing-indicator {
             display: flex;
             align-items: center;
@@ -605,7 +625,7 @@
             border-bottom-left-radius: 4px;
             max-width: 80px;
         }
-        
+
         .typing-dot {
             width: 8px;
             height: 8px;
@@ -613,28 +633,32 @@
             border-radius: 50%;
             animation: typing 1.4s infinite ease-in-out;
         }
-        
+
         .typing-dot:nth-child(1) {
             animation-delay: 0s;
         }
-        
+
         .typing-dot:nth-child(2) {
             animation-delay: 0.2s;
         }
-        
+
         .typing-dot:nth-child(3) {
             animation-delay: 0.4s;
         }
-        
+
         @keyframes typing {
-            0%, 60%, 100% {
+
+            0%,
+            60%,
+            100% {
                 transform: translateY(0);
             }
+
             30% {
                 transform: translateY(-5px);
             }
         }
-        
+
         @media (max-width: 480px) {
             .chatbot-window {
                 width: 300px;
@@ -673,21 +697,35 @@
                             Open Live Account
                         </a>
                     </nav>
-                    <button id="mobile-menu-btn" class="mobile-menu-btn text-accent-gold" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                    <button id="mobile-menu-btn" class="mobile-menu-btn text-accent-gold" onclick="toggleMobileMenu()"
+                        aria-label="Toggle mobile menu">
                         <i data-lucide="menu" id="menu-icon" class="w-5 h-5"></i>
                         <i data-lucide="x" id="close-icon" class="w-5 h-5 hidden"></i>
                     </button>
                 </div>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden w-full px-4 pt-2 pb-3 space-y-1 bg-light border-t border-accent-gold/30" aria-label="Mobile navigation">
-                <a href="#" onclick="renderView('home'); toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Home</a>
-                <a href="#" onclick="renderView('about'); toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">About</a>
-                <a href="#" onclick="renderView('pricing'); toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Accounts</a>
-                <a href="#" onclick="renderView('market'); toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Market Data</a>
-                <a href="#" onclick="renderView('contact'); toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Contact</a>
-                <a href="#" onclick="renderView('legal'); toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Terms & Privacy</a>
-                <a href="#" onclick="renderView('faq'); toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">FAQ</a>
-                <a href="#" onclick="renderView('docs'); toggleMobileMenu()" class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Docs & Tutorials</a>
+            <div id="mobile-menu"
+                class="hidden md:hidden w-full px-4 pt-2 pb-3 space-y-1 bg-light border-t border-accent-gold/30"
+                aria-label="Mobile navigation">
+                <a href="#" onclick="renderView('home'); toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Home</a>
+                <a href="#" onclick="renderView('about'); toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">About</a>
+                <a href="#" onclick="renderView('pricing'); toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Accounts</a>
+                <a href="#" onclick="renderView('market'); toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Market
+                    Data</a>
+                <a href="#" onclick="renderView('contact'); toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Contact</a>
+                <a href="#" onclick="renderView('legal'); toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Terms
+                    & Privacy</a>
+                <a href="#" onclick="renderView('faq'); toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">FAQ</a>
+                <a href="#" onclick="renderView('docs'); toggleMobileMenu()"
+                    class="block px-3 py-2 rounded-md mobile-menu-link font-medium text-dark hover:bg-medium transition duration-200">Docs
+                    & Tutorials</a>
                 <a href="login.html" onclick="showMessage('Simulating launch of application...'); toggleMobileMenu()"
                     class="block text-center w-full mt-3 px-4 py-2 text-xs font-bold rounded-full neon-button">
                     Login
@@ -704,10 +742,8 @@
                 <!-- Home View -->
                 <section id="home-view" class="view">
                     <!-- Hero Section with Video Background -->
-                    <div
-                        id="hero"
-                        class="relative text-center py-24 sm:py-36 rounded-3xl overflow-hidden shadow-2xl mb-12 hero-with-video"
-                    >
+                    <div id="hero"
+                        class="relative text-center py-24 sm:py-36 rounded-3xl overflow-hidden shadow-2xl mb-12 hero-with-video">
                         <!-- Background Video -->
                         <video autoplay muted loop playsinline
                             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
@@ -720,25 +756,26 @@
 
                         <!-- Background Pattern Layer -->
                         <div class="absolute inset-0 opacity-10 z-3">
-                            <div
-                                class="absolute inset-0"
-                                style="
+                            <div class="absolute inset-0" style="
                                     background-image: radial-gradient(circle at 25% 25%, rgba(0, 123, 255, 0.2) 0%, transparent 50%),
                                                     radial-gradient(circle at 75% 75%, rgba(197, 196, 187, 0.15) 0%, transparent 50%);
-                                "
-                            ></div>
+                                "></div>
                         </div>
 
                         <!-- Main Foreground Content -->
                         <div class="relative z-20 max-w-5xl mx-auto px-4">
-                            <h1 class="hero-title text-5xl sm:text-7xl font-extrabold mb-8 text-white hero-text-glow">
-                                The <span class="text-primary-neon">LIM</span> Brokerage Trading Advantage
-                            </h1>
+                            <img src="./logo.png" alt="London Investment Markets"
+                                class="w-32 h-32 sm:w-40 sm:h-40 mb-0 mx-auto block object-contain">
 
+                            <!-- Heading with No Top Margin -->
+                            <h1
+                                class="hero-title text-5xl sm:text-7xl font-extrabold mb-8 mt-0 text-white hero-text-glow">
+                                <span class="text-primary-neon">LONDON INVESTMENT MARKETS</span>
+                            </h1>
                             <div class="max-w-3xl mx-auto mb-12">
                                 <p class="hero-subtitle text-xl sm:text-2xl font-light mb-6 leading-relaxed">
-                                    <span class="font-semibold text-primary-neon">LIM</span> is the exclusive, institutional-grade
-                                    <span class="font-semibold text-accent-gold">trading platform</span> providing a definitive
+                                    LIM is the exclusive, institutional-grade
+                                    trading platform providing a definitive
                                     edge for CFD, Forex, and Commodities traders.
                                 </p>
 
@@ -746,7 +783,7 @@
                                 <div class="flex flex-wrap justify-center gap-6 mt-8 text-sm text-slate-300">
                                     <div class="flex items-center">
                                         <i data-lucide="shield-check" class="w-4 h-4 mr-2 text-primary-neon"></i>
-                                        <span>Regulated</span>
+                                        <span>Regulated Liquidity Providers</span>
                                     </div>
                                     <div class="flex items-center">
                                         <i data-lucide="zap" class="w-4 h-4 mr-2 text-primary-neon"></i>
@@ -760,23 +797,19 @@
                             </div>
 
                             <!-- Sign-up Form -->
-                            <div class="form-container max-w-2xl mx-auto p-6 rounded-2xl shadow-2xl bg-slate-900/60 backdrop-blur-sm border border-primary-neon/30">
+                            <div
+                                class="form-container max-w-2xl mx-auto p-6 rounded-2xl shadow-2xl bg-slate-900/60 backdrop-blur-sm border border-primary-neon/30">
                                 <h3 class="text-lg font-semibold text-white mb-4 text-center">
                                     Start Your Trading Journey Today
                                 </h3>
-                                <form onsubmit="handleFormSubmit(event, 'sign-up')" class="flex flex-col sm:flex-row gap-4">
+                                <form onsubmit="handleFormSubmit(event, 'sign-up')"
+                                    class="flex flex-col sm:flex-row gap-4">
                                     <div class="flex-grow">
-                                        <input
-                                            type="email"
-                                            placeholder="Enter your professional email..."
-                                            required
-                                            class="form-input w-full p-4 rounded-xl bg-slate-800 border border-slate-700 focus:border-primary-neon focus:ring focus:ring-primary-neon/30 text-white placeholder-slate-500 transition-all duration-200"
-                                        />
+                                        <input type="email" placeholder="Enter your professional email..." required
+                                            class="form-input w-full p-4 rounded-xl bg-slate-800 border border-slate-700 focus:border-primary-neon focus:ring focus:ring-primary-neon/30 text-white placeholder-slate-500 transition-all duration-200" />
                                     </div>
-                                    <button
-                                        type="submit"
-                                        class="neon-button inline-flex items-center justify-center px-8 py-4 rounded-xl font-bold text-lg whitespace-nowrap transition-all duration-300 hover:scale-105"
-                                    >
+                                    <button type="submit"
+                                        class="neon-button inline-flex items-center justify-center px-8 py-4 rounded-xl font-bold text-lg whitespace-nowrap transition-all duration-300 hover:scale-105">
                                         <i data-lucide="rocket" class="w-5 h-5 mr-2"></i> Access LIM Trading Account
                                     </button>
                                 </form>
@@ -787,19 +820,13 @@
 
                             <!-- CTAs -->
                             <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                                <a
-                                    href="#"
-                                    onclick="renderView('market')"
-                                    class="inline-flex items-center px-6 py-3 border border-primary-neon/50 text-white rounded-xl hover:bg-primary-neon/10 transition duration-200 view-live-markets"
-                                >
+                                <a href="#" onclick="renderView('market')"
+                                    class="inline-flex items-center px-6 py-3 border border-primary-neon/50 text-white rounded-xl hover:bg-primary-neon/10 transition duration-200 view-live-markets">
                                     <i data-lucide="trending-up" class="w-4 h-4 mr-2"></i>
                                     <strong>View Live Markets</strong>
                                 </a>
-                                <a
-                                    href="#"
-                                    onclick="renderView('pricing')"
-                                    class="inline-flex items-center px-6 py-3 border border-accent-gold/50 text-accent-gold rounded-xl hover:bg-accent-gold/10 transition duration-200"
-                                >
+                                <a href="#" onclick="renderView('pricing')"
+                                    class="inline-flex items-center px-6 py-3 border border-accent-gold/50 text-accent-gold rounded-xl hover:bg-accent-gold/10 transition duration-200">
                                     <i data-lucide="crown" class="w-4 h-4 mr-2"></i>
                                     Compare Trading Accounts
                                 </a>
@@ -807,59 +834,88 @@
                         </div>
 
                         <!-- Floating Accent Lights -->
-                        <div class="absolute top-10 left-10 w-20 h-20 bg-primary-neon/10 rounded-full blur-xl z-10"></div>
-                        <div class="absolute bottom-10 right-10 w-24 h-24 bg-accent-gold/10 rounded-full blur-xl z-10"></div>
+                        <div class="absolute top-10 left-10 w-20 h-20 bg-primary-neon/10 rounded-full blur-xl z-10">
+                        </div>
+                        <div class="absolute bottom-10 right-10 w-24 h-24 bg-accent-gold/10 rounded-full blur-xl z-10">
+                        </div>
                     </div>
 
                     <!-- Features Section -->
                     <div class="py-12">
                         <div class="text-center mb-12">
-                            <span class="text-sm font-semibold uppercase tracking-widest text-primary-neon bg-primary-neon/10 px-3 py-1 rounded-full mb-4 inline-block">Why Choose LIM</span>
+                            <span
+                                class="text-sm font-semibold uppercase tracking-widest text-primary-neon bg-primary-neon/10 px-3 py-1 rounded-full mb-4 inline-block">Why
+                                Choose LIM</span>
                             <h2 class="text-4xl font-bold text-dark mb-4">Institutional-Grade Trading</h2>
-                            <p class="text-xl text-medium max-w-2xl mx-auto">Access the same trading tools and conditions previously available only to large financial institutions.</p>
+                            <p class="text-xl text-medium max-w-2xl mx-auto">Access the same trading tools and
+                                conditions previously available only to large financial institutions.</p>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                            <div class="p-8 rounded-2xl bg-light border border-light hover:border-primary-neon transition duration-300 shadow-xl text-center">
-                                <div class="inline-block p-4 rounded-full icon-bg mb-6 bg-blue-900/40 border border-primary-neon/50">
+                            <div
+                                class="p-8 rounded-2xl bg-light border border-light hover:border-primary-neon transition duration-300 shadow-xl text-center">
+                                <div
+                                    class="inline-block p-4 rounded-full icon-bg mb-6 bg-blue-900/40 border border-primary-neon/50">
                                     <i data-lucide="shield" class="w-10 h-10 text-primary-neon"></i>
                                 </div>
                                 <h3 class="text-2xl font-semibold mb-3 text-dark">Regulation</h3>
-                                <p class="text-medium text-readable">London Investment Markets Limited is registered in the Marshall Islands, Registered Number: 134064. Senior management is comprised of UK qualified Head of Compliance as well as English qualified lawyers who manage the firm to the highest standards of regulatory compliance.</p>
+                                <p class="text-medium text-readable">London Investment Markets Limited is registered in
+                                    the Marshall Islands, Registered Number: 134064.</p>
+                                <p class="text-medium text-readable">Senior management is comprised of UK qualified Head
+                                    of Compliance as well as English qualified lawyers who manage the firm to the
+                                    highest standards of regulatory compliance.</p>
                             </div>
-                            <div class="p-8 rounded-2xl bg-light border border-light hover:border-secondary-neon transition duration-300 shadow-xl text-center">
-                                <div class="inline-block p-4 rounded-full icon-bg mb-6 bg-purple-900/40 border border-secondary-neon/50">
+                            <div
+                                class="p-8 rounded-2xl bg-light border border-light hover:border-secondary-neon transition duration-300 shadow-xl text-center">
+                                <div
+                                    class="inline-block p-4 rounded-full icon-bg mb-6 bg-purple-900/40 border border-secondary-neon/50">
                                     <i data-lucide="lock" class="w-10 h-10 text-secondary-neon"></i>
                                 </div>
                                 <h3 class="text-2xl font-semibold mb-3 text-dark">Client Money Protection</h3>
-                                <p class="text-medium text-readable">Client money is segregated into a dedicated client money account.</p>
+                                <p class="text-medium text-readable">Client money is segregated into a dedicated client
+                                    money account.</p>
                             </div>
-                            <div class="p-8 rounded-2xl bg-light border border-light hover:border-accent-gold transition duration-300 shadow-xl text-center">
-                                <div class="inline-block p-4 rounded-full icon-bg mb-6 bg-yellow-900/40 border border-accent-gold/50">
+                            <div
+                                class="p-8 rounded-2xl bg-light border border-light hover:border-accent-gold transition duration-300 shadow-xl text-center">
+                                <div
+                                    class="inline-block p-4 rounded-full icon-bg mb-6 bg-yellow-900/40 border border-accent-gold/50">
                                     <i data-lucide="users" class="w-10 h-10 text-accent-gold"></i>
                                 </div>
                                 <h3 class="text-2xl font-semibold mb-3 text-dark">Corporate Governance</h3>
-                                <p class="text-medium text-readable">The firm is managed by a UK qualified Head of Compliance as well as English qualified lawyers. All procedures at LIM are drafted by market leading professionals.</p>
+                                <p class="text-medium text-readable">The firm is managed by a UK qualified Head of
+                                    Compliance as well as English qualified lawyers. All procedures at LIM are drafted
+                                    by market leading professionals.</p>
                             </div>
-                            <div class="p-8 rounded-2xl bg-light border border-light hover:border-primary-neon transition duration-300 shadow-xl text-center">
-                                <div class="inline-block p-4 rounded-full icon-bg mb-6 bg-blue-900/40 border border-primary-neon/50">
+                            <div
+                                class="p-8 rounded-2xl bg-light border border-light hover:border-primary-neon transition duration-300 shadow-xl text-center">
+                                <div
+                                    class="inline-block p-4 rounded-full icon-bg mb-6 bg-blue-900/40 border border-primary-neon/50">
                                     <i data-lucide="bar-chart" class="w-10 h-10 text-primary-neon"></i>
                                 </div>
-                                <h3 class="text-2xl font-semibold mb-3 text-dark">Liquidity from Large Financial Institutions</h3>
-                                <p class="text-medium text-readable">Sophisticated technology allows us to provide wholesale interbank prices, historically available only to large financial institutions and corporations.</p>
+                                <h3 class="text-2xl font-semibold mb-3 text-dark">Liquidity from Large Financial
+                                    Institutions</h3>
+                                <p class="text-medium text-readable">Sophisticated technology allows us to provide
+                                    wholesale interbank prices, historically available only to large financial
+                                    institutions and corporations.</p>
                             </div>
-                            <div class="p-8 rounded-2xl bg-light border border-light hover:border-secondary-neon transition duration-300 shadow-xl text-center">
-                                <div class="inline-block p-4 rounded-full icon-bg mb-6 bg-purple-900/40 border border-secondary-neon/50">
+                            <div
+                                class="p-8 rounded-2xl bg-light border border-light hover:border-secondary-neon transition duration-300 shadow-xl text-center">
+                                <div
+                                    class="inline-block p-4 rounded-full icon-bg mb-6 bg-purple-900/40 border border-secondary-neon/50">
                                     <i data-lucide="cpu" class="w-10 h-10 text-secondary-neon"></i>
                                 </div>
                                 <h3 class="text-2xl font-semibold mb-3 text-dark">No Dealing Desk execution</h3>
-                                <p class="text-medium text-readable">All trades are executed by systems without human interventions.</p>
+                                <p class="text-medium text-readable">All trades are executed by systems without human
+                                    interventions.</p>
                             </div>
-                            <div class="p-8 rounded-2xl bg-light border border-light hover:border-accent-gold transition duration-300 shadow-xl text-center">
-                                <div class="inline-block p-4 rounded-full icon-bg mb-6 bg-yellow-900/40 border border-accent-gold/50">
+                            <div
+                                class="p-8 rounded-2xl bg-light border border-light hover:border-accent-gold transition duration-300 shadow-xl text-center">
+                                <div
+                                    class="inline-block p-4 rounded-full icon-bg mb-6 bg-yellow-900/40 border border-accent-gold/50">
                                     <i data-lucide="shield-half" class="w-10 h-10 text-accent-gold"></i>
                                 </div>
                                 <h3 class="text-2xl font-semibold mb-3 text-dark">Secure</h3>
-                                <p class="text-medium text-readable">Your data is protected by enterprise-grade encryption.</p>
+                                <p class="text-medium text-readable">Your data is protected by enterprise-grade
+                                    encryption.</p>
                             </div>
                         </div>
                     </div>
@@ -867,23 +923,34 @@
                     <!-- Markets Section -->
                     <div class="py-16">
                         <div class="text-center mb-12">
-                            <span class="text-sm font-semibold uppercase tracking-widest text-primary-neon bg-primary-neon/10 px-3 py-1 rounded-full mb-4 inline-block">Trading Instruments</span>
+                            <span
+                                class="text-sm font-semibold uppercase tracking-widest text-primary-neon bg-primary-neon/10 px-3 py-1 rounded-full mb-4 inline-block">Trading
+                                Instruments</span>
                             <h2 class="text-4xl font-bold text-dark mb-4">Markets We Offer</h2>
-                            <p class="text-xl text-medium max-w-2xl mx-auto">Diversify your portfolio with our wide range of trading instruments</p>
+                            <p class="text-xl text-medium max-w-2xl mx-auto">Diversify your portfolio with our wide
+                                range of trading instruments</p>
                         </div>
 
                         <!-- Market Tabs -->
                         <div class="flex flex-wrap justify-center gap-4 mb-12">
-                            <button class="market-tab active px-6 py-3 rounded-xl font-semibold transition-all duration-300 bg-primary-neon text-white shadow-lg" data-market="forex">
+                            <button
+                                class="market-tab active px-6 py-3 rounded-xl font-semibold transition-all duration-300 bg-primary-neon text-white shadow-lg"
+                                data-market="forex">
                                 <i class="fas fa-money-bill-wave mr-2"></i>Forex
                             </button>
-                            <button class="market-tab px-6 py-3 rounded-xl font-semibold transition-all duration-300 bg-light text-dark hover:bg-primary-neon hover:text-white border border-light" data-market="commodities">
+                            <button
+                                class="market-tab px-6 py-3 rounded-xl font-semibold transition-all duration-300 bg-light text-dark hover:bg-primary-neon hover:text-white border border-light"
+                                data-market="commodities">
                                 <i class="fas fa-gas-pump mr-2"></i>Commodities
                             </button>
-                            <button class="market-tab px-6 py-3 rounded-xl font-semibold transition-all duration-300 bg-light text-dark hover:bg-primary-neon hover:text-white border border-light" data-market="shares">
+                            <button
+                                class="market-tab px-6 py-3 rounded-xl font-semibold transition-all duration-300 bg-light text-dark hover:bg-primary-neon hover:text-white border border-light"
+                                data-market="shares">
                                 <i class="fas fa-industry mr-2"></i>Shares
                             </button>
-                            <button class="market-tab px-6 py-3 rounded-xl font-semibold transition-all duration-300 bg-light text-dark hover:bg-primary-neon hover:text-white border border-light" data-market="cryptocurrencies">
+                            <button
+                                class="market-tab px-6 py-3 rounded-xl font-semibold transition-all duration-300 bg-light text-dark hover:bg-primary-neon hover:text-white border border-light"
+                                data-market="cryptocurrencies">
                                 <i class="fas fa-coins mr-2"></i>Cryptocurrencies
                             </button>
                         </div>
@@ -891,7 +958,8 @@
                         <!-- Market Content -->
                         <div class="max-w-6xl mx-auto">
                             <!-- Forex Market Content -->
-                            <div class="market-content active p-8 rounded-2xl bg-light border-2 border-primary-neon shadow-xl" id="forex-content">
+                            <div class="market-content active p-8 rounded-2xl bg-light border-2 border-primary-neon shadow-xl"
+                                id="forex-content">
                                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                                     <div class="flex justify-center">
                                         <div class="market-icon bg-primary-neon/20 p-8 rounded-full">
@@ -901,19 +969,24 @@
                                     <div class="lg:col-span-2">
                                         <h3 class="text-3xl font-bold text-dark mb-4">Forex Trading</h3>
                                         <p class="text-lg text-medium mb-6 text-readable">
-                                            Trade major, minor and exotic currency pairs with tight spreads. Access the world's largest financial market with competitive pricing and fast execution. Our advanced trading tools and real-time market analysis help you make informed decisions in the dynamic forex market.
+                                            Trade major, minor and exotic currency pairs with tight spreads. Access the
+                                            world's largest financial market with competitive pricing and fast
+                                            execution. Our advanced trading tools and real-time market analysis help you
+                                            make informed decisions in the dynamic forex market.
                                         </p>
-                                        <a href="forex.html" onclick="showMessage('Forex section - Learn more coming soon')" 
-                                           class="neon-button inline-flex items-center px-6 py-3 rounded-xl font-bold">
+                                        <a href="forex.html"
+                                            onclick="showMessage('Forex section - Learn more coming soon')"
+                                            class="neon-button inline-flex items-center px-6 py-3 rounded-xl font-bold">
                                             <i class="fas fa-arrow-right mr-2"></i>Learn More About Forex
                                         </a>
                                     </div>
                                 </div>
                             </div>
 
-                            
+
                             <!-- Commodities Market Content -->
-                            <div class="market-content hidden p-8 rounded-2xl bg-light border-2 border-accent-gold shadow-xl" id="commodities-content">
+                            <div class="market-content hidden p-8 rounded-2xl bg-light border-2 border-accent-gold shadow-xl"
+                                id="commodities-content">
                                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                                     <div class="flex justify-center">
                                         <div class="market-icon bg-accent-gold/20 p-8 rounded-full">
@@ -923,10 +996,15 @@
                                     <div class="lg:col-span-2">
                                         <h3 class="text-3xl font-bold text-dark mb-4">Commodities Trading</h3>
                                         <p class="text-lg text-medium mb-6 text-readable">
-                                            Trade gold, silver, oil and other popular commodities. Diversify your portfolio with these essential physical assets. Our advanced trading platforms provide real-time pricing and comprehensive charting tools to help you navigate the commodities markets effectively.
+                                            Trade gold, silver, oil and other popular commodities. Diversify your
+                                            portfolio with these essential physical assets. Our advanced trading
+                                            platforms provide real-time pricing and comprehensive charting tools to help
+                                            you navigate the commodities markets effectively.
                                         </p>
-                                        <a href="commodities.html" onclick="showMessage('Commodities section - Learn more coming soon')" 
-                                           class="neon-button inline-flex items-center px-6 py-3 rounded-xl font-bold" style="background: linear-gradient(135deg, var(--accent-gold), #FFA500);">
+                                        <a href="commodities.html"
+                                            onclick="showMessage('Commodities section - Learn more coming soon')"
+                                            class="neon-button inline-flex items-center px-6 py-3 rounded-xl font-bold"
+                                            style="background: linear-gradient(135deg, var(--accent-gold), #FFA500);">
                                             <i class="fas fa-arrow-right mr-2"></i>Learn More About Commodities
                                         </a>
                                     </div>
@@ -934,7 +1012,8 @@
                             </div>
 
                             <!-- Shares Market Content -->
-                            <div class="market-content hidden p-8 rounded-2xl bg-light border-2 border-primary-neon shadow-xl" id="shares-content">
+                            <div class="market-content hidden p-8 rounded-2xl bg-light border-2 border-primary-neon shadow-xl"
+                                id="shares-content">
                                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                                     <div class="flex justify-center">
                                         <div class="market-icon bg-primary-neon/20 p-8 rounded-full">
@@ -944,10 +1023,14 @@
                                     <div class="lg:col-span-2">
                                         <h3 class="text-3xl font-bold text-dark mb-4">Shares Trading</h3>
                                         <p class="text-lg text-medium mb-6 text-readable">
-                                            CFDs on leading company shares from global markets. Trade on price movements of top companies without owning the underlying asset. Access thousands of shares from major exchanges with competitive pricing and flexible trading conditions.
+                                            CFDs on leading company shares from global markets. Trade on price movements
+                                            of top companies without owning the underlying asset. Access thousands of
+                                            shares from major exchanges with competitive pricing and flexible trading
+                                            conditions.
                                         </p>
-                                        <a href="shares.html" onclick="showMessage('Shares section - Learn more coming soon')" 
-                                           class="neon-button inline-flex items-center px-6 py-3 rounded-xl font-bold">
+                                        <a href="shares.html"
+                                            onclick="showMessage('Shares section - Learn more coming soon')"
+                                            class="neon-button inline-flex items-center px-6 py-3 rounded-xl font-bold">
                                             <i class="fas fa-arrow-right mr-2"></i>Learn More About Shares
                                         </a>
                                     </div>
@@ -955,7 +1038,8 @@
                             </div>
 
                             <!-- Cryptocurrencies Market Content -->
-                            <div class="market-content hidden p-8 rounded-2xl bg-light border-2 border-secondary-neon shadow-xl" id="cryptocurrencies-content">
+                            <div class="market-content hidden p-8 rounded-2xl bg-light border-2 border-secondary-neon shadow-xl"
+                                id="cryptocurrencies-content">
                                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
                                     <div class="flex justify-center">
                                         <div class="market-icon bg-secondary-neon/20 p-8 rounded-full">
@@ -965,10 +1049,14 @@
                                     <div class="lg:col-span-2">
                                         <h3 class="text-3xl font-bold text-dark mb-4">Cryptocurrencies Trading</h3>
                                         <p class="text-lg text-medium mb-6 text-readable">
-                                            Trade popular cryptocurrencies like Bitcoin, Ethereum with leverage. Access the dynamic crypto market with our advanced trading tools. Benefit from 24/7 trading, competitive spreads, and secure trading environment for all your cryptocurrency investments.
+                                            Trade popular cryptocurrencies like Bitcoin, Ethereum with leverage. Access
+                                            the dynamic crypto market with our advanced trading tools. Benefit from 24/7
+                                            trading, competitive spreads, and secure trading environment for all your
+                                            cryptocurrency investments.
                                         </p>
-                                        <a href="market.html" onclick="showMessage('Cryptocurrencies section - Learn more coming soon')" 
-                                           class="neon-button inline-flex items-center px-6 py-3 rounded-xl font-bold bg-secondary-neon">
+                                        <a href="market.html"
+                                            onclick="showMessage('Cryptocurrencies section - Learn more coming soon')"
+                                            class="neon-button inline-flex items-center px-6 py-3 rounded-xl font-bold bg-secondary-neon">
                                             <i class="fas fa-arrow-right mr-2"></i>Learn More About Cryptocurrencies
                                         </a>
                                     </div>
@@ -981,15 +1069,25 @@
                     <div id="teaser" class="py-12">
                         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                             <div>
-                                <span class="text-sm font-semibold uppercase tracking-widest text-secondary-neon bg-secondary-neon/10 px-3 py-1 rounded-full mb-4 inline-block">See It In Action</span>
+                                <span
+                                    class="text-sm font-semibold uppercase tracking-widest text-secondary-neon bg-secondary-neon/10 px-3 py-1 rounded-full mb-4 inline-block">See
+                                    It In Action</span>
                                 <h2 class="text-4xl font-bold text-dark mb-4">The Real-Time Dashboard You Deserve</h2>
                                 <p class="text-xl text-medium mb-6 text-readable">
-                                    Stop using fragmented data sources. Our <strong>Live Dashboard</strong> aggregates, filters, and sorts critical CFD market data in one intuitive interface, all refreshed in real-time.
+                                    Stop using fragmented data sources. Our <strong>Live Dashboard</strong> aggregates,
+                                    filters, and sorts critical CFD market data in one intuitive interface, all
+                                    refreshed in real-time.
                                 </p>
                                 <ul class="space-y-3 mb-8 text-medium text-readable">
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i> Track Forex, Gold, Oil, and more.</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i> View volatility, volume, and spread metrics instantly.</li>
-                                    <li class="flex items-center"><i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"></i> Customizable layouts and advanced charting tools.</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle"
+                                            class="w-5 h-5 mr-3 text-primary-neon"></i> Track Forex, Gold, Oil, and
+                                        more.</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle"
+                                            class="w-5 h-5 mr-3 text-primary-neon"></i> View volatility, volume, and
+                                        spread metrics instantly.</li>
+                                    <li class="flex items-center"><i data-lucide="check-circle"
+                                            class="w-5 h-5 mr-3 text-primary-neon"></i> Customizable layouts and
+                                        advanced charting tools.</li>
                                 </ul>
                                 <a href="#" onclick="renderView('market')"
                                     class="neon-button inline-flex items-center px-8 py-3 rounded-xl font-bold text-lg shadow-xl shadow-secondary-neon/40 hover:shadow-secondary-neon/60 transition duration-300">
@@ -997,14 +1095,16 @@
                                     <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
                                 </a>
                             </div>
-                            <div class="p-4 rounded-3xl bg-light border-4 border-primary-neon/50 shadow-2xl overflow-hidden clickable-section" onclick="renderView('market')">
+                            <div class="p-4 rounded-3xl bg-light border-4 border-primary-neon/50 shadow-2xl overflow-hidden clickable-section"
+                                onclick="renderView('market')">
                                 <div class="h-80 bg-white border border-light rounded-xl p-6 flex flex-col">
                                     <h3 class="text-lg font-semibold text-dark mb-3">Live Market Data Preview</h3>
                                     <div id="market-preview-container" class="flex-grow overflow-y-auto">
                                         <!-- Market preview will be populated by JavaScript -->
                                     </div>
                                     <div class="mt-4 text-center text-sm text-medium">
-                                        <i data-lucide="mouse-pointer" class="w-4 h-4 inline mr-1"></i> Click anywhere to view full market data
+                                        <i data-lucide="mouse-pointer" class="w-4 h-4 inline mr-1"></i> Click anywhere
+                                        to view full market data
                                     </div>
                                 </div>
                             </div>
@@ -1013,9 +1113,12 @@
 
                     <!-- Final CTA Section -->
                     <div class="py-16">
-                        <div class="p-10 md:p-16 rounded-3xl bg-light border-4 border-primary-neon/50 text-center shadow-2xl">
-                            <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-dark">Stop Guessing, Start <span class="text-primary-neon">Executing</span>.</h2>
-                            <p class="text-xl text-medium mb-8">Join the platform that is redefining CFD trading today.</p>
+                        <div
+                            class="p-10 md:p-16 rounded-3xl bg-light border-4 border-primary-neon/50 text-center shadow-2xl">
+                            <h2 class="text-3xl sm:text-4xl font-bold mb-4 text-dark">Stop Guessing, Start <span
+                                    class="text-primary-neon">Executing</span>.</h2>
+                            <p class="text-xl text-medium mb-8">Join the platform that is redefining CFD trading today.
+                            </p>
                             <a href="#" onclick="handleFormSubmit(event, 'sign-up')"
                                 class="neon-button inline-flex items-center px-10 py-4 rounded-xl font-bold text-xl shadow-xl shadow-accent-gold/40 hover:shadow-accent-gold/60 transition duration-300">
                                 <i data-lucide="lock" class="w-6 h-6 mr-2"></i> Create Your Free Account
@@ -1026,423 +1129,528 @@
 
                 <!-- About View -->
                 <section id="about-view" class="view hidden">
-                    <h1 class="text-5xl font-extrabold text-dark mb-6 border-b pb-4 border-light">The Vision Behind <span class="text-secondary-neon">London Investment Markets</span></h1>
+                    <h1 class="text-5xl font-extrabold text-dark mb-6 border-b pb-4 border-light">The Vision Behind
+                        <span class="text-secondary-neon">London Investment Markets</span>
+                    </h1>
                     <div class="space-y-8 text-lg text-medium text-readable">
                         <p>
-                            LIM has offices in the City of London and the Marshall Islands. It is the dedicated brokerage arm for the <strong>LIM Brokerage Group</strong>.
+                            LIM has offices in the City of London and the Marshall Islands. It is the dedicated
+                            brokerage arm for the <strong>LIM Brokerage Group</strong>.
                         </p>
                         <p>
-                            LIM was created by former UK Heads of Compliance and Qualified English lawyers to provide clients with the most attractive trading conditions whilst also offering the highest levels of legal and risk management.
+                            LIM was created by former UK Heads of Compliance and Qualified English lawyers to provide
+                            clients with the most attractive trading conditions whilst also offering the highest levels
+                            of legal and risk management.
                         </p>
                         <p>
-                            We also have a passion to make the information and tuition being used by the major investment banks widely available to all. With that in mind, LIM has teamed up with leading market participants, Liquidity Providers and News Providers in order to provide you with all the knowledge/instruments you will need on your journey to becoming the best trader you can be.
+                            We also have a passion to make the information and tuition being used by the major
+                            investment banks widely available to all. With that in mind, LIM has teamed up with leading
+                            market participants, Liquidity Providers and News Providers in order to provide you with all
+                            the knowledge/instruments you will need on your journey to becoming the best trader you can
+                            be.
                         </p>
                         <p>
-                            We provide premier educational material, chatrooms, and webinars with industry experts to be by your side.
+                            We provide premier educational material, chatrooms, and webinars with industry experts to be
+                            by your side.
                         </p>
                         <p>
-                            We at LIM want to provide best in the market education and support from beginner traders all the way through to professional and eligible counterparties.
+                            We at LIM want to provide best in the market education and support from beginner traders all
+                            the way through to professional and eligible counterparties.
                         </p>
                         <h2 class="text-2xl font-bold text-dark">Core Values</h2>
                         <ul class="list-disc list-inside space-y-2 pl-4">
-                            <li><strong>Brokerage Integrity:</strong> Ensuring fair, fast, and transparent trade execution across Forex, Commodities, and CFDs.</li>
-                            <li><strong>AI Innovation:</strong> Real-time analysis of global macro trends, liquidity flows, and sentiment across 100+ instruments.</li>
+                            <li><strong>Brokerage Integrity:</strong> Ensuring fair, fast, and transparent trade
+                                execution across Forex, Commodities, and CFDs.</li>
+                            <li><strong>AI Innovation:</strong> Real-time analysis of global macro trends, liquidity
+                                flows, and sentiment across 100+ instruments.</li>
                             <li><strong>Security:</strong> Enterprise-grade encryption.</li>
-                            <li><strong>Accessibility:</strong> Complex market intelligence made simple through intuitive dashboards.</li>
+                            <li><strong>Accessibility:</strong> Complex market intelligence made simple through
+                                intuitive dashboards.</li>
                         </ul>
                     </div>
                 </section>
 
-               <!-- Pricing View -->
-<section id="pricing-view" class="view hidden py-16 bg-gradient-to-b from-white via-light to-white">
-  <h1 class="text-5xl font-extrabold text-dark text-center mb-6 border-b pb-4 border-primary-neon">
-    Trading Account Types
-  </h1>
-  <p class="text-xl text-medium text-center max-w-2xl mx-auto mb-12">
-    Choose the right CFD Brokerage account to meet your trading goals.
-  </p>
+                <!-- Pricing View -->
+                <section id="pricing-view" class="view hidden py-16 bg-gradient-to-b from-white via-light to-white">
+                    <h1 class="text-5xl font-extrabold text-dark text-center mb-6 border-b pb-4 border-primary-neon">
+                        Trading Account Types
+                    </h1>
+                    <p class="text-xl text-medium text-center max-w-2xl mx-auto mb-12">
+                        Choose the right CFD Brokerage account to meet your trading goals.
+                    </p>
 
-  <h2 class="text-3xl font-bold text-dark text-center mb-10">
-    Our Trading Account Types
-  </h2>
+                    <h2 class="text-3xl font-bold text-dark text-center mb-10">
+                        Our Trading Account Types
+                    </h2>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    <!-- Micro Account -->
-    <div
-      class="p-8 rounded-2xl shadow-lg border-2 border-light hover:border-primary-neon hover:shadow-2xl transition-all duration-300 bg-light text-center group">
-      <h3 class="text-3xl font-bold mb-3 text-dark">Cent Account</h3>
-      <p class="text-2xl font-semibold text-primary-neon mb-6">Best for Beginners</p>
-      <ul role="list" class="space-y-3 text-left text-medium mb-8 text-readable">
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Recommended Deposit: $100</span>
-  </li>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                        <!-- Micro Account -->
+                        <div
+                            class="p-8 rounded-2xl shadow-lg border-2 border-light hover:border-primary-neon hover:shadow-2xl transition-all duration-300 bg-light text-center group">
+                            <h3 class="text-3xl font-bold mb-3 text-dark">Micro Account</h3>
+                            <p class="text-2xl font-semibold text-primary-neon mb-6">Best for Beginners</p>
+                            <ul role="list" class="space-y-3 text-left text-medium mb-8 text-readable">
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Recommended Deposit: $100</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Spreads from 1.2 pips</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Spreads from 1.2 pips</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Leverage up to 1:2000</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Leverage up to 1:2000</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Trading Instruments: 90+</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Trading Instruments: 90+</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500" aria-hidden="true"></i>
-    <span>Commission: None</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500" aria-hidden="true"></i>
+                                    <span>Commission: None</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="wallet" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Account Currency: USD / EUR / GBP</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="wallet" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Account Currency: USD / EUR / GBP</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="activity" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Minimum Lot Size: 0.1</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="activity" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Minimum Lot Size: 0.1</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="infinity" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Max No Of Positions: <span aria-hidden="true">∞</span><span class="sr-only">Unlimited</span></span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="infinity" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Max No Of Positions: <span aria-hidden="true">∞</span><span
+                                            class="sr-only">Unlimited</span></span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="shield-check" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Margin Call: 100%</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="shield-check" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Margin Call: 100%</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="slash" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Stop Out: 40%<sup>*</sup></span>
-  </li>
-</ul>
-<!-- Optional: visually hidden utility (Tailwind already provides `sr-only` if using default) -->
-<style>
-  /* If you don't already have an sr-only utility */
-  .sr-only { 
-    position: absolute !important;
-    width: 1px; height: 1px;
-    padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0,0,0,0);
-    white-space: nowrap; border: 0;
-  }
-</style>
+                                <li class="flex items-center">
+                                    <i data-lucide="slash" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Stop Out: 40%<sup>*</sup></span>
+                                </li>
+                            </ul>
+                            <!-- Optional: visually hidden utility (Tailwind already provides `sr-only` if using default) -->
+                            <style>
+                                /* If you don't already have an sr-only utility */
+                                .sr-only {
+                                    position: absolute !important;
+                                    width: 1px;
+                                    height: 1px;
+                                    padding: 0;
+                                    margin: -1px;
+                                    overflow: hidden;
+                                    clip: rect(0, 0, 0, 0);
+                                    white-space: nowrap;
+                                    border: 0;
+                                }
+                            </style>
 
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="register.html" onclick="renderView('contact')"
-  class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold w-full sm:w-auto
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <a href="register.html" onclick="renderView('contact')" class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold w-full sm:w-auto
          border-2 border-secondary-neon text-secondary-neon bg-transparent
          hover:bg-secondary-neon hover:text-dark transition duration-300
          shadow-[0_0_10px_rgba(255,100,200,0.5)]">
-  Open Live Account
-</a>
+                                    Open Live Account
+                                </a>
 
-<a href="register.html" onclick="renderView('demo')"
-  class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold w-full sm:w-auto
+                                <a href="register.html" onclick="renderView('demo')" class="inline-flex items-center justify-center px-6 py-2 rounded-xl font-bold text-sm w-full sm:w-auto
          border-2 border-primary-neon text-primary-neon bg-transparent
          hover:bg-primary-neon hover:text-dark transition duration-300
          shadow-[0_0_10px_rgba(0,255,200,0.5)]">
-  Try Demo
-</a>
+                                    Open Demo Account
+                                </a>
 
-      </div>
-    </div>
+                            </div>
+                        </div>
 
-    <!-- Standard Account -->
-    <div
-      class="p-8 rounded-2xl shadow-2xl border-2 border-primary-neon bg-light text-center relative transform hover:scale-105 transition-all duration-300">
-      <div class="absolute top-0 right-0 bg-secondary-neon text-dark font-semibold px-4 py-1 rounded-bl-xl rounded-tr-2xl text-sm">
-        Most Popular
-      </div>
-      <h3 class="text-3xl font-bold mb-3 text-dark">Standard Account</h3>
-      <p class="text-2xl font-semibold text-primary-neon mb-6">Ideal for Active Traders</p>
-      <ul role="list" class="space-y-3 text-left text-medium mb-8 text-readable">
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Recommended Deposit: $100</span>
-  </li>
+                        <!-- Standard Account -->
+                        <div
+                            class="p-8 rounded-2xl shadow-2xl border-2 border-primary-neon bg-light text-center relative transform hover:scale-105 transition-all duration-300">
+                            <div
+                                class="absolute top-0 right-0 bg-secondary-neon text-dark font-semibold px-4 py-1 rounded-bl-xl rounded-tr-2xl text-sm">
+                                Most Popular
+                            </div>
+                            <h3 class="text-3xl font-bold mb-3 text-dark">Standard Account</h3>
+                            <p class="text-2xl font-semibold text-primary-neon mb-6">Ideal for Active Traders</p>
+                            <ul role="list" class="space-y-3 text-left text-medium mb-8 text-readable">
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Recommended Deposit: $100</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Spreads from 1.2 pips</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Spreads from 1.2 pips</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Leverage up to 1:2000</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Leverage up to 1:2000</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Trading Instruments: 90+</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Trading Instruments: 90+</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500" aria-hidden="true"></i>
-    <span>Commission: None</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500" aria-hidden="true"></i>
+                                    <span>Commission: None</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="wallet" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Account Currency: USD / EUR / GBP</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="wallet" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Account Currency: USD / EUR / GBP</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="activity" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Minimum Lot Size: 0.01</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="activity" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Minimum Lot Size: 0.01</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="infinity" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Max No Of Positions: <span aria-hidden="true">∞</span><span class="sr-only">Unlimited</span></span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="infinity" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Max No Of Positions: <span aria-hidden="true">∞</span><span
+                                            class="sr-only">Unlimited</span></span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="shield-check" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Margin Call: 100%</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="shield-check" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Margin Call: 100%</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="slash" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Stop Out: 40%<sup>*</sup></span>
-  </li>
-</ul>
-<!-- Optional: visually hidden utility (Tailwind already provides `sr-only` if using default) -->
-<style>
-  /* If you don't already have an sr-only utility */
-  .sr-only { 
-    position: absolute !important;
-    width: 1px; height: 1px;
-    padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0,0,0,0);
-    white-space: nowrap; border: 0;
-  }
-</style>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-       <a href="register.html" onclick="renderView('contact')"
-  class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold w-full sm:w-auto
+                                <li class="flex items-center">
+                                    <i data-lucide="slash" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Stop Out: 40%<sup>*</sup></span>
+                                </li>
+                            </ul>
+                            <!-- Optional: visually hidden utility (Tailwind already provides `sr-only` if using default) -->
+                            <style>
+                                /* If you don't already have an sr-only utility */
+                                .sr-only {
+                                    position: absolute !important;
+                                    width: 1px;
+                                    height: 1px;
+                                    padding: 0;
+                                    margin: -1px;
+                                    overflow: hidden;
+                                    clip: rect(0, 0, 0, 0);
+                                    white-space: nowrap;
+                                    border: 0;
+                                }
+                            </style>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <a href="register.html" onclick="renderView('contact')" class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold w-full sm:w-auto
          border-2 border-secondary-neon text-secondary-neon bg-transparent
          hover:bg-secondary-neon hover:text-dark transition duration-300
          shadow-[0_0_10px_rgba(255,100,200,0.5)]">
-  Open Live Account
-</a>
+                                    Open Live Account
+                                </a>
 
-<a href="register.html" onclick="renderView('demo')"
-  class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold w-full sm:w-auto
+                                <a href="register.html" onclick="renderView('demo')" class="inline-flex items-center justify-center px-6 py-2 rounded-xl font-bold text-sm w-full sm:w-auto
          border-2 border-primary-neon text-primary-neon bg-transparent
          hover:bg-primary-neon hover:text-dark transition duration-300
          shadow-[0_0_10px_rgba(0,255,200,0.5)]">
-  Try Demo
-</a>
+                                    Open Demo Account
+                                </a>
+                            </div>
+                        </div>
 
-      </div>
-    </div>
+                        <!-- ECN Account -->
+                        <div
+                            class="p-8 rounded-2xl shadow-lg border-2 border-light hover:border-secondary-neon hover:shadow-2xl transition-all duration-300 bg-light text-center">
+                            <h3 class="text-3xl font-bold mb-3 text-dark">ECN Account</h3>
+                            <p class="text-2xl font-semibold text-secondary-neon mb-6">For Professionals</p>
+                            <ul role="list" class="space-y-3 text-left text-medium mb-8 text-readable">
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Recommended Deposit: $500</span>
+                                </li>
 
-    <!-- ECN Account -->
-    <div
-      class="p-8 rounded-2xl shadow-lg border-2 border-light hover:border-secondary-neon hover:shadow-2xl transition-all duration-300 bg-light text-center">
-      <h3 class="text-3xl font-bold mb-3 text-dark">ECN Account</h3>
-      <p class="text-2xl font-semibold text-secondary-neon mb-6">For Professionals</p>
-      <ul role="list" class="space-y-3 text-left text-medium mb-8 text-readable">
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Recommended Deposit: $500</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Spreads from 1.2 pips</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Spreads from 1.2 pips</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Leverage up to 1:2000</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Leverage up to 1:2000</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Trading Instruments: 90+</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="check-circle" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Trading Instruments: 90+</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500" aria-hidden="true"></i>
+                                    <span>Commission: None</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="x-circle" class="w-5 h-5 mr-3 text-red-500" aria-hidden="true"></i>
-    <span>Commission: None</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="wallet" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Account Currency: USD / EUR / GBP</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="wallet" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Account Currency: USD / EUR / GBP</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="activity" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Minimum Lot Size: 0.01</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="activity" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Minimum Lot Size: 0.01</span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="infinity" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Max No Of Positions: <span aria-hidden="true">∞</span><span
+                                            class="sr-only">Unlimited</span></span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="infinity" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Max No Of Positions: <span aria-hidden="true">∞</span><span class="sr-only">Unlimited</span></span>
-  </li>
+                                <li class="flex items-center">
+                                    <i data-lucide="shield-check" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Margin Call: 100%</span>
+                                </li>
 
-  <li class="flex items-center">
-    <i data-lucide="shield-check" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Margin Call: 100%</span>
-  </li>
-
-  <li class="flex items-center">
-    <i data-lucide="slash" class="w-5 h-5 mr-3 text-primary-neon" aria-hidden="true"></i>
-    <span>Stop Out: 40%<sup>*</sup></span>
-  </li>
-</ul>
-<!-- Optional: visually hidden utility (Tailwind already provides `sr-only` if using default) -->
-<style>
-  /* If you don't already have an sr-only utility */
-  .sr-only { 
-    position: absolute !important;
-    width: 1px; height: 1px;
-    padding: 0; margin: -1px;
-    overflow: hidden; clip: rect(0,0,0,0);
-    white-space: nowrap; border: 0;
-  }
-</style>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-       <a href="register.html" onclick="renderView('contact')"
-  class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold w-full sm:w-auto
+                                <li class="flex items-center">
+                                    <i data-lucide="slash" class="w-5 h-5 mr-3 text-primary-neon"
+                                        aria-hidden="true"></i>
+                                    <span>Stop Out: 40%<sup>*</sup></span>
+                                </li>
+                            </ul>
+                            <!-- Optional: visually hidden utility (Tailwind already provides `sr-only` if using default) -->
+                            <style>
+                                /* If you don't already have an sr-only utility */
+                                .sr-only {
+                                    position: absolute !important;
+                                    width: 1px;
+                                    height: 1px;
+                                    padding: 0;
+                                    margin: -1px;
+                                    overflow: hidden;
+                                    clip: rect(0, 0, 0, 0);
+                                    white-space: nowrap;
+                                    border: 0;
+                                }
+                            </style>
+                            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                                <a href="register.html" onclick="renderView('contact')" class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold w-full sm:w-auto
          border-2 border-secondary-neon text-secondary-neon bg-transparent
          hover:bg-secondary-neon hover:text-dark transition duration-300
          shadow-[0_0_10px_rgba(255,100,200,0.5)]">
-  Open Live Account
-</a>
+                                    Open Live Account
+                                </a>
 
-<a href="register.html" onclick="renderView('demo')"
-  class="inline-flex items-center justify-center px-8 py-3 rounded-xl font-bold w-full sm:w-auto
+                                <a href="register.html" onclick="renderView('demo')" class="inline-flex items-center justify-center px-6 py-2 rounded-xl font-bold text-sm w-full sm:w-auto
          border-2 border-primary-neon text-primary-neon bg-transparent
          hover:bg-primary-neon hover:text-dark transition duration-300
          shadow-[0_0_10px_rgba(0,255,200,0.5)]">
-  Try Demo
-</a>
+                                    Open Demo Account
+                                </a>
+                            </div>
+                        </div>
+                    </div>
 
-      </div>
-    </div>
-  </div>
+                    <!-- Complete Account Information -->
+                    <div class="mt-20 p-8 bg-light rounded-2xl border border-primary-neon/40 shadow-xl">
+                        <h3 class="text-2xl font-bold text-dark mb-6 text-center">Complete Account Information</h3>
 
-  <!-- Complete Account Information -->
-  <div class="mt-20 p-8 bg-light rounded-2xl border border-primary-neon/40 shadow-xl">
-    <h3 class="text-2xl font-bold text-dark mb-6 text-center">Complete Account Information</h3>
+                        <div class="overflow-x-auto">
+                            <table
+                                class="min-w-full text-sm border-collapse border border-light shadow-sm rounded-xl overflow-hidden">
+                                <thead class="bg-medium/50">
+                                    <tr>
+                                        <th
+                                            class="px-6 py-3 text-left font-semibold text-dark uppercase tracking-wider">
+                                            Feature</th>
+                                        <th
+                                            class="px-6 py-3 text-center font-semibold text-dark uppercase tracking-wider">
+                                            Cent Account</th>
+                                        <th
+                                            class="px-6 py-3 text-center font-semibold text-dark uppercase tracking-wider">
+                                            Standard Account</th>
+                                        <th
+                                            class="px-6 py-3 text-center font-semibold text-dark uppercase tracking-wider">
+                                            ECN Account</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-light text-center text-medium">
+                                    <tr>
+                                        <td class="px-6 py-4 text-dark font-medium text-left">Recommended Deposit</td>
+                                        <td>$100</td>
+                                        <td>$100</td>
+                                        <td>$500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 text-dark font-medium text-left">Leverage</td>
+                                        <td>Up to 1:2000</td>
+                                        <td>Up to 1:2000</td>
+                                        <td>Up to 1:1000</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 text-dark font-medium text-left">Commission</td>
+                                        <td>—</td>
+                                        <td>—</td>
+                                        <td>✔️</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 text-dark font-medium text-left">Trading Instruments</td>
+                                        <td>Over 90</td>
+                                        <td>Over 90</td>
+                                        <td>Over 90</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 text-dark font-medium text-left">Account Currency</td>
+                                        <td>USC</td>
+                                        <td>USD / EUR / GBP</td>
+                                        <td>USD / EUR / GBP</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 text-dark font-medium text-left">Minimum Lot Size</td>
+                                        <td>0.1</td>
+                                        <td>0.01</td>
+                                        <td>0.01</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 text-dark font-medium text-left">Max Number of Positions
+                                        </td>
+                                        <td>Unlimited</td>
+                                        <td>Unlimited</td>
+                                        <td>Unlimited</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 text-dark font-medium text-left">Margin Call</td>
+                                        <td>100%</td>
+                                        <td>100%</td>
+                                        <td>100%</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 text-dark font-medium text-left">Stop Out</td>
+                                        <td>40%</td>
+                                        <td>40%</td>
+                                        <td>40%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </section>
 
-    <div class="overflow-x-auto">
-      <table class="min-w-full text-sm border-collapse border border-light shadow-sm rounded-xl overflow-hidden">
-        <thead class="bg-medium/50">
-          <tr>
-            <th class="px-6 py-3 text-left font-semibold text-dark uppercase tracking-wider">Feature</th>
-            <th class="px-6 py-3 text-center font-semibold text-dark uppercase tracking-wider">Cent Account</th>
-            <th class="px-6 py-3 text-center font-semibold text-dark uppercase tracking-wider">Standard Account</th>
-            <th class="px-6 py-3 text-center font-semibold text-dark uppercase tracking-wider">ECN Account</th>
-          </tr>
-        </thead>
-        <tbody class="divide-y divide-light text-center text-medium">
-          <tr><td class="px-6 py-4 text-dark font-medium text-left">Recommended Deposit</td><td>$100</td><td>$100</td><td>$500</td></tr>
-          <tr><td class="px-6 py-4 text-dark font-medium text-left">Leverage</td><td>Up to 1:2000</td><td>Up to 1:2000</td><td>Up to 1:1000</td></tr>
-          <tr><td class="px-6 py-4 text-dark font-medium text-left">Commission</td><td>—</td><td>—</td><td>✔️</td></tr>
-          <tr><td class="px-6 py-4 text-dark font-medium text-left">Trading Instruments</td><td>Over 90</td><td>Over 90</td><td>Over 90</td></tr>
-          <tr><td class="px-6 py-4 text-dark font-medium text-left">Account Currency</td><td>USC</td><td>USD / EUR / GBP</td><td>USD / EUR / GBP</td></tr>
-          <tr><td class="px-6 py-4 text-dark font-medium text-left">Minimum Lot Size</td><td>0.1</td><td>0.01</td><td>0.01</td></tr>
-          <tr><td class="px-6 py-4 text-dark font-medium text-left">Max Number of Positions</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
-          <tr><td class="px-6 py-4 text-dark font-medium text-left">Margin Call</td><td>100%</td><td>100%</td><td>100%</td></tr>
-          <tr><td class="px-6 py-4 text-dark font-medium text-left">Stop Out</td><td>40%</td><td>40%</td><td>40%</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-  lucide.createIcons();
-</script>
+                <script src="https://unpkg.com/lucide@latest"></script>
+                <script>
+                    lucide.createIcons();
+                </script>
 
 
                 <!-- Market Data View -->
-<section id="market-view" class="view">
-  <h1 class="text-5xl font-extrabold text-dark text-center mb-4">
-    Real-Time CFD <span class="text-primary-neon">Market Data</span>
-  </h1>
-  <p class="text-xl text-medium text-center max-w-3xl mx-auto mb-10">
-    Track top CFD instruments and analyze their performance with professional-grade charting tools.
-    Click any asset for a detailed view.
-  </p>
+                <section id="market-view" class="view">
+                    <h1 class="text-5xl font-extrabold text-dark text-center mb-4">
+                        Real-Time CFD <span class="text-primary-neon">Market Data</span>
+                    </h1>
+                    <p class="text-xl text-medium text-center max-w-3xl mx-auto mb-10">
+                        Track top CFD instruments and analyze their performance with professional-grade charting tools.
+                        Click any asset for a detailed view.
+                    </p>
 
-  <!-- Live Market Data Section -->
-  <div id="market-list-container"
-    class="bg-light/80 rounded-xl shadow-2xl border border-primary-neon/40 overflow-x-auto p-6">
-    <table class="min-w-full text-left text-dark">
-      <thead>
-        <tr class="border-b border-primary-neon/40 text-lg">
-          <th class="py-3 px-4">#</th>
-          <th class="py-3 px-4">Name</th>
-          <th class="py-3 px-4">Price (USD)</th>
-          <th class="py-3 px-4">24h Change</th>
-          <th class="py-3 px-4">Market Cap</th>
-          <th class="py-3 px-4">Volume (24h)</th>
-        </tr>
-      </thead>
-      <tbody id="market-table-body"></tbody>
-    </table>
-  </div>
+                    <!-- Live Market Data Section -->
+                    <div id="market-list-container"
+                        class="bg-light/80 rounded-xl shadow-2xl border border-primary-neon/40 overflow-x-auto p-6">
+                        <table class="min-w-full text-left text-dark">
+                            <thead>
+                                <tr class="border-b border-primary-neon/40 text-lg">
+                                    <th class="py-3 px-4">#</th>
+                                    <th class="py-3 px-4">Name</th>
+                                    <th class="py-3 px-4">Price (USD)</th>
+                                    <th class="py-3 px-4">24h Change</th>
+                                    <th class="py-3 px-4">Market Cap</th>
+                                    <th class="py-3 px-4">Volume (24h)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="market-table-body"></tbody>
+                        </table>
+                    </div>
 
-  <!-- Economic Calendar -->
-  <div class="mt-12 p-8 bg-light rounded-2xl border border-primary-neon/40 shadow-xl">
-    <h2 class="text-3xl font-bold text-dark mb-6 text-center">Economic Calendar</h2>
-    <div class="bg-white rounded-xl p-6 border border-light">
-      <p class="text-medium text-center mb-4">
-        Economic events and indicators that may impact market movements.
-      </p>
-      <div class="flex justify-center">
-        <!-- TradingView Economic Calendar Widget -->
-        <div class="tradingview-widget-container w-full">
-          <div class="tradingview-widget-container__widget"></div>
-          <script type="text/javascript"
-            src="https://s3.tradingview.com/external-embedding/embed-widget-events.js" async>
-            {
-              "colorTheme": "light",
-              "isTransparent": false,
-              "width": "100%",
-              "height": "600",
-              "locale": "en",
-              "importanceFilter": "-1,0,1"
-            }
-          </script>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+                    <!-- Economic Calendar -->
+                    <div class="mt-12 p-8 bg-light rounded-2xl border border-primary-neon/40 shadow-xl">
+                        <h2 class="text-3xl font-bold text-dark mb-6 text-center">Economic Calendar</h2>
+                        <div class="bg-white rounded-xl p-6 border border-light">
+                            <p class="text-medium text-center mb-4">
+                                Economic events and indicators that may impact market movements.
+                            </p>
+                            <div class="flex justify-center">
+                                <!-- TradingView Economic Calendar Widget -->
+                                <div class="tradingview-widget-container w-full">
+                                    <div class="tradingview-widget-container__widget"></div>
+                                    <script type="text/javascript"
+                                        src="https://s3.tradingview.com/external-embedding/embed-widget-events.js"
+                                        async>
+                                            {
+                                                "colorTheme": "light",
+                                                    "isTransparent": false,
+                                                        "width": "100%",
+                                                            "height": "600",
+                                                                "locale": "en",
+                                                                    "importanceFilter": "-1,0,1"
+                                            }
+                                        </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-<!-- JavaScript for Live Market Data -->
-<script>
-  async function loadMarketData() {
-    const apiURL =
-      "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false";
+                <!-- JavaScript for Live Market Data -->
+                <script>
+                    async function loadMarketData() {
+                        const apiURL =
+                            "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false";
 
-    try {
-      const response = await fetch(apiURL);
-      const data = await response.json();
-      const tableBody = document.getElementById("market-table-body");
-      tableBody.innerHTML = "";
+                        try {
+                            const response = await fetch(apiURL);
+                            const data = await response.json();
+                            const tableBody = document.getElementById("market-table-body");
+                            tableBody.innerHTML = "";
 
-      data.forEach((coin, index) => {
-        const changeColor = coin.price_change_percentage_24h >= 0
-          ? "text-green-500"
-          : "text-red-500";
+                            data.forEach((coin, index) => {
+                                const changeColor = coin.price_change_percentage_24h >= 0
+                                    ? "text-green-500"
+                                    : "text-red-500";
 
-        const row = `
+                                const row = `
           <tr class="border-b border-gray-200 hover:bg-gray-50 transition">
             <td class="py-3 px-4">${index + 1}</td>
             <td class="py-3 px-4 flex items-center space-x-2">
@@ -1455,50 +1663,52 @@
             <td class="py-3 px-4">$${coin.total_volume.toLocaleString()}</td>
           </tr>
         `;
-        tableBody.insertAdjacentHTML("beforeend", row);
-      });
-    } catch (error) {
-      console.error("Error fetching CoinGecko data:", error);
-      document.getElementById("market-table-body").innerHTML =
-        `<tr><td colspan="6" class="text-center py-6 text-red-500">Failed to load market data.</td></tr>`;
-    }
-  }
+                                tableBody.insertAdjacentHTML("beforeend", row);
+                            });
+                        } catch (error) {
+                            console.error("Error fetching CoinGecko data:", error);
+                            document.getElementById("market-table-body").innerHTML =
+                                `<tr><td colspan="6" class="text-center py-6 text-red-500">Failed to load market data.</td></tr>`;
+                        }
+                    }
 
-  // Initial load + auto-refresh every 5 minutes
-  loadMarketData();
-  setInterval(loadMarketData, 300000);
-</script>
+                    // Initial load + auto-refresh every 5 minutes
+                    loadMarketData();
+                    setInterval(loadMarketData, 300000);
+                </script>
 
 
 
                 <!-- Contact View -->
                 <section id="contact-view" class="view hidden">
-                    <h1 class="text-5xl font-extrabold text-dark mb-6 border-b pb-4 border-light">Get In <span class="text-primary-neon">Touch</span></h1>
+                    <h1 class="text-5xl font-extrabold text-dark mb-6 border-b pb-4 border-light">Get In <span
+                            class="text-primary-neon">Touch</span></h1>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                         <div>
                             <p class="text-lg text-medium mb-6 text-readable">
-                                For support, partnership, or technical inquiries, our trading team is ready to assist.
+                                For support, partnership, or technical enquiries, our trading team is ready to assist.
                             </p>
                             <div class="space-y-6">
                                 <div class="flex items-center space-x-4">
                                     <i data-lucide="mail" class="w-6 h-6 text-primary-neon"></i>
                                     <div>
-                                        <p class="font-semibold text-dark">General Inquiries</p>
-                                        <p class="text-medium">info@limarkets.pro</p>
+                                        <p class="font-semibold text-dark">General enquiries</p>
+                                        <p class="text-medium">support@londoninvestmentmarkets.com</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center space-x-4">
                                     <i data-lucide="headphones" class="w-6 h-6 text-secondary-neon"></i>
                                     <div>
                                         <p class="font-semibold text-dark">Support Helpdesk</p>
-                                        <p class="text-medium">support@limarkets.pro</p>
+                                        <p class="text-medium">support@londoninvestmentmarkets.com</p>
                                     </div>
                                 </div>
                                 <div class="flex items-center space-x-4">
                                     <i data-lucide="map-pin" class="w-6 h-6 text-accent-gold"></i>
                                     <div>
                                         <p class="font-semibold text-dark">Corporate Location</p>
-                                        <p class="text-medium">Trust Company Complex, Ajeltake Road, Ajeltake Island, Majuro, Marshall Islands, MH 96960</p>
+                                        <p class="text-medium">Trust Company Complex, Ajeltake Road, Ajeltake Island,
+                                            Majuro, Marshall Islands, MH 96960</p>
                                     </div>
                                 </div>
                             </div>
@@ -1511,12 +1721,14 @@
                                         class="w-full p-3 rounded-lg bg-white border border-light focus:border-primary-neon focus:ring focus:ring-primary-neon/30 text-dark">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="email" class="block text-sm font-medium text-dark mb-2">Email Address</label>
+                                    <label for="email" class="block text-sm font-medium text-dark mb-2">Email
+                                        Address</label>
                                     <input type="email" id="email" required
                                         class="w-full p-3 rounded-lg bg-white border border-light focus:border-primary-neon focus:ring focus:ring-primary-neon/30 text-dark">
                                 </div>
                                 <div class="mb-6">
-                                    <label for="message" class="block text-sm font-medium text-dark mb-2">Your Message</label>
+                                    <label for="message" class="block text-sm font-medium text-dark mb-2">Your
+                                        Message</label>
                                     <textarea id="message" rows="4" required
                                         class="w-full p-3 rounded-lg bg-white border border-light focus:border-primary-neon focus:ring focus:ring-primary-neon/30 text-dark"></textarea>
                                 </div>
@@ -1531,197 +1743,231 @@
 
                 <!-- Legal View -->
                 <section id="legal-view" class="view hidden">
-                    <h1 class="text-5xl font-extrabold text-dark mb-6 border-b pb-4 border-light">Legal: <span class="text-secondary-neon">Terms & Privacy</span></h1>
+                    <h1 class="text-5xl font-extrabold text-dark mb-6 border-b pb-4 border-light">Legal: <span
+                            class="text-secondary-neon">Terms & Privacy</span></h1>
                     <div class="space-y-8 text-lg text-medium p-6 bg-light rounded-xl shadow-xl text-readable">
                         <h2 class="text-3xl font-bold text-accent-black pt-4">Terms of Service</h2>
                         <p class="text-medium">
-                            By accessing the London Investment Markets trading platform, you agree to the Terms of Service of LIM. The firm operates on an execution-only basis and any information we provide is for informational purposes only and does not constitute financial advice. Trading CFDs, forex, and derivatives involves significant risk of loss.
+                            By accessing the London Investment Markets trading platform, you agree to the Terms of
+                            Service of LIM. The firm operates on an execution-only basis and any information we provide
+                            is for informational purposes only and does not constitute financial advice. Trading CFDs,
+                            forex, and derivatives involves significant risk of loss.
                         </p>
-                        
+
                         <h2 class="text-3xl font-bold text-accent-black pt-8">Privacy Policy</h2>
                         <p class="text-medium">
-                            Your privacy is paramount. This policy explains how London Investment Markets collects, uses, and protects your personal data. We only collect data necessary for account management and improving AI model performance. We do not sell your data. All data transmission is secured using industry-standard AES-256 encryption.
+                            Your privacy is paramount. This policy explains how London Investment Markets collects,
+                            uses, and protects your personal data. We only collect data necessary for account management
+                            and improving AI model performance. We do not sell your data. All data transmission is
+                            secured using industry-standard AES-256 encryption.
                         </p>
-                        
+
                     </div>
                 </section>
 
-<!-- Enhanced FAQ View (Fixed) -->
-<section id="faq-view" class="view hidden py-16 bg-gradient-to-b from-white via-light to-white">
-  <h1 class="text-5xl font-extrabold text-dark text-center mb-12">
-    Frequently Asked <span class="text-secondary-neon">Questions</span>
-  </h1>
+                <!-- Enhanced FAQ View (Fixed) -->
+                <section id="faq-view" class="view hidden py-16 bg-gradient-to-b from-white via-light to-white">
+                    <h1 class="text-5xl font-extrabold text-dark text-center mb-12">
+                        Frequently Asked <span class="text-secondary-neon">Questions</span>
+                    </h1>
 
-  <div class="max-w-4xl mx-auto space-y-6">
-    <!-- FAQ Item 1 -->
-    <div class="faq-item bg-white rounded-2xl border border-primary-neon/30 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-      <button
-        class="faq-toggle flex justify-between items-center w-full text-left p-6 text-xl font-semibold text-dark hover:bg-light transition duration-300"
-        aria-expanded="false" aria-controls="faq1-content" id="faq1-btn">
-        <span>What makes your trading platform different?</span>
-        <!-- add transform class for rotation -->
-        <i data-lucide="chevron-down" class="w-6 h-6 text-primary-neon transform transition-transform duration-300"></i>
-      </button>
-      <div id="faq1-content"
-           class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 text-medium text-readable"
-           role="region" aria-labelledby="faq1-btn">
-        <p class="pb-6 pt-2 text-gray-700 leading-relaxed">
-          Our AI models are proprietary, deep learning networks trained on decades of cross-asset data — not just standard price metrics.
-          They use pattern recognition to identify market manipulation and novel correlations across Forex and Commodities.
-          <br><br>
-          Additionally, the firm is managed by former UK Heads of Compliance and English-qualified lawyers who uphold the highest levels of risk management.
-        </p>
-      </div>
-    </div>
+                    <div class="max-w-4xl mx-auto space-y-6">
+                        <!-- FAQ Item 1 -->
+                        <div
+                            class="faq-item bg-white rounded-2xl border border-primary-neon/30 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                            <button
+                                class="faq-toggle flex justify-between items-center w-full text-left p-6 text-xl font-semibold text-dark hover:bg-light transition duration-300"
+                                aria-expanded="false" aria-controls="faq1-content" id="faq1-btn">
+                                <span>What makes your trading platform different?</span>
+                                <!-- add transform class for rotation -->
+                                <i data-lucide="chevron-down"
+                                    class="w-6 h-6 text-primary-neon transform transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq1-content"
+                                class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 text-medium text-readable"
+                                role="region" aria-labelledby="faq1-btn">
+                                <p class="pb-6 pt-2 text-gray-700 leading-relaxed">
+                                    Our AI models are proprietary, deep learning networks trained on decades of
+                                    cross-asset data — not just standard price metrics.
+                                    They use pattern recognition to identify market manipulation and novel correlations
+                                    across Forex and Commodities.
+                                    <br><br>
+                                    Additionally, the firm is managed by former UK Heads of Compliance and
+                                    English-qualified lawyers who uphold the highest levels of risk management.
+                                </p>
+                            </div>
+                        </div>
 
-    <!-- FAQ Item 2 -->
-    <div class="faq-item bg-white rounded-2xl border border-primary-neon/30 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-      <button
-        class="faq-toggle flex justify-between items-center w-full text-left p-6 text-xl font-semibold text-dark hover:bg-light transition duration-300"
-        aria-expanded="false" aria-controls="faq2-content" id="faq2-btn">
-        <span>Is my capital safe when using the platform?</span>
-        <i data-lucide="chevron-down" class="w-6 h-6 text-primary-neon transform transition-transform duration-300"></i>
-      </button>
-      <div id="faq2-content"
-           class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 text-medium text-readable"
-           role="region" aria-labelledby="faq2-btn">
-        <p class="pb-6 pt-2 text-gray-700 leading-relaxed">
-          London Investment Markets operates segregated client accounts — we do not co-mingle client funds with those of the firm.
-          Your capital remains secure, transparent, and protected under international financial standards.
-        </p>
-      </div>
-    </div>
+                        <!-- FAQ Item 2 -->
+                        <div
+                            class="faq-item bg-white rounded-2xl border border-primary-neon/30 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                            <button
+                                class="faq-toggle flex justify-between items-center w-full text-left p-6 text-xl font-semibold text-dark hover:bg-light transition duration-300"
+                                aria-expanded="false" aria-controls="faq2-content" id="faq2-btn">
+                                <span>Is my capital safe when using the platform?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-6 h-6 text-primary-neon transform transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq2-content"
+                                class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 text-medium text-readable"
+                                role="region" aria-labelledby="faq2-btn">
+                                <p class="pb-6 pt-2 text-gray-700 leading-relaxed">
+                                    London Investment Markets operates segregated client accounts — we do not co-mingle
+                                    client funds with those of the firm.
+                                    Your capital remains secure, transparent, and protected under international
+                                    financial standards.
+                                </p>
+                            </div>
+                        </div>
 
-    <!-- FAQ Item 3 -->
-    <div class="faq-item bg-white rounded-2xl border border-primary-neon/30 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
-      <button
-        class="faq-toggle flex justify-between items-center w-full text-left p-6 text-xl font-semibold text-dark hover:bg-light transition duration-300"
-        aria-expanded="false" aria-controls="faq3-content" id="faq3-btn">
-        <span>Where can I find the Terms and Privacy details?</span>
-        <i data-lucide="chevron-down" class="w-6 h-6 text-primary-neon transform transition-transform duration-300"></i>
-      </button>
-      <div id="faq3-content"
-           class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 text-medium text-readable"
-           role="region" aria-labelledby="faq3-btn">
-        <p class="pb-6 pt-2 text-gray-700 leading-relaxed">
-          You can review our <strong>Terms of Service</strong> and <strong>Privacy Policy</strong> in the dedicated “Terms & Privacy” section of our website.
-          We ensure every policy is transparent and compliant with the latest data protection laws.
-        </p>
-      </div>
-    </div>
-  </div>
-</section>
+                        <!-- FAQ Item 3 -->
+                        <div
+                            class="faq-item bg-white rounded-2xl border border-primary-neon/30 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                            <button
+                                class="faq-toggle flex justify-between items-center w-full text-left p-6 text-xl font-semibold text-dark hover:bg-light transition duration-300"
+                                aria-expanded="false" aria-controls="faq3-content" id="faq3-btn">
+                                <span>Where can I find the Terms and Privacy details?</span>
+                                <i data-lucide="chevron-down"
+                                    class="w-6 h-6 text-primary-neon transform transition-transform duration-300"></i>
+                            </button>
+                            <div id="faq3-content"
+                                class="faq-content max-h-0 overflow-hidden transition-all duration-500 ease-in-out px-6 text-medium text-readable"
+                                role="region" aria-labelledby="faq3-btn">
+                                <p class="pb-6 pt-2 text-gray-700 leading-relaxed">
+                                    You can review our <strong>Terms of Service</strong> and <strong>Privacy
+                                        Policy</strong> in the dedicated “Terms & Privacy” section of our website.
+                                    We ensure every policy is transparent and compliant with the latest data protection
+                                    laws.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
-<!-- Lucide + FAQ Script: make sure this runs after the FAQ HTML is in the DOM -->
-<script src="https://unpkg.com/lucide@latest"></script>
-<script>
-  // Initialize icons and attach FAQ behavior after DOM is ready
-  window.addEventListener('DOMContentLoaded', () => {
-    // Create lucide icons
-    if (window.lucide) {
-      lucide.createIcons();
-    }
+                <!-- Lucide + FAQ Script: make sure this runs after the FAQ HTML is in the DOM -->
+                <script src="https://unpkg.com/lucide@latest"></script>
+                <script>
+                    // Initialize icons and attach FAQ behavior after DOM is ready
+                    window.addEventListener('DOMContentLoaded', () => {
+                        // Create lucide icons
+                        if (window.lucide) {
+                            lucide.createIcons();
+                        }
 
-    // Utility: close an FAQ content element
-    function closeContent(button, content) {
-      content.style.maxHeight = null;
-      button.setAttribute('aria-expanded', 'false');
-      const icon = button.querySelector('i');
-      if (icon) icon.classList.remove('rotate-180');
-    }
+                        // Utility: close an FAQ content element
+                        function closeContent(button, content) {
+                            content.style.maxHeight = null;
+                            button.setAttribute('aria-expanded', 'false');
+                            const icon = button.querySelector('i');
+                            if (icon) icon.classList.remove('rotate-180');
+                        }
 
-    // Utility: open an FAQ content element
-    function openContent(button, content) {
-      content.style.maxHeight = content.scrollHeight + 'px';
-      button.setAttribute('aria-expanded', 'true');
-      const icon = button.querySelector('i');
-      if (icon) icon.classList.add('rotate-180');
-    }
+                        // Utility: open an FAQ content element
+                        function openContent(button, content) {
+                            content.style.maxHeight = content.scrollHeight + 'px';
+                            button.setAttribute('aria-expanded', 'true');
+                            const icon = button.querySelector('i');
+                            if (icon) icon.classList.add('rotate-180');
+                        }
 
-    // Attach listeners to all faq-toggle buttons
-    const toggles = Array.from(document.querySelectorAll('.faq-toggle'));
-    toggles.forEach(toggle => {
-      const content = document.getElementById(toggle.getAttribute('aria-controls'));
+                        // Attach listeners to all faq-toggle buttons
+                        const toggles = Array.from(document.querySelectorAll('.faq-toggle'));
+                        toggles.forEach(toggle => {
+                            const content = document.getElementById(toggle.getAttribute('aria-controls'));
 
-      // Ensure content starts collapsed
-      content.style.maxHeight = null;
-      toggle.setAttribute('aria-expanded', 'false');
+                            // Ensure content starts collapsed
+                            content.style.maxHeight = null;
+                            toggle.setAttribute('aria-expanded', 'false');
 
-      toggle.addEventListener('click', () => {
-        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+                            toggle.addEventListener('click', () => {
+                                const isOpen = toggle.getAttribute('aria-expanded') === 'true';
 
-        // Collapse all others
-        toggles.forEach(other => {
-          const otherContent = document.getElementById(other.getAttribute('aria-controls'));
-          if (other !== toggle) {
-            closeContent(other, otherContent);
-          }
-        });
+                                // Collapse all others
+                                toggles.forEach(other => {
+                                    const otherContent = document.getElementById(other.getAttribute('aria-controls'));
+                                    if (other !== toggle) {
+                                        closeContent(other, otherContent);
+                                    }
+                                });
 
-        // Toggle current
-        if (isOpen) {
-          closeContent(toggle, content);
-        } else {
-          openContent(toggle, content);
-        }
-      });
+                                // Toggle current
+                                if (isOpen) {
+                                    closeContent(toggle, content);
+                                } else {
+                                    openContent(toggle, content);
+                                }
+                            });
 
-      // Allow keyboard interaction: Enter / Space to toggle
-      toggle.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          toggle.click();
-        }
-      });
-    });
+                            // Allow keyboard interaction: Enter / Space to toggle
+                            toggle.addEventListener('keydown', (e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    toggle.click();
+                                }
+                            });
+                        });
 
-    // Optional: open the first FAQ by default
-    // const first = toggles[0];
-    // if (first) first.click();
-  });
-</script>
+                        // Optional: open the first FAQ by default
+                        // const first = toggles[0];
+                        // if (first) first.click();
+                    });
+                </script>
 
-<!-- Tailwind utility note:
+                <!-- Tailwind utility note:
  - The `rotate-180` class is a Tailwind class. If you're not using Tailwind compiled CSS with that class,
    you can add a small style fallback:
 -->
-<style>
-  .rotate-180 { transform: rotate(180deg); }
-</style>
+                <style>
+                    .rotate-180 {
+                        transform: rotate(180deg);
+                    }
+                </style>
 
 
 
 
                 <!-- Documentation View -->
                 <section id="docs-view" class="view hidden">
-                    <h1 class="text-5xl font-extrabold text-dark mb-6 border-b pb-4 border-accent-gold">Documentation & <span class="text-accent-black">Tutorials</span></h1>
+                    <h1 class="text-5xl font-extrabold text-dark mb-6 border-b pb-4 border-accent-gold">Documentation &
+                        <span class="text-accent-black">Tutorials</span>
+                    </h1>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div class="bg-light p-6 rounded-xl shadow-lg border border-light hover:border-primary-neon transition duration-300">
+                        <div
+                            class="bg-light p-6 rounded-xl shadow-lg border border-light hover:border-primary-neon transition duration-300">
                             <i data-lucide="graduation-cap" class="w-8 h-8 text-primary-neon mb-3"></i>
                             <h3 class="text-2xl font-semibold text-dark mb-2">Quick Start Guide</h3>
-                            <p class="text-medium text-readable">A step-by-step walkthrough for new users to set up their dashboard and first watchlist.</p>
+                            <p class="text-medium text-readable">A step-by-step walkthrough for new users to set up
+                                their dashboard and first watchlist.</p>
                             <a href="guide.html" onclick="showMessage('Simulating Quick Start PDF download...')"
-                                class="text-sm text-primary-neon mt-4 inline-block font-medium hover:underline">Read Now &rarr;</a>
+                                class="text-sm text-primary-neon mt-4 inline-block font-medium hover:underline">Read Now
+                                &rarr;</a>
                         </div>
-                        <div class="bg-light p-6 rounded-xl shadow-lg border border-light hover:border-secondary-neon transition duration-300">
+                        <div
+                            class="bg-light p-6 rounded-xl shadow-lg border border-light hover:border-secondary-neon transition duration-300">
                             <i data-lucide="code-square" class="w-8 h-8 text-secondary-neon mb-3"></i>
                             <h3 class="text-2xl font-semibold text-dark mb-2">API Documentation</h3>
-                            <p class="text-medium text-readable">Comprehensive reference for endpoints, data formats, and rate limits (Enterprise tier only).</p>
+                            <p class="text-medium text-readable">Comprehensive reference for endpoints, data formats,
+                                and rate limits (Enterprise tier only).</p>
                             <a href="#" onclick="showMessage('Simulating API Reference view...')"
-                                class="text-sm text-secondary-neon mt-4 inline-block font-medium hover:underline">View Details &rarr;</a>
+                                class="text-sm text-secondary-neon mt-4 inline-block font-medium hover:underline">View
+                                Details &rarr;</a>
                         </div>
-                        <div class="bg-light p-6 rounded-xl shadow-lg border border-light hover:border-accent-neon transition duration-300">
+                        <div
+                            class="bg-light p-6 rounded-xl shadow-lg border border-light hover:border-accent-neon transition duration-300">
                             <i data-lucide="youtube" class="w-8 h-8 text-accent-neon mb-3"></i>
                             <h3 class="text-2xl font-semibold text-dark mb-2">Video Library</h3>
-                            <p class="text-medium text-readable">Embedded video tutorials covering advanced charting, model tuning, and risk management.</p>
+                            <p class="text-medium text-readable">Embedded video tutorials covering advanced charting,
+                                model tuning, and risk management.</p>
                             <a href="#" onclick="showMessage('Simulating external video library link...')"
-                                class="text-sm text-accent-neon mt-4 inline-block font-medium hover:underline">Watch & Learn &rarr;</a>
+                                class="text-sm text-accent-neon mt-4 inline-block font-medium hover:underline">Watch &
+                                Learn &rarr;</a>
                         </div>
                     </div>
                     <div class="mt-12 p-8 bg-light/80 rounded-2xl border border-primary-neon/40 shadow-xl">
                         <h3 class="text-2xl font-bold text-dark mb-4">Legal Document Links</h3>
                         <p class="text-lg text-medium text-readable">
-                            Please review our full legal documents before creating an account or subscribing to any tier.
+                            Please review our full legal documents before creating an account or subscribing to any
+                            tier.
                         </p>
                         <div class="flex space-x-4 mt-4">
                             <a href="#" onclick="renderView('legal')"
@@ -1762,218 +2008,226 @@
                     <button class="quick-action" onclick="quickAction('support-contact')">Contact Support</button>
                 </div>
                 <div class="chatbot-input">
-                    <input type="text" id="chatbot-input" placeholder="Type your message here..." onkeypress="handleChatInput(event)">
+                    <input type="text" id="chatbot-input" placeholder="Type your message here..."
+                        onkeypress="handleChatInput(event)">
                     <button class="chatbot-send" onclick="sendMessage()">
                         <i class="fas fa-paper-plane"></i>
                     </button>
                 </div>
             </div>
         </div>
-<style>
-.chatbot-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 9999;
-}
+        <style>
+            .chatbot-container {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                z-index: 9999;
+            }
 
-.chatbot-button {
-  background: #0d1b2a;
-  color: #f1c40f;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 24px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  transition: all 0.3s ease;
-}
+            .chatbot-button {
+                background: #0d1b2a;
+                color: #f1c40f;
+                border: none;
+                border-radius: 50%;
+                width: 60px;
+                height: 60px;
+                font-size: 24px;
+                cursor: pointer;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+                transition: all 0.3s ease;
+            }
 
-.chatbot-button:hover {
-  transform: scale(1.1);
-  background: #142f43;
-}
+            .chatbot-button:hover {
+                transform: scale(1.1);
+                background: #142f43;
+            }
 
-.chatbot-window {
-  display: none;
-  flex-direction: column;
-  width: 350px;
-  height: 480px;
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 5px 25px rgba(0,0,0,0.2);
-  position: absolute;
-  bottom: 80px;
-  right: 0;
-  overflow: hidden;
-  animation: fadeInUp 0.3s ease;
-}
+            .chatbot-window {
+                display: none;
+                flex-direction: column;
+                width: 350px;
+                height: 480px;
+                background: #ffffff;
+                border-radius: 15px;
+                box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+                position: absolute;
+                bottom: 80px;
+                right: 0;
+                overflow: hidden;
+                animation: fadeInUp 0.3s ease;
+            }
 
-@keyframes fadeInUp {
-  from { transform: translateY(20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
+            @keyframes fadeInUp {
+                from {
+                    transform: translateY(20px);
+                    opacity: 0;
+                }
 
-.chatbot-header {
-  background: #0d1b2a;
-  color: white;
-  padding: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+                to {
+                    transform: translateY(0);
+                    opacity: 1;
+                }
+            }
 
-.chatbot-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: bold;
-}
+            .chatbot-header {
+                background: #0d1b2a;
+                color: white;
+                padding: 15px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-.chatbot-close {
-  background: none;
-  color: white;
-  border: none;
-  font-size: 18px;
-  cursor: pointer;
-}
+            .chatbot-title {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-weight: bold;
+            }
 
-.chatbot-messages {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+            .chatbot-close {
+                background: none;
+                color: white;
+                border: none;
+                font-size: 18px;
+                cursor: pointer;
+            }
 
-.message {
-  padding: 10px 14px;
-  border-radius: 15px;
-  max-width: 80%;
-  line-height: 1.4;
-}
+            .chatbot-messages {
+                flex: 1;
+                padding: 15px;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
 
-.bot-message {
-  background: #f1f1f1;
-  align-self: flex-start;
-}
+            .message {
+                padding: 10px 14px;
+                border-radius: 15px;
+                max-width: 80%;
+                line-height: 1.4;
+            }
 
-.user-message {
-  background: #0d1b2a;
-  color: white;
-  align-self: flex-end;
-}
+            .bot-message {
+                background: #f1f1f1;
+                align-self: flex-start;
+            }
 
-.quick-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  padding: 10px;
-  border-top: 1px solid #ddd;
-  background: #fafafa;
-}
+            .user-message {
+                background: #0d1b2a;
+                color: white;
+                align-self: flex-end;
+            }
 
-.quick-action {
-  background: #0d1b2a;
-  color: #f1c40f;
-  border: none;
-  border-radius: 8px;
-  padding: 6px 10px;
-  font-size: 12px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+            .quick-actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 5px;
+                padding: 10px;
+                border-top: 1px solid #ddd;
+                background: #fafafa;
+            }
 
-.quick-action:hover {
-  background: #142f43;
-}
+            .quick-action {
+                background: #0d1b2a;
+                color: #f1c40f;
+                border: none;
+                border-radius: 8px;
+                padding: 6px 10px;
+                font-size: 12px;
+                cursor: pointer;
+                transition: 0.3s;
+            }
 
-.chatbot-input {
-  display: flex;
-  border-top: 1px solid #ddd;
-  padding: 8px;
-}
+            .quick-action:hover {
+                background: #142f43;
+            }
 
-.chatbot-input input {
-  flex: 1;
-  padding: 8px 10px;
-  border: none;
-  outline: none;
-}
+            .chatbot-input {
+                display: flex;
+                border-top: 1px solid #ddd;
+                padding: 8px;
+            }
 
-.chatbot-send {
-  background: #0d1b2a;
-  color: #f1c40f;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 12px;
-  cursor: pointer;
-}
-</style>
-<script>
-function toggleChatbot() {
-  const chatbot = document.getElementById("chatbot-window");
-  chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
-}
+            .chatbot-input input {
+                flex: 1;
+                padding: 8px 10px;
+                border: none;
+                outline: none;
+            }
 
-function sendMessage() {
-  const input = document.getElementById("chatbot-input");
-  const message = input.value.trim();
-  if (message === "") return;
+            .chatbot-send {
+                background: #0d1b2a;
+                color: #f1c40f;
+                border: none;
+                border-radius: 8px;
+                padding: 8px 12px;
+                cursor: pointer;
+            }
+        </style>
+        <script>
+            function toggleChatbot() {
+                const chatbot = document.getElementById("chatbot-window");
+                chatbot.style.display = chatbot.style.display === "flex" ? "none" : "flex";
+            }
 
-  appendMessage(message, "user-message");
-  input.value = "";
+            function sendMessage() {
+                const input = document.getElementById("chatbot-input");
+                const message = input.value.trim();
+                if (message === "") return;
 
-  // Simulate bot response
-  setTimeout(() => {
-    appendMessage(getBotResponse(message), "bot-message");
-  }, 500);
-}
+                appendMessage(message, "user-message");
+                input.value = "";
 
-function appendMessage(text, className) {
-  const messages = document.getElementById("chatbot-messages");
-  const msgDiv = document.createElement("div");
-  msgDiv.className = `message ${className}`;
-  msgDiv.textContent = text;
-  messages.appendChild(msgDiv);
-  messages.scrollTop = messages.scrollHeight;
-}
+                // Simulate bot response
+                setTimeout(() => {
+                    appendMessage(getBotResponse(message), "bot-message");
+                }, 500);
+            }
 
-function handleChatInput(event) {
-  if (event.key === "Enter") sendMessage();
-}
+            function appendMessage(text, className) {
+                const messages = document.getElementById("chatbot-messages");
+                const msgDiv = document.createElement("div");
+                msgDiv.className = `message ${className}`;
+                msgDiv.textContent = text;
+                messages.appendChild(msgDiv);
+                messages.scrollTop = messages.scrollHeight;
+            }
 
-function quickAction(type) {
-  let response = "";
-  switch (type) {
-    case "account-types":
-      response = "We offer Standard, ECN, and VIP trading accounts. Each tailored for your trading needs.";
-      break;
-    case "trading-platforms":
-      response = "We support MT4, MT5, and our web-based LIM Trader platform.";
-      break;
-    case "deposit-methods":
-      response = "You can deposit via bank transfer, credit card, or popular e-wallets.";
-      break;
-    case "support-contact":
-      response = "You can contact our 24/7 support at support@limtrading.com or via live chat.";
-      break;
-  }
-  appendMessage(response, "bot-message");
-}
+            function handleChatInput(event) {
+                if (event.key === "Enter") sendMessage();
+            }
 
-function getBotResponse(input) {
-  input = input.toLowerCase();
-  if (input.includes("hello") || input.includes("hi")) return "Hello there 👋 How can I assist you today?";
-  if (input.includes("account")) return "We offer Standard, ECN, and VIP trading accounts.";
-  if (input.includes("platform")) return "Our trading platforms include MT4, MT5, and LIM Trader.";
-  if (input.includes("deposit")) return "We support multiple deposit methods including e-wallets and cards.";
-  if (input.includes("help")) return "Sure! Please tell me what you’d like help with.";
-  return "I'm here to assist with trading, accounts, and deposits — could you clarify your question?";
-}
-</script>
+            function quickAction(type) {
+                let response = "";
+                switch (type) {
+                    case "account-types":
+                        response = "We offer Standard, ECN, and VIP trading accounts. Each tailored for your trading needs.";
+                        break;
+                    case "trading-platforms":
+                        response = "We support MT4, MT5, and our web-based LIM Trader platform.";
+                        break;
+                    case "deposit-methods":
+                        response = "You can deposit via bank transfer, credit card, or popular e-wallets.";
+                        break;
+                    case "support-contact":
+                        response = "You can contact our 24/7 support at support@limtrading.com or via live chat.";
+                        break;
+                }
+                appendMessage(response, "bot-message");
+            }
+
+            function getBotResponse(input) {
+                input = input.toLowerCase();
+                if (input.includes("hello") || input.includes("hi")) return "Hello there 👋 How can I assist you today?";
+                if (input.includes("account")) return "We offer Standard, ECN, and VIP trading accounts.";
+                if (input.includes("platform")) return "Our trading platforms include MT4, MT5, and LIM Trader.";
+                if (input.includes("deposit")) return "We support multiple deposit methods including e-wallets and cards.";
+                if (input.includes("help")) return "Sure! Please tell me what you’d like help with.";
+                return "I'm here to assist with trading, accounts, and deposits — could you clarify your question?";
+            }
+        </script>
 
         <footer id="footer" class="bg-slate-900 border-t mt-12 full-width-container">
             <div class="w-full py-8 px-4 sm:px-6 lg:px-8">
@@ -1996,20 +2250,24 @@ function getBotResponse(input) {
                         <ul class="space-y-2 text-sm">
                             <li><a href="#" onclick="renderView('contact')"
                                     class="hover:text-accent-gold/80 transition text-slate-300">Contact Us</a></li>
-                            <li><a href="#" onclick="renderView('faq')" class="hover:text-accent-gold/80 transition text-slate-300">FAQ
+                            <li><a href="#" onclick="renderView('faq')"
+                                    class="hover:text-accent-gold/80 transition text-slate-300">FAQ
                                     Center</a></li>
-                            <li class="text-slate-400">Support Email: support@limarkets.pro</li>
+                            <li class="text-slate-400 text-xs break-all">Support Email:
+                                support@londoninvestmentmarkets.com</li>
                         </ul>
                     </div>
                     <div>
                         <h3 class="text-lg font-semibold text-accent-gold mb-4">Legal & Docs</h3>
                         <ul class="space-y-2 text-sm">
                             <li><a href="#" onclick="renderView('legal')"
-                                    class="hover:text-accent-gold/80 transition text-slate-300">Terms of Service</a></li>
+                                    class="hover:text-accent-gold/80 transition text-slate-300">Terms of Service</a>
+                            </li>
                             <li><a href="#" onclick="renderView('legal')"
                                     class="hover:text-accent-gold/80 transition text-slate-300">Privacy Policy</a></li>
                             <li><a href="#" onclick="renderView('docs')"
-                                    class="hover:text-accent-gold/80 transition text-slate-300">Docs & Tutorials</a></li>
+                                    class="hover:text-accent-gold/80 transition text-slate-300">Docs & Tutorials</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="col-span-2 md:col-span-1">
@@ -2025,9 +2283,12 @@ function getBotResponse(input) {
                     </div>
                 </div>
                 <div class="mt-8 pt-6 border-t border-slate-700 text-center text-sm text-slate-500">
-                    London Investment Markets Limited is a company registered in the Marshall Islands with register number 134064 and whose registered office is at Trust Company Complex, Ajeltake Road, Ajeltake Island, Majuro, Marshall Islands, MH 96960.
+                    London Investment Markets Limited is a company registered in the Marshall Islands with register
+                    number 134064 and whose registered office is at Trust Company Complex, Ajeltake Road, Ajeltake
+                    Island, Majuro, Marshall Islands, MH 96960.
                     <br><br>
-                    &copy; <span id="current-year" class="text-accent-gold"></span> London Investment Markets (Part of LIM Brokerage Group). Market data is simulated for demonstration purposes.
+                    &copy; <span id="current-year" class="text-accent-gold"></span> London Investment Markets (Part of
+                    LIM Brokerage Group). Market data is simulated for demonstration purposes.
                 </div>
             </div>
         </footer>
@@ -2058,7 +2319,7 @@ function getBotResponse(input) {
             document.getElementById('current-year').textContent = new Date().getFullYear();
             lucide.createIcons();
             renderMarketPreview();
-            
+
             // Set up global functions
             window.handleFormSubmit = handleFormSubmit;
             window.showMessage = showMessage;
@@ -2066,10 +2327,10 @@ function getBotResponse(input) {
             window.renderView = renderView;
             window.showCryptoDetails = showCryptoDetails;
             window.hideCryptoDetails = hideCryptoDetails;
-            
+
             // Initialize market tabs
             initMarketTabs();
-            
+
             // Show home view by default
             renderView('home');
         };
@@ -2078,11 +2339,11 @@ function getBotResponse(input) {
         function initMarketTabs() {
             const marketTabs = document.querySelectorAll('.market-tab');
             const marketContents = document.querySelectorAll('.market-content');
-            
+
             marketTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
+                tab.addEventListener('click', function () {
                     const market = this.getAttribute('data-market');
-                    
+
                     // Update active tab
                     marketTabs.forEach(t => {
                         t.classList.remove('active', 'bg-primary-neon', 'text-white');
@@ -2090,7 +2351,7 @@ function getBotResponse(input) {
                     });
                     this.classList.add('active', 'bg-primary-neon', 'text-white');
                     this.classList.remove('bg-light', 'text-dark');
-                    
+
                     // Show corresponding content
                     marketContents.forEach(content => content.classList.add('hidden'));
                     document.getElementById(`${market}-content`).classList.remove('hidden');
@@ -2102,7 +2363,7 @@ function getBotResponse(input) {
         const handleFormSubmit = (event, type) => {
             event.preventDefault();
             let message;
-            
+
             if (type === 'sign-up') {
                 message = 'Excellent choice! Simulating account creation and redirection to the dashboard...';
             } else if (type === 'newsletter') {
@@ -2110,10 +2371,10 @@ function getBotResponse(input) {
             } else if (type === 'contact') {
                 message = 'Message received! We will be in touch within 24 hours.';
             }
-            
+
             showMessage(message);
             event.target.reset();
-            
+
             if (type === 'sign-up') {
                 setTimeout(() => {
                     renderView('home');
@@ -2130,7 +2391,7 @@ function getBotResponse(input) {
             text.textContent = message;
             box.classList.remove('opacity-0');
             box.classList.add('opacity-100');
-            
+
             messageTimeout = setTimeout(() => {
                 box.classList.remove('opacity-100');
                 box.classList.add('opacity-0');
@@ -2143,18 +2404,18 @@ function getBotResponse(input) {
             document.querySelectorAll('.view').forEach(view => {
                 view.classList.add('hidden');
             });
-            
+
             // Update active nav link
             document.querySelectorAll('.nav-link').forEach(link => {
                 link.classList.remove('active');
             });
-            
+
             // Show the selected view
             const targetView = document.getElementById(`${viewId}-view`);
             if (targetView) {
                 targetView.classList.remove('hidden');
                 window.scrollTo(0, 0);
-                
+
                 // Special handling for market view
                 if (viewId === 'market') {
                     renderMarketViewList();
@@ -2162,7 +2423,7 @@ function getBotResponse(input) {
                     hideCryptoDetails();
                 }
             }
-            
+
             // Update active nav link
             const activeLink = document.querySelector(`[onclick="renderView('${viewId}')"]`);
             if (activeLink) {
@@ -2175,7 +2436,7 @@ function getBotResponse(input) {
             const menu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
             const closeIcon = document.getElementById('close-icon');
-            
+
             if (menu.classList.contains('hidden')) {
                 menu.classList.remove('hidden');
                 menuIcon.classList.add('hidden');
@@ -2194,7 +2455,7 @@ function getBotResponse(input) {
             const detailContainer = document.getElementById('detail-view-container');
             container.classList.remove('hidden');
             detailContainer.classList.add('hidden');
-            
+
             const tableHtml = `
                 <table class="min-w-full divide-y divide-light">
                     <thead class="bg-medium/50">
@@ -2244,7 +2505,7 @@ function getBotResponse(input) {
         const renderMarketPreview = () => {
             const container = document.getElementById('market-preview-container');
             if (!container) return;
-            
+
             const previewHtml = `
                 <div class="h-full overflow-y-auto">
                     <table class="min-w-full divide-y divide-light">
@@ -2307,31 +2568,31 @@ function getBotResponse(input) {
             const detailContainer = document.getElementById('detail-view-container');
             const data = cfdData.find(c => c.symbol === symbol);
             if (!data) return;
-            
+
             container.classList.add('hidden');
             detailContainer.classList.remove('hidden');
-            
+
             const changeColor = data.change24h > 0 ? 'text-green-600' : 'text-red-600';
             document.getElementById('detail-symbol').textContent = `${data.name} (${data.symbol})`;
-            
+
             const formattedPrice = data.symbol.includes('/') && data.price < 10
                 ? data.price.toFixed(5)
                 : data.price.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
             document.getElementById('detail-price').textContent = formattedPrice;
-            
+
             document.getElementById('detail-change').textContent = `${data.change24h.toFixed(2)}%`;
             document.getElementById('detail-change').className = `text-lg font-bold mt-1 ${changeColor}`;
-            
+
             document.getElementById('detail-market-cap').textContent = data.marketCap;
             document.getElementById('detail-volume').textContent = data.volume24h;
             document.getElementById('detail-supply').textContent = data.supply;
-            
+
             const mockChartData = generateMockChartData(data.price);
-            
+
             if (priceChartInstance) {
                 priceChartInstance.destroy();
             }
-            
+
             const ctx = document.getElementById('priceChart').getContext('2d');
             priceChartInstance = new Chart(ctx, {
                 type: 'line',
@@ -2371,7 +2632,7 @@ function getBotResponse(input) {
                     }
                 }
             });
-            
+
             document.getElementById('detail-description').textContent = data.description;
             document.getElementById('detail-max-supply').textContent = data.maxSupply;
             document.getElementById('detail-circulating-supply').textContent = data.supply;
@@ -2379,7 +2640,7 @@ function getBotResponse(input) {
             document.getElementById('detail-protocol').textContent = data.protocol;
             document.getElementById('detail-website').href = data.website;
             document.getElementById('detail-whitepaper').href = data.whitepaper;
-            
+
             document.getElementById('detail-technology').textContent = "Price movements are influenced by central bank policy, geopolitical events, supply-demand dynamics, and macroeconomic data releases.";
             document.getElementById('detail-use-case').textContent = "CFDs are leveraged products and carry a high level of risk. You may lose more than your initial deposit. Not suitable for all investors.";
         };
@@ -2396,7 +2657,7 @@ function getBotResponse(input) {
         };
 
         // ========== CHATBOT FUNCTIONALITY ==========
-        
+
         // Toggle chatbot visibility
         function toggleChatbot() {
             const chatbotWindow = document.getElementById('chatbot-window');
@@ -2410,12 +2671,12 @@ function getBotResponse(input) {
                 }, 100);
             }
         }
-        
+
         // Handle quick action buttons
         function quickAction(action) {
             let message = '';
-            
-            switch(action) {
+
+            switch (action) {
                 case 'account-types':
                     message = 'What are the different account types available?';
                     break;
@@ -2431,36 +2692,36 @@ function getBotResponse(input) {
                 default:
                     message = action;
             }
-            
+
             // Set the input value and send the message
             const input = document.getElementById('chatbot-input');
             input.value = message;
             sendMessage();
         }
-        
+
         // Handle Enter key in chat input
         function handleChatInput(event) {
             if (event.key === 'Enter') {
                 sendMessage();
             }
         }
-        
+
         // Send message function
         function sendMessage() {
             const input = document.getElementById('chatbot-input');
             const message = input.value.trim();
-            
+
             if (message === '') return;
-            
+
             // Add user message to chat
             addMessage(message, 'user');
-            
+
             // Clear input
             input.value = '';
-            
+
             // Show typing indicator
             showTypingIndicator();
-            
+
             // Simulate bot response after a delay
             setTimeout(() => {
                 removeTypingIndicator();
@@ -2468,7 +2729,7 @@ function getBotResponse(input) {
                 addMessage(response, 'bot');
             }, 1000 + Math.random() * 1000);
         }
-        
+
         // Add message to chat
         function addMessage(text, sender) {
             const messagesContainer = document.getElementById('chatbot-messages');
@@ -2476,11 +2737,11 @@ function getBotResponse(input) {
             messageElement.className = `message ${sender}-message`;
             messageElement.textContent = text;
             messagesContainer.appendChild(messageElement);
-            
+
             // Scroll to bottom
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
-        
+
         // Show typing indicator
         function showTypingIndicator() {
             const messagesContainer = document.getElementById('chatbot-messages');
@@ -2495,7 +2756,7 @@ function getBotResponse(input) {
             messagesContainer.appendChild(typingElement);
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         }
-        
+
         // Remove typing indicator
         function removeTypingIndicator() {
             const typingElement = document.getElementById('typing-indicator');
@@ -2503,60 +2764,61 @@ function getBotResponse(input) {
                 typingElement.remove();
             }
         }
-        
+
         // Generate bot response based on user message
         function generateBotResponse(message) {
             const lowerMessage = message.toLowerCase();
-            
+
             // Account related queries
             if (lowerMessage.includes('account') || lowerMessage.includes('open account')) {
                 return "We offer three main account types: Micro Account (best for beginners), Standard Account (ideal for active traders), and ECN Account (for professionals). You can compare all features on our Accounts page or I can help answer specific questions about any account type.";
             }
-            
+
             // Trading platforms
             if (lowerMessage.includes('platform') || lowerMessage.includes('trading platform') || lowerMessage.includes('software')) {
                 return "LIM provides access to MetaTrader 4, MetaTrader 5, and our proprietary web-based platform. All platforms offer advanced charting tools, real-time market data, and one-click trading. Would you like to know more about a specific platform?";
             }
-            
+
             // Deposit methods
             if (lowerMessage.includes('deposit') || lowerMessage.includes('fund') || lowerMessage.includes('payment')) {
                 return "We accept various deposit methods including bank wire transfer, credit/debit cards (Visa, MasterCard), and popular e-wallets like Skrill and Neteller. Deposits are typically processed within 1-2 business days for bank transfers and instantly for cards/e-wallets.";
             }
-            
+
             // Support contact
             if (lowerMessage.includes('support') || lowerMessage.includes('contact') || lowerMessage.includes('help')) {
-                return "You can contact our support team via email at support@limarkets.pro or through the contact form on our website. Our support is available 24/5 to assist with any trading-related inquiries.";
+                return "You can contact our support team via email at support@londoninvestmentmarkets.com or through the contact form on our website. Our support is available 24/5 to assist with any trading-related enquiries.";
             }
-            
+
             // Regulation and safety
             if (lowerMessage.includes('regulation') || lowerMessage.includes('safe') || lowerMessage.includes('secure')) {
                 return "London Investment Markets Limited is registered in the Marshall Islands (Registration Number: 134064). We adhere to strict regulatory standards, maintain segregated client accounts, and implement enterprise-grade security measures to protect your funds and data.";
             }
-            
+
             // Market data
             if (lowerMessage.includes('market') || lowerMessage.includes('instrument') || lowerMessage.includes('trade')) {
                 return "We offer trading on Forex pairs, Commodities (gold, oil), Indices (US30, NAS100), and Cryptocurrencies. You can view real-time market data on our Market Data page. Is there a specific instrument you're interested in?";
             }
-            
+
             // Leverage
             if (lowerMessage.includes('leverage') || lowerMessage.includes('margin')) {
                 return "We offer leverage up to 1:2000 on certain instruments, depending on your account type and the instrument being traded. Leverage allows you to control larger positions with a smaller capital outlay, but it also increases risk. Would you like more details about our margin requirements?";
             }
-            
+
             // Demo account
             if (lowerMessage.includes('demo') || lowerMessage.includes('practice') || lowerMessage.includes('trial')) {
                 return "Yes, we offer a free demo account with virtual funds so you can practice trading risk-free. You can open a demo account directly from our website to test our platforms and trading conditions.";
             }
-            
+
             // Default response for unrecognized queries
             const defaultResponses = [
                 "I'm here to help with any questions about our trading services, account types, or platform features. What would you like to know?",
                 "I'm not sure I understand. Could you rephrase your question? I can help with account information, trading platforms, deposits, or general support.",
                 "That's an interesting question. For detailed information, I'd recommend checking our FAQ section or contacting our support team directly at support@limarkets.pro."
             ];
-            
+
             return defaultResponses[Math.floor(Math.random() * defaultResponses.length)];
         }
     </script>
 </body>
+
 </html>
