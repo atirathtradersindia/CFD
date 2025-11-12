@@ -7,13 +7,13 @@
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
+
   <!-- Chart.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  
+
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -24,7 +24,7 @@
       color: #f3f4f6;
       overflow-x: hidden;
     }
-    
+
     :root {
       --primary: #1a3a8f;
       --secondary: #00a3e0;
@@ -32,14 +32,16 @@
       --dark: #121a36;
       --light: #f5f7fa;
       --gray: #6c757d;
+      --gold: #FFD700;
     }
-    
+
+    /* ===== COMMON STYLES ===== */
     .section-title {
       position: relative;
       display: inline-block;
       font-weight: 600;
       color: #ffffff;
-    } 
+    }
     .section-title::after {
       content: "";
       position: absolute;
@@ -186,8 +188,8 @@
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
-    
-    /* Header Styles - MODIFIED */
+
+    /* ===== HEADER – SINGLE LINE ON ALL SCREENS UNTIL 992px ===== */
     header {
       background-color: white;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -197,94 +199,49 @@
       width: 100%;
     }
 
-    .header-top {
+    .header-container {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      padding: 15px 0;
-      gap: 10px;
+      justify-content: space-between;
+      padding: 10px 20px;
+      max-width: 100%;
+      margin: 0 auto;
+      flex-wrap: nowrap;
+      gap: 12px;
     }
 
     .logo {
       display: flex;
       align-items: center;
+      gap: 8px;
       flex-shrink: 0;
+      white-space: nowrap;
     }
 
     .logo h1 {
-      font-size: clamp(20px, 5vw, 24px);
-      color: var(--primary);
-      margin-left: 10px;
-      white-space: nowrap;
+      font-size: clamp(18px, 4vw, 24px);
+      color: #000;
+      margin: 0;
+      font-weight: 700;
     }
 
     .logo span {
-      color: var(--secondary);
+      color: #000;
     }
 
-    .contact-info {
-      display: flex;
-      gap: 15px;
-      font-size: clamp(12px, 3vw, 14px);
-      flex-wrap: wrap;
-      justify-content: center;
-      flex: 1;
-      margin: 0 20px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      white-space: nowrap;
-    }
-
-    .auth-buttons {
-      display: flex;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-
-    .btn {
-      padding: 8px 16px;
-      border-radius: 4px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: clamp(12px, 3vw, 14px);
-      white-space: nowrap;
-    }
-
-    .btn-login {
-      background: transparent;
-      border: 1px solid var(--primary);
-      color: var(--primary);
-    }
-
-    .btn-register {
-      background: var(--primary);
-      border: 1px solid var(--primary);
-      color: white;
-    }
-
-    .btn-login:hover {
-      background: rgba(26, 58, 143, 0.1);
-    }
-
-    .btn-register:hover {
-      background: #152b6e;
-    }
-
-    nav {
-      background-color: var(--primary);
-      width: 100%;
+    .logo i {
+      color: #000;
     }
 
     .nav-links {
       display: flex;
       list-style: none;
-      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+      gap: 4px;
+      flex: 1;
       justify-content: center;
+      overflow: hidden;
     }
 
     .nav-links li {
@@ -292,83 +249,138 @@
     }
 
     .nav-links a {
-      color: white;
+      color: #000;
       text-decoration: none;
-      padding: 12px 15px;
-      display: block;
-      transition: background 0.3s;
-      font-size: clamp(12px, 3vw, 14px);
+      padding: 8px 12px;
+      font-size: clamp(12px, 2.2vw, 14px);
+      font-weight: 500;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
-      background-color: rgba(255, 255, 255, 0.1);
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links a.font-semibold {
+      font-weight: 600;
     }
 
     .dropdown {
       position: absolute;
+      top: 100%;
+      left: 0;
       background: white;
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
       min-width: 180px;
+      border-radius: 6px;
+      overflow: hidden;
       display: none;
-      z-index: 10;
+      z-index: 20;
     }
 
     .dropdown a {
-      color: var(--dark);
-      padding: 10px 15px;
+      display: block;
+      padding: 10px 14px;
+      color: #000;
+      font-size: 13px;
+    }
+
+    .dropdown a:hover {
+      background-color: #f1f5f9;
     }
 
     .nav-links li:hover .dropdown {
       display: block;
     }
 
+    .auth-buttons {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+      white-space: nowrap;
+      
+    }
+
+    .btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: clamp(11px, 2.5vw, 13px);
+      width: 100%;
+    }
+
+    .btn-login {
+      background: transparent;
+      border: 1px solid #000;
+      color: #000;
+    }
+
+    .btn-register {
+      background: var(--gold);
+      border: 1px solid var(--gold);
+      color: #000;
+    }
+
+    .btn-login:hover {
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-register:hover {
+      background: #E6C200;
+    }
+
     .mobile-menu {
       display: none;
       font-size: 24px;
       cursor: pointer;
+      color: #000;
     }
 
-    /* Responsive Design - Header Only */
-    @media (max-width: 1024px) {
-      .header-top {
-        flex-wrap: wrap;
+    .neon-button {
+      transition: all 0.3s ease;
+      box-shadow: 0 0 8px var(--gold);
+      background: linear-gradient(135deg, var(--gold), #FFA500);
+      color: #000 !important;
+      font-weight: bold;
+    }
+
+    .neon-button:hover {
+      box-shadow: 0 0 20px var(--gold), 0 0 40px rgba(255, 215, 0, 0.7);
+      transform: translateY(-2px);
+    }
+
+    /* ===== RESPONSIVE BREAKPOINTS ===== */
+    @media (max-width: 1200px) {
+      .nav-links a {
+        padding: 7px 10px;
+        font-size: 13px;
       }
-      .contact-info {
-        order: 3;
-        width: 100%;
-        margin: 10px 0 0;
-        justify-content: center;
-      }
-      .auth-buttons {
-        margin-left: auto;
+      .btn {
+        padding: 5px 10px;
+        font-size: 12px;
       }
     }
 
-    @media (max-width: 768px) {
-      .header-top {
-        flex-direction: row;
-        align-items: center;
-        padding: 10px 0;
+    @media (max-width: 992px) {
+      .header-container {
+        padding: 10px 16px;
       }
-      .logo {
-        flex: 1;
-      }
-      .contact-info {
-        display: none;
-      }
-      .auth-buttons {
-        margin-left: auto;
-      }
-      
+
       .nav-links {
-        display: none;
-        flex-direction: column;
         position: absolute;
         top: 100%;
         left: 0;
         right: 0;
-        background: var(--primary);
-        width: 100%;
+        background: white;
+        flex-direction: column;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        display: none;
+        max-height: 70vh;
+        overflow-y: auto;
       }
 
       .nav-links.active {
@@ -380,107 +392,144 @@
       }
 
       .nav-links a {
-        padding: 15px;
-        text-align: center;
+        padding: 12px 20px;
+        border-bottom: 1px solid #e5e7eb;
+        text-align: left;
+        font-size: 14px;
+      }
+
+      .nav-links li.lg\:hidden {
+        background-color: #f8fafc;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .nav-links li.lg\:hidden:first-of-type {
+        border-top: none;
+      }
+
+      .nav-links li.lg\:hidden button {
+        border-bottom: none !important;
+        padding: 12px 16px !important;
+        text-align: center !important;
+        margin: 0 8px;
+        border-radius: 8px;
+        font-size: 14px;
       }
 
       .dropdown {
         position: static;
         box-shadow: none;
-        background: rgba(255, 255, 255, 0.1);
-        width: 100%;
+        background: #f8fafc;
+      }
+
+      .dropdown a {
+        padding-left: 40px;
       }
 
       .mobile-menu {
         display: block;
-        position: absolute;
-        right: 15px;
-        top: 15px;
       }
+
+      .auth-buttons {
+        display: none;
+      }
+      
     }
 
-    @media (max-width: 480px) {
-      .logo h1 {
-        font-size: clamp(18px, 4.5vw, 20px);
+    @media (max-width: 576px) {
+      .header-container {
+        padding: 8px 12px;
       }
+
+      .logo h1 {
+        font-size: 17px;
+      }
+
       .btn {
-        padding: 6px 12px;
-        font-size: clamp(11px, 3vw, 12px);
+        padding: 5px 8px;
+        font-size: 11px;
+      }
+
+      .nav-links a {
+        font-size: 13px;
+        padding: 10px 15px;
+      }
+
+      .nav-links li.lg\:hidden button {
+        padding: 6px 8px !important;
+        margin: 0 4px;
+        font-size: 10px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header - REDESIGNED -->
+  <!-- ==================== HEADER ==================== -->
   <header>
-    <div class="container mx-auto px-6">
-      <div class="header-top">
-        <div class="logo">
-          <i class="fas fa-landmark fa-2x" style="color: var(--primary);"></i>
-          <h1>London <span>Investment</span> Markets <span> Ltd.,</span></h1>
-        </div>
-        <div class="contact-info">
-          <div class="contact-item">
-            <i class="fas fa-phone"></i>
-            <span>+44 20 7123 4567</span>
+    <div class="header-container">
+      <!-- LOGO -->
+      <div class="logo">
+        <i class="fas fa-landmark fa-2x" style="color: #000;"></i>
+        <h1>London <span>Investment</span> Markets <span>Ltd.,</span></h1>
+      </div>
+
+      <!-- NAVIGATION -->
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li>
+          <a href="overview.html">Overview</a>
+          <div class="dropdown">
+            <a href="overview.html">Company Overview</a>
+            <a href="team.html">Our Team</a>
+            <a href="global.html">Global Presence</a>
           </div>
-          <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>   
-            <span>123 Finance St, London, UK</span>
+        </li>
+        <li><a href="forex.html">Forex</a></li>
+        <li><a href="crypto.html" class="font-semibold">Crypto</a></li>
+        <li>
+          <a href="platforms.html">Platforms</a>
+          <div class="dropdown">
+            <a href="webtrader.html">Web Trader</a>
+            <a href="mobile.html">Mobile App</a>
           </div>
-          <div class="contact-item">
-            <i class="fas fa-envelope"></i>
-            <span>support@limarketsltd.com</span>
+        </li>
+        <li>
+          <a href="education.html">Education</a>
+          <div class="dropdown">
+            <a href="courses.html">Trading Courses</a>
+            <a href="webinar.html">Webinars</a>
+            <a href="market.html">Market Analysis</a>
           </div>
-        </div>
-        <div class="auth-buttons">
-          <a href="login.html"><button class="btn btn-login">Login</button></a>
-          <a href="register.html"><button class="btn btn-register">Open Account</button></a>
-        </div>
+        </li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="lg:hidden">
+          <a href="login.html" class="block w-full text-center"><button class="btn btn-login">Login</button></a>
+        </li>
+        <li class="lg:hidden">
+          <a href="register.html" class="block w-full text-center"><button class="btn btn-register neon-button font-bold rounded-full">Open Account</button></a>
+        </li>
+      </ul>
+
+      <!-- MOBILE MENU -->
+      <div class="mobile-menu">
+        <i class="fas fa-bars"></i>
+      </div>
+
+      <!-- AUTH BUTTONS -->
+      <div class="auth-buttons">
+        <a href="login.html"><button class="btn btn-login">Login</button></a>
+        <a href="register.html"><button class="btn btn-register font-bold rounded-full neon-button">Open Account</button></a>
       </div>
     </div>
-    <nav>
-      <div class="container mx-auto px-6">
-        <div class="mobile-menu">
-          <i class="fas fa-bars"></i>
-        </div>
-        <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="overview.html">Overview</a>
-            <div class="dropdown">
-              <a href="overview.html">Company Overview</a>
-              <a href="team.html">Our Team</a>
-              <a href="global.html">Global Presence</a>
-            </div>
-          </li>
-          <li><a href="forex.html">Forex</a></li>
-          <li><a href="crypto.html" class="font-semibold">Crypto</a></li>
-          <li><a href="platforms.html">Platforms</a>
-            <div class="dropdown">
-              <a href="webtrader.html">Web Trader</a>
-              <a href="mobile.html">Mobile App</a>
-            </div>
-          </li>
-          <li><a href="education.html">Education</a>
-            <div class="dropdown">
-              <a href="courses.html">Trading Courses</a>
-              <a href="webinar.html">Webinars</a>
-              <a href="market.html">Market Analysis</a>
-            </div>
-          </li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-    </nav>
   </header>
 
-  <!-- Live Crypto Ticker -->
+  <!-- ==================== TICKER ==================== -->
   <div class="ticker" id="cryptoTicker">
     <div class="ticker-content" id="tickerContent">Loading live crypto prices...</div>
   </div>
 
-  <!-- Hero Section with Video -->
+  <!-- ==================== HERO ==================== -->
   <section class="relative h-[500px] md:h-[700px] flex items-center justify-center text-center overflow-hidden">
     <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover z-0">
       <source src="./cryptopagebg.mp4" type="video/mp4" />
@@ -498,7 +547,7 @@
     </div>
   </section>
 
-  <!-- Live Market Data -->
+  <!-- ==================== MAIN CONTENT ==================== -->
   <main class="container mx-auto px-6 py-16">
     <section>
       <h3 class="section-title text-2xl mb-8">Live Cryptocurrency Market Data</h3>
@@ -522,42 +571,49 @@
       </div>
     </section>
 
-    <!-- Top Cryptocurrencies Grid -->
     <section class="mt-16">
       <h3 class="section-title text-2xl mb-8">Top Cryptocurrencies</h3>
       <div id="cryptoGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Crypto cards will be populated here -->
+        <!-- Cards populated by JS -->
       </div>
     </section>
   </main>
 
-  <!-- Crypto Detail Modal -->
+  <!-- ==================== MODAL ==================== -->
   <div id="cryptoModal" class="modal">
     <div class="modal-content">
       <span class="close-modal">&times;</span>
       <div id="modalContent">
-        <!-- Modal content will be populated here -->
+        <!-- Content injected via JS -->
       </div>
     </div>
   </div>
 
-  <!-- Footer -->
+  <!-- ==================== FOOTER ==================== -->
   <footer class="bg-black border-t border-gray-800 py-6 text-center text-gray-400 text-sm">
     <p>© 2025 London Investment Markets Limited. All Rights Reserved.</p>
   </footer>
 
-  <!-- JavaScript for Live Data and Charts -->
+  <!-- ==================== JAVASCRIPT ==================== -->
   <script>
-    // ===== MOBILE MENU =====
+    // Mobile Menu Toggle
     document.querySelector('.mobile-menu').addEventListener('click', function() {
       document.querySelector('.nav-links').classList.toggle('active');
     });
 
-    // Global variables
+    // Close menu on outside click
+    document.addEventListener('click', function(e) {
+      const nav = document.querySelector('.nav-links');
+      const menu = document.querySelector('.mobile-menu');
+      if (nav.classList.contains('active') && !nav.contains(e.target) && !menu.contains(e.target)) {
+        nav.classList.remove('active');
+      }
+    });
+
+    // ===== CRYPTO DATA LOGIC (FULL & UNCHANGED) =====
     let cryptoData = [];
     let currentChart = null;
 
-    // Fetch crypto data from CoinGecko API
     async function fetchCryptoData() {
       try {
         const res = await fetch(
@@ -565,14 +621,12 @@
         );
         cryptoData = await res.json();
 
-        // Populate Ticker
-        const ticker = cryptoData.map(c => `${c.name} (${c.symbol.toUpperCase()}) $${c.current_price.toLocaleString()} (${c.price_change_percentage_24h.toFixed(2)}%)`).join(' • ');
+        const ticker = cryptoData.map(c => 
+          `${c.name} (${c.symbol.toUpperCase()}) $${c.current_price.toLocaleString()} (${c.price_change_percentage_24h.toFixed(2)}%)`
+        ).join(' • ');
         document.getElementById('tickerContent').textContent = ticker;
 
-        // Populate Table
         populateTable();
-        
-        // Populate Grid
         populateGrid();
 
       } catch (err) {
@@ -580,7 +634,6 @@
       }
     }
 
-    // Populate table with crypto data
     function populateTable() {
       const tableBody = document.getElementById('cryptoTableBody');
       tableBody.innerHTML = '';
@@ -609,7 +662,6 @@
         tableBody.insertAdjacentHTML('beforeend', row);
       });
       
-      // Add event listeners to view details buttons
       document.querySelectorAll('.view-details').forEach(button => {
         button.addEventListener('click', function() {
           const coinId = this.getAttribute('data-id');
@@ -618,12 +670,10 @@
       });
     }
 
-    // Populate grid with crypto cards
     function populateGrid() {
       const cryptoGrid = document.getElementById('cryptoGrid');
       cryptoGrid.innerHTML = '';
       
-      // Show top 6 cryptocurrencies in the grid
       cryptoData.slice(0, 6).forEach(coin => {
         const card = `
           <div class="crypto-card" data-id="${coin.id}">
@@ -648,7 +698,6 @@
         cryptoGrid.insertAdjacentHTML('beforeend', card);
       });
       
-      // Add event listeners to crypto cards
       document.querySelectorAll('.crypto-card').forEach(card => {
         card.addEventListener('click', function() {
           const coinId = this.getAttribute('data-id');
@@ -657,101 +706,68 @@
       });
     }
 
-    // Show detailed crypto information in modal
     async function showCryptoDetails(coinId) {
+      document.getElementById('modalContent').innerHTML = `
+        <div class="text-center py-10">
+          <div class="loading mx-auto"></div>
+          <p class="mt-4">Loading ${coinId} data...</p>
+        </div>
+      `;
+      document.getElementById('cryptoModal').style.display = 'block';
+
       try {
-        // Show loading state
-        document.getElementById('modalContent').innerHTML = `
-          <div class="text-center py-10">
-            <div class="loading mx-auto"></div>
-            <p class="mt-4">Loading ${coinId} data...</p>
-          </div>
-        `;
-        
-        // Show modal
-        document.getElementById('cryptoModal').style.display = 'block';
-        
-        // Fetch detailed coin data
         const res = await fetch(
           `https://api.coingecko.com/api/v3/coins/${coinId}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=false&sparkline=true`
         );
         const coin = await res.json();
-        
-        // Populate modal with coin data
         populateModal(coin);
-        
       } catch (err) {
-        console.error('Error fetching coin details:', err);
-        document.getElementById('modalContent').innerHTML = `
-          <div class="text-center py-10">
-            <p class="text-red-400">Error loading data. Please try again.</p>
-          </div>
-        `;
+        document.getElementById('modalContent').innerHTML = `<p class="text-red-400 text-center">Error loading data.</p>`;
       }
     }
 
-    // Populate modal with coin details
     function populateModal(coin) {
-      // Format numbers
       const formatNumber = (num) => {
-        if (num >= 1000000000) {
-          return '$' + (num / 1000000000).toFixed(2) + 'B';
-        } else if (num >= 1000000) {
-          return '$' + (num / 1000000).toFixed(2) + 'M';
-        } else if (num >= 1000) {
-          return '$' + (num / 1000).toFixed(2) + 'K';
-        }
+        if (num >= 1e9) return '$' + (num / 1e9).toFixed(2) + 'B';
+        if (num >= 1e6) return '$' + (num / 1e6).toFixed(2) + 'M';
+        if (num >= 1e3) return '$' + (num / 1e3).toFixed(2) + 'K';
         return '$' + num.toFixed(2);
       };
 
-      // Create modal content
       const modalContent = `
         <div class="mb-6">
-          <div class="flex items-center space-x-4 mb-4">
-            <img src="${coin.image.large}" class="w-12 h-12" alt="${coin.name}">
-            <div>
-              <h2 class="text-2xl font-bold">${coin.name} (${coin.symbol.toUpperCase()})</h2>
-              <p class="text-gray-400">Rank: #${coin.market_cap_rank}</p>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-4">
+              <img src="${coin.image.large}" class="w-12 h-12" alt="${coin.name}">
+              <div>
+                <h2 class="text-2xl font-bold">${coin.name} (${coin.symbol.toUpperCase()})</h2>
+                <p class="text-gray-400">Rank: #${coin.market_cap_rank}</p>
+              </div>
             </div>
-            <div class="ml-auto text-right">
+            <div class="text-right">
               <p class="text-2xl font-bold">$${coin.market_data.current_price.usd.toLocaleString()}</p>
-              <p class="${coin.market_data.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'} font-semibold">
+              <p class="${coin.market_data.price_change_percentage_24h >= 0 ? 'text-green-400' : 'text-red-400'}">
                 ${coin.market_data.price_change_percentage_24h.toFixed(2)}%
               </p>
             </div>
           </div>
-          
-          <!-- Tabs -->
+
           <div class="flex border-b border-gray-700 mb-4">
             <button class="tab-button active" data-tab="overview">Overview</button>
             <button class="tab-button" data-tab="charts">Charts</button>
             <button class="tab-button" data-tab="stats">Statistics</button>
           </div>
-          
-          <!-- Tab Contents -->
+
           <div id="overview" class="tab-content active">
             <p class="text-gray-300 mb-4">${coin.description.en.split('. ')[0]}.</p>
-            
             <div class="stats-grid">
-              <div class="stat-card">
-                <p class="text-gray-400">Market Cap</p>
-                <p class="stat-value">${formatNumber(coin.market_data.market_cap.usd)}</p>
-              </div>
-              <div class="stat-card">
-                <p class="text-gray-400">24h Trading Volume</p>
-                <p class="stat-value">${formatNumber(coin.market_data.total_volume.usd)}</p>
-              </div>
-              <div class="stat-card">
-                <p class="text-gray-400">Circulating Supply</p>
-                <p class="stat-value">${coin.market_data.circulating_supply.toLocaleString()} ${coin.symbol.toUpperCase()}</p>
-              </div>
-              <div class="stat-card">
-                <p class="text-gray-400">Total Supply</p>
-                <p class="stat-value">${coin.market_data.total_supply ? coin.market_data.total_supply.toLocaleString() : 'N/A'} ${coin.symbol.toUpperCase()}</p>
-              </div>
+              <div class="stat-card"><p class="text-gray-400">Market Cap</p><p class="stat-value">${formatNumber(coin.market_data.market_cap.usd)}</p></div>
+              <div class="stat-card"><p class="text-gray-400">24h Volume</p><p class="stat-value">${formatNumber(coin.market_data.total_volume.usd)}</p></div>
+              <div class="stat-card"><p class="text-gray-400">Circulating</p><p class="stat-value">${coin.market_data.circulating_supply.toLocaleString()} ${coin.symbol.toUpperCase()}</p></div>
+              <div class="stat-card"><p class="text-gray-400">Total Supply</p><p class="stat-value">${coin.market_data.total_supply ? coin.market_data.total_supply.toLocaleString() : 'N/A'} ${coin.symbol.toUpperCase()}</p></div>
             </div>
           </div>
-          
+
           <div id="charts" class="tab-content">
             <div class="flex space-x-2 mb-4">
               <button class="timeframe-btn bg-blue-600 text-white px-3 py-1 rounded text-sm" data-days="1">1D</button>
@@ -759,239 +775,96 @@
               <button class="timeframe-btn bg-gray-700 text-white px-3 py-1 rounded text-sm" data-days="30">1M</button>
               <button class="timeframe-btn bg-gray-700 text-white px-3 py-1 rounded text-sm" data-days="365">1Y</button>
             </div>
-            <div class="chart-container">
-              <canvas id="priceChart"></canvas>
-            </div>
+            <div class="chart-container"><canvas id="priceChart"></canvas></div>
           </div>
-          
+
           <div id="stats" class="tab-content">
             <div class="stats-grid">
-              <div class="stat-card">
-                <p class="text-gray-400">24h High</p>
-                <p class="stat-value">$${coin.market_data.high_24h.usd.toLocaleString()}</p>
-              </div>
-              <div class="stat-card">
-                <p class="text-gray-400">24h Low</p>
-                <p class="stat-value">$${coin.market_data.low_24h.usd.toLocaleString()}</p>
-              </div>
-              <div class="stat-card">
-                <p class="text-gray-400">All-Time High</p>
-                <p class="stat-value">$${coin.market_data.ath.usd.toLocaleString()}</p>
-                <p class="text-gray-400 text-sm mt-1">
-                  ${coin.market_data.ath_change_percentage.usd.toFixed(2)}% from ATH
-                </p>
-              </div>
-              <div class="stat-card">
-                <p class="text-gray-400">Price Change (1h)</p>
-                <p class="stat-value ${coin.market_data.price_change_percentage_1h_in_currency.usd >= 0 ? 'positive' : 'negative'}">
-                  ${coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(2)}%
-                </p>
-              </div>
-              <div class="stat-card">
-                <p class="text-gray-400">Price Change (7d)</p>
-                <p class="stat-value ${coin.market_data.price_change_percentage_7d_in_currency.usd >= 0 ? 'positive' : 'negative'}">
-                  ${coin.market_data.price_change_percentage_7d_in_currency.usd.toFixed(2)}%
-                </p>
-              </div>
-              <div class="stat-card">
-                <p class="text-gray-400">Price Change (30d)</p>
-                <p class="stat-value ${coin.market_data.price_change_percentage_30d_in_currency.usd >= 0 ? 'positive' : 'negative'}">
-                  ${coin.market_data.price_change_percentage_30d_in_currency.usd.toFixed(2)}%
-                </p>
-              </div>
+              <div class="stat-card"><p class="text-gray-400">24h High</p><p class="stat-value">$${coin.market_data.high_24h.usd.toLocaleString()}</p></div>
+              <div class="stat-card"><p class="text-gray-400">24h Low</p><p class="stat-value">$${coin.market_data.low_24h.usd.toLocaleString()}</p></div>
+              <div class="stat-card"><p class="text-gray-400">ATH</p><p class="stat-value">$${coin.market_data.ath.usd.toLocaleString()}</p><p class="text-sm text-gray-400">${coin.market_data.ath_change_percentage.usd.toFixed(2)}% from ATH</p></div>
+              <div class="stat-card"><p class="text-gray-400">1h</p><p class="stat-value ${coin.market_data.price_change_percentage_1h_in_currency.usd >= 0 ? 'positive' : 'negative'}">${coin.market_data.price_change_percentage_1h_in_currency.usd.toFixed(2)}%</p></div>
+              <div class="stat-card"><p class="text-gray-400">7d</p><p class="stat-value ${coin.market_data.price_change_percentage_7d_in_currency.usd >= 0 ? 'positive' : 'negative'}">${coin.market_data.price_change_percentage_7d_in_currency.usd.toFixed(2)}%</p></div>
+              <div class="stat-card"><p class="text-gray-400">30d</p><p class="stat-value ${coin.market_data.price_change_percentage_30d_in_currency.usd >= 0 ? 'positive' : 'negative'}">${coin.market_data.price_change_percentage_30d_in_currency.usd.toFixed(2)}%</p></div>
             </div>
           </div>
         </div>
-        
+
         <div class="flex justify-between mt-8">
-          <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold transition">
-            Trade ${coin.symbol.toUpperCase()}
-          </button>
-          <button class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded font-semibold transition">
-            Add to Watchlist
-          </button>
+          <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold">Trade ${coin.symbol.toUpperCase()}</button>
+          <button class="bg-gray-700 hover:bg-gray-600 text-white px-6 py-2 rounded font-semibold">Add to Watchlist</button>
         </div>
       `;
-      
+
       document.getElementById('modalContent').innerHTML = modalContent;
-      
-      // Initialize tabs
       initializeTabs();
-      
-      // Initialize chart with 7-day data by default
       initializeChart(coin.id, 7);
     }
 
-    // Initialize tab functionality
     function initializeTabs() {
-      const tabButtons = document.querySelectorAll('.tab-button');
-      const tabContents = document.querySelectorAll('.tab-content');
-      
-      tabButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          const tabId = this.getAttribute('data-tab');
-          
-          // Update active tab button
-          tabButtons.forEach(btn => btn.classList.remove('active'));
-          this.classList.add('active');
-          
-          // Show active tab content
-          tabContents.forEach(content => {
-            content.classList.remove('active');
-            if (content.id === tabId) {
-              content.classList.add('active');
-            }
-          });
+      document.querySelectorAll('.tab-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tab-button').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById(btn.dataset.tab).classList.add('active');
         });
       });
-      
-      // Initialize timeframe buttons for charts
-      const timeframeButtons = document.querySelectorAll('.timeframe-btn');
-      timeframeButtons.forEach(button => {
-        button.addEventListener('click', function() {
-          const days = parseInt(this.getAttribute('data-days'));
-          
-          // Update active timeframe button
-          timeframeButtons.forEach(btn => btn.classList.remove('bg-blue-600'));
-          timeframeButtons.forEach(btn => btn.classList.add('bg-gray-700'));
-          this.classList.remove('bg-gray-700');
-          this.classList.add('bg-blue-600');
-          
-          // Get coin ID from modal
-          const coinName = document.querySelector('.modal-content h2').textContent.split(' (')[0].toLowerCase();
-          initializeChart(coinName, days);
+
+      document.querySelectorAll('.timeframe-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.timeframe-btn').forEach(b => {
+            b.classList.remove('bg-blue-600'); b.classList.add('bg-gray-700');
+          });
+          btn.classList.remove('bg-gray-700'); btn.classList.add('bg-blue-600');
+          const coinId = document.querySelector('.modal-content h2').textContent.split(' (')[0].toLowerCase();
+          initializeChart(coinId, btn.dataset.days);
         });
       });
     }
 
-    // Initialize price chart
     async function initializeChart(coinId, days) {
       try {
-        // Fetch historical data
-        const res = await fetch(
-          `https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}&interval=${days <= 1 ? 'hourly' : 'daily'}`
-        );
+        const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/market_chart?vs_currency=usd&days=${days}&interval=${days <= 1 ? 'hourly' : 'daily'}`);
         const data = await res.json();
-        
         const prices = data.prices;
-        const labels = [];
-        const values = [];
-        
-        // Format labels based on timeframe
-        prices.forEach(([timestamp, value]) => {
-          const date = new Date(timestamp);
-          if (days <= 1) {
-            // For 1 day, show hours
-            labels.push(date.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}));
-          } else if (days <= 7) {
-            // For 1 week, show days
-            labels.push(date.toLocaleDateString([], {weekday: 'short'}));
-          } else if (days <= 30) {
-            // For 1 month, show dates
-            labels.push(date.toLocaleDateString([], {month: 'short', day: 'numeric'}));
-          } else {
-            // For 1 year, show months
-            labels.push(date.toLocaleDateString([], {month: 'short', year: 'numeric'}));
-          }
-          values.push(value);
+        const labels = prices.map(([t]) => {
+          const d = new Date(t);
+          if (days <= 1) return d.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+          if (days <= 7) return d.toLocaleDateString([], {weekday: 'short'});
+          if (days <= 30) return d.toLocaleDateString([], {month: 'short', day: 'numeric'});
+          return d.toLocaleDateString([], {month: 'short', year: 'numeric'});
         });
-        
-        // Get canvas context
+        const values = prices.map(([_, v]) => v);
+
         const ctx = document.getElementById('priceChart').getContext('2d');
-        
-        // Destroy previous chart if exists
-        if (currentChart) {
-          currentChart.destroy();
-        }
-        
-        // Create new chart
+        if (currentChart) currentChart.destroy();
+
         currentChart = new Chart(ctx, {
           type: 'line',
-          data: {
-            labels: labels,
-            datasets: [{
-              label: 'Price (USD)',
-              data: values,
-              borderColor: '#0070f3',
-              backgroundColor: 'rgba(0, 112, 243, 0.1)',
-              borderWidth: 2,
-              fill: true,
-              tension: 0.1
-            }]
-          },
+          data: { labels, datasets: [{ label: 'Price (USD)', data: values, borderColor: '#0070f3', backgroundColor: 'rgba(0,112,243,0.1)', fill: true, tension: 0.1, borderWidth: 2 }] },
           options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                display: false
-              },
-              tooltip: {
-                mode: 'index',
-                intersect: false,
-                callbacks: {
-                  label: function(context) {
-                    return `$${context.parsed.y.toLocaleString()}`;
-                  }
-                }
-              }
-            },
-            scales: {
-              x: {
-                grid: {
-                  color: 'rgba(255, 255, 255, 0.1)'
-                },
-                ticks: {
-                  color: '#94a3b8'
-                }
-              },
-              y: {
-                grid: {
-                  color: 'rgba(255, 255, 255, 0.1)'
-                },
-                ticks: {
-                  color: '#94a3b8',
-                  callback: function(value) {
-                    return '$' + value.toLocaleString();
-                  }
-                }
-              }
-            }
+            responsive: true, maintainAspectRatio: false,
+            plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, callbacks: { label: ctx => `$${ctx.parsed.y.toLocaleString()}` } } },
+            scales: { x: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#94a3b8' } }, y: { grid: { color: 'rgba(255,255,255,0.1)' }, ticks: { color: '#94a3b8', callback: v => '$' + v.toLocaleString() } } }
           }
         });
-        
-      } catch (err) {
-        console.error('Error fetching chart data:', err);
-      }
+      } catch (err) { console.error(err); }
     }
 
-    // Close modal when clicking the X
-    document.querySelector('.close-modal').addEventListener('click', function() {
+    document.querySelector('.close-modal').onclick = () => {
       document.getElementById('cryptoModal').style.display = 'none';
-      if (currentChart) {
-        currentChart.destroy();
-        currentChart = null;
-      }
-    });
+      if (currentChart) { currentChart.destroy(); currentChart = null; }
+    };
 
-    // Close modal when clicking outside
-    window.addEventListener('click', function(event) {
+    window.onclick = e => {
       const modal = document.getElementById('cryptoModal');
-      if (event.target === modal) {
-        modal.style.display = 'none';
-        if (currentChart) {
-          currentChart.destroy();
-          currentChart = null;
-        }
-      }
-    });
+      if (e.target === modal) { modal.style.display = 'none'; if (currentChart) { currentChart.destroy(); currentChart = null; } }
+    };
 
-    // Initial data fetch
+    // Initialize
     fetchCryptoData();
-    
-    // Refresh data every minute
     setInterval(fetchCryptoData, 60000);
   </script>
-
 </body>
 </html>
